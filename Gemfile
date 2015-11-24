@@ -26,18 +26,28 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use serializer to return correct format to ember_cli
+gem 'active_model_serializers'
+
 # Use Unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
+
+# Use Thin for development
+gem 'thin', group: :development
 
 # Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'capistrano'
+gem 'capistrano-rails'
+gem 'capistrano-bundler'
+gem 'rvm1-capistrano3', require: false
+
+# we use ember-cli for our frontend-app
+gem "ember-cli-rails"
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-end
+  # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
+  gem 'pry'
 
-group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
@@ -45,3 +55,21 @@ group :development do
   gem 'spring'
 end
 
+# Cucumber for BDD
+group :test do
+  gem 'cucumber-rails', :require => false
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner', '<= 1.0.1'
+  gem 'factory_girl_rails'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+  gem 'headless'
+  gem 'email_spec'
+  gem 'capybara-screenshot'
+end
+
+# For running tests parallel
+gem "parallel_tests", :group => :development
+
+# We use devise (https://github.com/plataformatec/devise) for authentication and authorization
+gem 'devise'
