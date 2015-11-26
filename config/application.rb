@@ -6,6 +6,50 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Defines our upload-location depending on env
+module RailsUpload
+  def self.folder
+    return folder_path.to_s
+  end
+
+  def self.folder_path
+    if Rails.env.test?
+      Rails.root.join('public','system', 'test', ENV['TEST_ENV_NUMBER'] || "0")
+    else
+      Rails.root.join('public','system','upload')
+    end
+  end
+
+  def self.base_url
+    if Rails.env.test?
+      url = "/system/test/#{ENV['TEST_ENV_NUMBER'] || '0'}"
+    else
+      url = "/system/upload"
+    end
+
+    url
+  end
+
+  def self.clear
+    FileUtils.rm_rf Dir.glob self.folder_path.join('*')
+  end
+
+  def self.setup
+    FileUtils.mkdir_p self.folder_path unless Dir.exists? self.folder_path
+  end
+end
+
+# Defines where we store test-files
+module TestFiles
+  def self.folder
+    folder_path.to_s
+  end
+
+  def self.folder_path
+    Rails.root.join('features','support','test_files')
+  end
+end
+
 module Global8ball
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
