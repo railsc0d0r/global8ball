@@ -179,6 +179,7 @@ GEM
     parallel (1.6.1)
     parallel_tests (2.0.0)
       parallel
+    pg (0.18.4)
     poltergeist (1.8.1)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -310,6 +311,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   parallel_tests
+  pg
   poltergeist
   pry
   rails (= 4.2.5)
