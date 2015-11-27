@@ -1,0 +1,3 @@
+[submodule "frontend"]
+  path = frontend
+  url = ssh://git@p2501.twilightparadox.com:33333/home/tueti/job/git_repos/global8ball_frontend.git
