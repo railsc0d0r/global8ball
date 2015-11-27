@@ -3,6 +3,7 @@ lock '3.4.0'
 
 set :application, 'global8ball'
 set :repo_url, 'ssh://git@p2501.twilightparadox.com:33333/home/git/git_repos/global8ball.git'
+set :repo_tree, 'frontend'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
