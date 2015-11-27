@@ -46,8 +46,6 @@ set :unicorn_config_path,  'config/unicorn.rb'
 
 namespace :deploy do
 
-  before 'deploy', 'rvm1:install:gems'
-
   desc "Seed db and restart unicorn"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
