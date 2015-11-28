@@ -46,6 +46,9 @@ gem 'rvm1-capistrano3', require: false
 # This is needed. because cap doesn't support submodules anymore and we have to use our own strategy
 gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'ekho/capistrano-git-submodule-strategy'
 
+# Use highline to manage console-input like passwords for capistrano
+gem 'highline'
+
 # we use ember-cli for our frontend-app
 gem "ember-cli-rails", '0.5.1'
 

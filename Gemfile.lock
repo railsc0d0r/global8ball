@@ -145,6 +145,7 @@ GEM
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
     headless (2.2.0)
+    highline (1.7.8)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.3.2)
@@ -316,6 +317,7 @@ DEPENDENCIES
   guard
   guard-livereload
   headless
+  highline
   jbuilder (~> 2.0)
   jquery-rails
   parallel_tests
