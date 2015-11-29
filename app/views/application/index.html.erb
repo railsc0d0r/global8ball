@@ -1,10 +1,10 @@
 <%= render_ember_app :frontend do |head| %>
   <% head.append do %>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag 'application' %>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag 'jquery' %>
     <%= javascript_include_tag 'bootstrap' %>
+    <%= stylesheet_link_tag 'application' %>
   <% end %>
 <% end %>
 
