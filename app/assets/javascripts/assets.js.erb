@@ -1,0 +1,5 @@
+<% environment.context_class.instance_eval { include EmberHelper } %>
+
+window.assets = window.assets || {};
+
+window.assets.images = <%= raw(image_assets.to_json) %>;
