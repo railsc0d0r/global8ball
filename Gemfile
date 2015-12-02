@@ -53,6 +53,9 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
+  # Pretty print objects
+  gem 'awesome_print'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
@@ -80,8 +83,3 @@ gem "parallel_tests", :group => :development
 # We use devise (https://github.com/plataformatec/devise) for authentication and authorization
 gem 'devise'
 
-# We use rails-assets to fetch stuff
-source 'https://rails-assets.org' do
-  gem 'rails-assets-jquery', '>= 2.1.4'
-  gem 'rails-assets-bootstrap'
-end
