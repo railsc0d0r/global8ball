@@ -13,7 +13,9 @@ end
 
 Angenommen(/^ein Administrator mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |email, password|
   steps %{ Angenommen ein Benutzer mit dem Benutzernamen "MyUser" und dem Passwort "secret987654321". }
-  @user.update_attribute(:is_admin, true)
+  role = Role.find_by_name('Administrator')
+  @user.role = role
+  @user.save
 end
 
 

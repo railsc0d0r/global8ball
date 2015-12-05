@@ -13,9 +13,10 @@ Funktionalität: Mitarbeiter administrieren
       | Employee      |
     Und eine Anmeldung als Administrator.
 
+  @wip
   Szenario: Einen Mitarbeiter anlegen
-    Wenn ich aus dem Admin-Menü "Mitarbeiter" auswähle.
-    Und ich den "Neu"-Button klicke.
+    Wenn ich aus dem Admin-Menü "Employees" auswähle.
+    Und ich den "Add"-Link klicke.
     Und ich "Employee" als Rolle auswähle.
     Und ich "secret1234" als Passwort eingebe.
     Und ich "secret1234" als Passwortbestätigung eingebe.
@@ -27,7 +28,7 @@ Funktionalität: Mitarbeiter administrieren
     Und ich "00815" als Postleitzahl eingebe.
     Und ich "Musterstadt" als Stadt eingebe.
     Und ich "Deutschland" als Land auswähle.
-    Und ich den "Speichern"-Button klicke.
+    Und ich den "Save"-Button klicke.
     Dann möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
     Und möchte ich "Employee" sehen.
@@ -37,11 +38,11 @@ Funktionalität: Mitarbeiter administrieren
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
     Und möchte ich "Deutschland" sehen.
-    Und möchte ich "Mitarbeiter 'Meyer, Hans' erfolgreich gespeichert." sehen.
+    Und möchte ich "Employee 'Meyer, Hans' sucessfully created." sehen.
 
   Szenario: Einen Administrator anlegen
-    Wenn ich aus dem Admin-Menü "Mitarbeiter" auswähle.
-    Und ich den "Neu"-Button klicke.
+    Wenn ich aus dem Admin-Menü "Employee" auswähle.
+    Und ich den "New"-Button klicke.
     Und ich "Administrator" als Rolle auswähle.
     Und ich "secret1234" als Passwort eingebe.
     Und ich "secret1234" als Passwortbestätigung eingebe.
@@ -53,7 +54,7 @@ Funktionalität: Mitarbeiter administrieren
     Und ich "00815" als Postleitzahl eingebe.
     Und ich "Musterstadt" als Stadt eingebe.
     Und ich "Deutschland" als Land auswähle.
-    Und ich den "Speichern"-Button klicke.
+    Und ich den "Save"-Button klicke.
     Dann möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
     Und möchte ich "Administrator" sehen.
@@ -63,4 +64,4 @@ Funktionalität: Mitarbeiter administrieren
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
     Und möchte ich "Deutschland" sehen.
-    Und möchte ich "Mitarbeiter 'Meyer, Hans' erfolgreich gespeichert." sehen.
+    Und möchte ich "Employee 'Meyer, Hans' successfully created." sehen.
