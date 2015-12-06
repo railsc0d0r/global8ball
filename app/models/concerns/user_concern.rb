@@ -19,7 +19,7 @@ module UserConcern
 
     extend ClassMethods
 
-    initializes :user
+    # initializes :user
 
     validates_presence_of :user
 

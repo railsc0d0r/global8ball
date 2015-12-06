@@ -13,7 +13,7 @@ module PersonConcern
     validates_associated :person
     accepts_nested_attributes_for :person, update_only: true
 
-    initializes :person
+    # initializes :person
 
     validates_presence_of :person
 
