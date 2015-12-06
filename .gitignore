@@ -16,6 +16,10 @@
 !/log/.keep
 /tmp
 
+# Ignore doc - they can be generated on demand
+/doc
+/doc/*
+
 # Ignore rerun.txt from cukes
 rerun.txt
 
