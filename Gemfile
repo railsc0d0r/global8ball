@@ -56,6 +56,9 @@ group :development, :test do
   # Pretty print objects
   gem 'awesome_print'
 
+  # generates pretty UML-diagrams of controllers and models
+  gem 'railroady'
+  
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 

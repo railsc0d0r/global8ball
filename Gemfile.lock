@@ -194,6 +194,7 @@ GEM
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.4.1)
     rails (4.2.5)
       actionmailer (= 4.2.5)
       actionpack (= 4.2.5)
@@ -315,6 +316,7 @@ DEPENDENCIES
   pg
   poltergeist
   pry
+  railroady
   rails (= 4.2.5)
   rvm1-capistrano3
   sass-rails (~> 5.0)
