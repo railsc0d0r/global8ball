@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151206230353) do
+ActiveRecord::Schema.define(version: 20151206230818) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20151206230353) do
 
   add_index "addresses", ["person_id"], name: "index_addresses_on_person_id"
 
+  create_table "employees", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "employees", ["person_id"], name: "index_employees_on_person_id"
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id"
+
   create_table "people", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -38,6 +48,16 @@ ActiveRecord::Schema.define(version: 20151206230353) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "players", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "players", ["person_id"], name: "index_players_on_person_id"
+  add_index "players", ["user_id"], name: "index_players_on_user_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
