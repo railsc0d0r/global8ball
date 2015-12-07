@@ -7,7 +7,7 @@ class Person < ActiveRecord::Base
   validates :address, presence: true, associated: true
   validate :validate_date_of_birth
 
-  # initializes :address
+  initializes :address
 
   protected
 
