@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     self.activated
   end
 
+  def auth_obj
+    auth_obj_type.constantize.where(user_id: id).first if auth_obj_type
+  end
+
   def is_admin?
     self.role.name == 'Administrator'
   end
