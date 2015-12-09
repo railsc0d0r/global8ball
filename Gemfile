@@ -59,6 +59,9 @@ group :development, :test do
   # For live-reload of ember-app
   gem 'guard'
   gem 'guard-livereload'
+
+  # include rspec for unit- and functional tests
+  gem 'rspec-rails', '~> 3.0'  
 end
 
 # Cucumber for BDD
@@ -72,9 +75,6 @@ group :test do
   gem 'headless'
   gem 'email_spec'
   gem 'capybara-screenshot'
-
-  # include rspec for unit- and functional tests
-  gem "rspec"
 end
 
 # For running tests parallel

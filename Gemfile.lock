@@ -227,10 +227,6 @@ GEM
     rdoc (4.2.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
-    rspec (3.4.0)
-      rspec-core (~> 3.4.0)
-      rspec-expectations (~> 3.4.0)
-      rspec-mocks (~> 3.4.0)
     rspec-core (3.4.1)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -238,6 +234,14 @@ GEM
       rspec-support (~> 3.4.0)
     rspec-mocks (3.4.0)
       diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.0)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
     rubyzip (1.1.7)
@@ -323,7 +327,7 @@ DEPENDENCIES
   pry
   railroady
   rails (= 4.2.5)
-  rspec
+  rspec-rails (~> 3.0)
   rvm1-capistrano3
   sdoc (~> 0.4.0)
   selenium-webdriver
