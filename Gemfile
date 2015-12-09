@@ -72,6 +72,9 @@ group :test do
   gem 'headless'
   gem 'email_spec'
   gem 'capybara-screenshot'
+
+  # include rspec for unit- and functional tests
+  gem "rspec"
 end
 
 # For running tests parallel
