@@ -23,6 +23,9 @@
 # Ignore rerun.txt from cukes
 rerun.txt
 
+# Ignore examples.txt from rspec
+spec/examples.txt
+
 # Ignore possible upload-folders. They are created and destroyed on the fly, when needed.
 /public/system/upload
 /public/system/test
