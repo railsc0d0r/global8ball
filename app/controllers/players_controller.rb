@@ -7,7 +7,7 @@ class PlayersController < ApplicationController
     @players = Player.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @players }
       format.json { render json: @players }
     end
   end
@@ -16,7 +16,7 @@ class PlayersController < ApplicationController
   # GET /players/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @player }
       format.json { render json: @player }
     end
   end
@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
-        format.json { render json: @player, status: :created }
+        format.json { render json: @player }
       else
         format.html { render action: 'new' }
         format.json { render json: @player.errors, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class PlayersController < ApplicationController
     respond_to do |format|
       if @player.update(player_params)
         format.html { redirect_to @player, notice: 'Player was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @player }
       else
         format.html { render action: 'edit' }
         format.json { render json: @player.errors, status: :unprocessable_entity }
@@ -78,6 +78,34 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params[:player]
+      params.require(:player).permit(
+        # Player#person holds RL-identity related information
+        person_attributes: [
+          :firstname,
+          :lastname,
+          :nickname,
+          :title,
+          :date_of_birth,
+          :phone_number,
+
+          # The address is handled by a separate model:
+          address_attributes: [
+            :street,
+            :street2,
+            :zip,
+            :city,
+            :region,
+            :country
+          ]
+        ],
+
+        # Player#user holds authentication related information
+        user_attributes: [
+          :username,
+          :password,
+          :password_confirmation,
+          :email
+        ]
+      )
     end
 end
