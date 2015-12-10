@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope '/backend' do
     devise_for :users, controllers: { sessions: 'sessions' }
     resources :users
+    resources :employees
   end
   mount_ember_app :frontend, to: "/", controller: "application", action: "index"
 end
