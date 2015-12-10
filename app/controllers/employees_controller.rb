@@ -7,7 +7,7 @@ class EmployeesController < ApplicationController
     @employees = Employee.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @employees }
       format.json { render json: @employees }
     end
   end
@@ -16,7 +16,7 @@ class EmployeesController < ApplicationController
   # GET /employees/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @employee }
       format.json { render json: @employee }
     end
   end
@@ -38,7 +38,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render json: @employee, status: :created }
+        format.json { render json: @employee }
       else
         format.html { render action: 'new' }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.update(employee_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @employee }
       else
         format.html { render action: 'edit' }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
@@ -78,6 +78,25 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params[:employee]
+      params.require(:employee).permit(
+        user_attributes: [
+          :role_name,
+          :password,
+          :password_confirmation
+        ],
+        person_attributes: [
+          :firstname,
+          :lastname,
+          :email,
+          address_attributes: [
+            :street,
+            :street2,
+            :zip,
+            :city,
+            :region,
+            :country
+          ]
+        ]
+      )
     end
 end
