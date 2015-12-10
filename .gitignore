@@ -32,3 +32,6 @@ spec/examples.txt
 
 # Ignore paperclip-style in public
 /public/system/paperclip_attachments.yml
+
+# ignore generated html for frontend
+/public/_apps
