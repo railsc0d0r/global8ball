@@ -5,6 +5,12 @@ GIT
     capistrano-git-submodule-strategy (0.1.17)
       capistrano (~> 3.1)
 
+GIT
+  remote: git://github.com/stffn/declarative_authorization.git
+  revision: 45e91af20eba71b2828c5c84066bcce3ef032e8a
+  specs:
+    declarative_authorization (1.0.0.pre)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -313,6 +319,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   cucumber-rails
   database_cleaner (<= 1.0.1)
+  declarative_authorization!
   devise
   email_spec
   ember-cli-rails (= 0.5.1)

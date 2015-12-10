@@ -83,3 +83,5 @@ gem "parallel_tests", :group => :development
 # We use devise (https://github.com/plataformatec/devise) for authentication and authorization
 gem 'devise'
 
+# In backend we use declarative_authorization on model- and controller-level
+gem 'declarative_authorization', github: "stffn/declarative_authorization"
