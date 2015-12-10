@@ -7,7 +7,7 @@ class RolesController < ApplicationController
     @roles = Role.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @roles }
       format.json { render json: @roles }
     end
   end
@@ -16,7 +16,7 @@ class RolesController < ApplicationController
   # GET /roles/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @role }
       format.json { render json: @role }
     end
   end
@@ -38,7 +38,7 @@ class RolesController < ApplicationController
     respond_to do |format|
       if @role.save
         format.html { redirect_to @role, notice: 'Role was successfully created.' }
-        format.json { render json: @role, status: :created }
+        format.json { render json: @role }
       else
         format.html { render action: 'new' }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -52,7 +52,7 @@ class RolesController < ApplicationController
     respond_to do |format|
       if @role.update(role_params)
         format.html { redirect_to @role, notice: 'Role was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @role }
       else
         format.html { render action: 'edit' }
         format.json { render json: @role.errors, status: :unprocessable_entity }
