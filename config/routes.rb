@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   scope '/backend' do
     devise_for :users, controllers: { sessions: 'sessions' }
     resources :users
+    resources :roles
     resources :employees
     resources :players
   end
