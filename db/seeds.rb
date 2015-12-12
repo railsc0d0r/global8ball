@@ -41,39 +41,85 @@ roles.each do |role|
   end
 end
 
-# Defining default users
-puts "Seeding users:\n\r"
-
-users = []
+# Defining default employees
+puts "\n\rSeeding employees:\n\r"
+employees = []
 
 stephan = {
-  username: 'stephan',
-  email: 'railsc0d0r@gmail.com',
-  password: 'letMeIn_2015',
+  firstname: "Stephan",
+  lastname: "Barth",
+  username: "stephan",
+  password: "letMeIn_2015",
+  email: "railsc0d0r@gmail.com",
+  role: "Administrator"
+}  
+
+employees << stephan
+
+mike = {
+  firstname: "Mike",
+  lastname: "Neubert",
+  username: "mike_neubert",
+  password: "global8ball_2015",
+  email: "info@3trip.de",
   role: "Administrator"
 }
 
-users << stephan
+employees << mike
 
-users.each do |user|
-
-  user[:password_confirmation] = user[:password]
-
-  user[:activated] = true
-  role = Role.find_by_name(user.delete(:role))
+employees.each do |employee|
+  firstname = employee.delete(:firstname)
+  lastname = employee.delete(:lastname)
   
-  old_user = User.find_by(username: user[:username], email: user[:email])
+  username = employee.delete(:username)
+  email = employee.delete(:email)
+  password = employee.delete(:password)
+  role_name = employee.delete(:role)
+  
+  # First check by firstname, lastname and email, if an employee already exists
+  old_employee = Employee.joins(:person).where(people: {firstname: firstname, lastname: lastname, email: email}).first
 
-  if old_user.nil?
-    puts "Creating user #{user[:username]} ->"
-    new_user = User.create!(user)
-    
-    puts "Done."
+  # If not, create him 
+  unless old_employee
+    puts "Creating employee #{firstname} #{lastname} with role #{role_name} ->"
+    params = {
+      user_attributes: {
+        username: username,
+        role_name: role_name,
+        password: password,
+        password_confirmation: password
+      },
+      person_attributes: {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        address_attributes: {
+          street: "",
+          street2: "",
+          zip: "",
+          city: "",
+          country: ""
+        }
+      }
+    }
+
+    new_employee = Employee.new(params)
+
+    # For transition only:
+    # If there exists already an user w/ given email and username,
+    # associate him with this employee
+    user = User.find_by_email_and_username(email, username)
+
+    if user
+      # Set existing user as user for employee
+      new_employee.user = user
+    end
+
+    new_employee.save
+    new_employee.activate!
+
+    puts "Done.\n\r"
   else
-    puts "User #{user[:username]} already exists. Nothing to do here."
-    new_user = old_user
+    puts "Employee #{firstname} #{lastname} already exists. Nothing to do here."
   end
-
-  new_user.role = role
-  new_user.save!
 end
