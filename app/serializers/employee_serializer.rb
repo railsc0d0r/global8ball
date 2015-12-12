@@ -17,8 +17,4 @@ class EmployeeSerializer < ActiveModel::Serializer
              :region,
              :country,
              :role_name
-
-  def role_name
-    object.user.role_name
-  end
 end
