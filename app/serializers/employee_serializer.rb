@@ -15,5 +15,10 @@ class EmployeeSerializer < ActiveModel::Serializer
              :zip,
              :city,
              :region,
-             :country
+             :country,
+             :role_name
+
+  def role_name
+    object.user.role_name
+  end
 end
