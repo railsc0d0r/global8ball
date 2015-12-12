@@ -36,6 +36,25 @@ class User < ActiveRecord::Base
     end
   end
 
+  def active_for_authentication?
+    self.activated?
+  end
+
+  def activate!
+    self.activated = true
+    save!
+  end
+
+  def deactivate!
+    self.activated = false
+    save!
+  end
+
+  ## Called by devise
+  def inactive_message
+    :inactive
+  end
+  
   def login=(login)
     @login = login
   end
@@ -44,6 +63,14 @@ class User < ActiveRecord::Base
     @login || self.username || self.email
   end
 
+  def role_name
+    role.try :name
+  end
+
+  def role_name= name
+    self.role = Role.where(name: name).first
+  end
+  
   # convinience finder
   def self.find_by_login login
     where(["username = :value OR lower(email) = lower(:value)", { :value => login }]).first
