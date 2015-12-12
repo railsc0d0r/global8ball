@@ -51,19 +51,6 @@ module UserConcern
     user.deactivate!
   end
 
-  ## FIXME: I'm not sure if this is a good pattern. It surely is convenient though :)
-  def site_id= site_id
-    user.site_id = site_id
-  end
-
-  def game_sessions
-    user.game_sessions
-  end
-
-  def rounds
-    user.rounds
-  end
-
   protected
 
   def user_concern_ensure_user_role
