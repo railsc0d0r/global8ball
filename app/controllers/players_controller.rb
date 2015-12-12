@@ -1,4 +1,7 @@
 class PlayersController < ApplicationController
+  include UserAttributesConcern
+  include PersonAttributesConcern
+
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
@@ -78,34 +81,13 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(
-        # Player#person holds RL-identity related information
-        person_attributes: [
-          :firstname,
-          :lastname,
-          :nickname,
-          :title,
-          :date_of_birth,
-          :phone_number,
+      params_hash = params.require(:player)
 
-          # The address is handled by a separate model:
-          address_attributes: [
-            :street,
-            :street2,
-            :zip,
-            :city,
-            :region,
-            :country
-          ]
-        ],
+      result = {
+        user_attributes: fetch_user_attributes(params_hash),
+        person_attributes: fetch_person_attributes(params_hash)
+      }
 
-        # Player#user holds authentication related information
-        user_attributes: [
-          :username,
-          :password,
-          :password_confirmation,
-          :email
-        ]
-      )
+      return result
     end
 end
