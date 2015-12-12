@@ -1,4 +1,7 @@
 class EmployeesController < ApplicationController
+  include UserAttributesConcern
+  include PersonAttributesConcern
+
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /employees
@@ -78,25 +81,13 @@ class EmployeesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employee_params
-      params.require(:employee).permit(
-        user_attributes: [
-          :role_name,
-          :password,
-          :password_confirmation
-        ],
-        person_attributes: [
-          :firstname,
-          :lastname,
-          :email,
-          address_attributes: [
-            :street,
-            :street2,
-            :zip,
-            :city,
-            :region,
-            :country
-          ]
-        ]
-      )
+      params_hash = params.require(:employee)
+
+      result = {
+        user_attributes: fetch_user_attributes(params_hash),
+        person_attributes: fetch_person_attributes(params_hash)
+      }
+
+      return result
     end
 end
