@@ -1,10 +1,14 @@
 class PlayerSerializer < ActiveModel::Serializer
+  require 'concerns/person_serializer_concern'
+  require 'concerns/address_serializer_concern'
+  
   include PersonSerializerConcern
   include AddressSerializerConcern
   
   attributes :id,
              :firstname,
              :lastname,
+             :username,
              :nickname,
              :title,
              :email,
@@ -16,4 +20,7 @@ class PlayerSerializer < ActiveModel::Serializer
              :city,
              :region,
              :country
+  def username
+    object.user.username
+  end
 end

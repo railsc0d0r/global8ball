@@ -1,4 +1,7 @@
 class EmployeeSerializer < ActiveModel::Serializer
+  require 'concerns/person_serializer_concern'
+  require 'concerns/address_serializer_concern'
+  
   include PersonSerializerConcern
   include AddressSerializerConcern
   
@@ -18,4 +21,8 @@ class EmployeeSerializer < ActiveModel::Serializer
              :region,
              :country,
              :role_name
+
+  def username
+    object.user.username
+  end
 end
