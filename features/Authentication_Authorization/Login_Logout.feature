@@ -24,5 +24,5 @@ Funktionalität: Benutzer anmelden
 
   Szenario: Einen Benutzer abmelden
     Angenommen eine Anmeldung als Benutzer.
-    Und ich den "LOGOUT"-Link klicke.
+    Wenn ich den "LOGOUT"-Link klicke.
     Dann möchte ich "Logging out." sehen.
