@@ -1,6 +1,6 @@
 class EmployeeSerializer < ActiveModel::Serializer
-  include PersonConcern
-  include AddressConcern
+  include PersonSerializerConcern
+  include AddressSerializerConcern
   
   attributes :id,
              :firstname,

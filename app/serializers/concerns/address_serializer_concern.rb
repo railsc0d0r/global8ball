@@ -1,4 +1,4 @@
-module AddressConcern
+module AddressSerializerConcern
   extend ActiveSupport::Concern
 
   included do

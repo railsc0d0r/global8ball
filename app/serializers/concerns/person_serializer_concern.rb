@@ -1,4 +1,4 @@
-module PersonConcern
+module PersonSerializerConcern
   extend ActiveSupport::Concern
 
   included do
