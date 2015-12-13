@@ -4,8 +4,8 @@ class RolesController < ApplicationController
   # GET /roles
   # GET /roles.json
   def index
-    @roles = Role.all
-
+    @roles = Role.where.not(name: "Player").all
+    
     respond_to do |format|
       format.html { render html: @roles }
       format.json { render json: @roles }
