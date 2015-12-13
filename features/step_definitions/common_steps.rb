@@ -209,7 +209,6 @@ Wenn(/^ich das "([^"]+)" abschicke$/) do |form_selector_name|
 end
 
 Dann(/^sollte die App im Browser geladen werden\.$/) do
-  response_code = page.status_code
-
-  raise "Page not loaded"  unless (Array(200..207) + Array(301..308)).include? response_code
+  body_class = page.first('body')[:class]
+  raise "App not loaded"  unless body_class == "ember-application"
 end
