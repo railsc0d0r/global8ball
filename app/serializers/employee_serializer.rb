@@ -5,6 +5,7 @@ class EmployeeSerializer < ActiveModel::Serializer
   attributes :id,
              :firstname,
              :lastname,
+             :username,
              :nickname,
              :title,
              :email,
