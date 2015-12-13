@@ -1,5 +1,5 @@
 # language: de
-@javascript
+@javascript @selenium
 Funktionalität: Startseite
   Als Benutzer möchte ich,
   das meine App geladen wird, wenn ich die Startseite aufrufe.

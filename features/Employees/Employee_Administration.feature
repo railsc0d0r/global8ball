@@ -1,5 +1,5 @@
 # language: de
-@javascript
+@javascript @selenium
 Funktionalität: Mitarbeiter administrieren
   Als Administrator möchte ich
   Mitarbeiter anlegen, bearbeiten, löschen und anschauen können
