@@ -42,7 +42,7 @@ Funktionalität: Mitarbeiter administrieren
 
   Szenario: Einen Administrator anlegen
     Wenn ich aus dem Admin-Menü "Employee" auswähle.
-    Und ich den "New"-Button klicke.
+    Und ich den "Add"-Button klicke.
     Und ich "Administrator" als Rolle auswähle.
     Und ich "secret1234" als Passwort eingebe.
     Und ich "secret1234" als Passwortbestätigung eingebe.
