@@ -5,6 +5,7 @@
 # files.
 
 require 'cucumber/rails'
+require 'capybara-screenshot/cucumber'
 
 # drop db, create new and migrate
 require 'rake'
@@ -52,6 +53,12 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.javascript_driver = :poltergeist
+
+# Keep up to the number of screenshots specified in the hash
+Capybara::Screenshot.prune_strategy = { keep: 10 }
+
+# On failure take a screenshot
+Capybara::Screenshot.autosave_on_failure = true
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
@@ -143,6 +150,8 @@ Before('@selenium') do |scenario, block|
 end
 
 After('@selenium') do |scenario, block|
+  # clear localStorage
+  page.execute_script('localStorage.clear();')
   headless.stop
 
   if scenario.exception.is_a? Timeout::Error
