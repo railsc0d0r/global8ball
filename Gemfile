@@ -85,3 +85,6 @@ gem 'devise'
 
 # In backend we use declarative_authorization on model- and controller-level
 gem 'declarative_authorization', github: "stffn/declarative_authorization"
+
+# We us countries to provide iso-3166-1 compatible country-references
+gem 'countries'
