@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :employees
     resources :players
+    resources :countries, only: [:index, :show]
   end
   mount_ember_app :frontend, to: "/", controller: "application", action: "index"
 end
