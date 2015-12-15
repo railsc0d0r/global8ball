@@ -16,7 +16,7 @@ Wenn(/^ich "(.*?)" als Vorname eingebe\.$/) do |firstname|
 end
 
 Wenn(/^ich "(.*?)" als Email eingebe\.$/) do |email|
-  steps %{ Wenn ich "#{firstname}" als "firstname" eingebe. }
+  steps %{ Wenn ich "#{email}" als "firstname" eingebe. }
 end
 
 Wenn(/^ich "(.*?)" als Strasse eingebe\.$/) do |street|
