@@ -1,3 +1,7 @@
+#
+# Pseudo-model to find one or an array of countries by different criterias
+# Uses countries-gem as datasource
+#
 class Country
   def self.all
     ISO3166::Country.all.map{|c| {id: c.number, name: c.name, code: c.un_locode}}
