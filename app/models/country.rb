@@ -1,6 +1,6 @@
 #
 # Pseudo-model to find one or an array of countries by different criterias
-# Uses countries-gem as datasource
+# Uses countries-gem as datasource -> https://github.com/hexorx/countries
 #
 class Country
   def self.all
