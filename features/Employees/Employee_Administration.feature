@@ -27,7 +27,7 @@ Funktionalität: Mitarbeiter administrieren
     Und ich "Auf dem Hinterhof" als Strassenzusatz eingebe.
     Und ich "00815" als Postleitzahl eingebe.
     Und ich "Musterstadt" als Stadt eingebe.
-    Und ich "Deutschland" als Land auswähle.
+    Und ich "Germany" als Land auswähle.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
@@ -53,9 +53,10 @@ Funktionalität: Mitarbeiter administrieren
     Und ich "Auf dem Hinterhof" als Strassenzusatz eingebe.
     Und ich "00815" als Postleitzahl eingebe.
     Und ich "Musterstadt" als Stadt eingebe.
-    Und ich "Deutschland" als Land auswähle.
+    Und ich "Germany" als Land auswähle.
     Und ich den "Save"-Button klicke.
-    Dann möchte ich "Meyer" sehen.
+    Dann möchte ich "Employee 'Meyer, Hans' successfully created." sehen.
+    Und möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
     Und möchte ich "Administrator" sehen.
     Und möchte ich "hans_meyer@example.com" sehen.
@@ -64,4 +65,3 @@ Funktionalität: Mitarbeiter administrieren
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
     Und möchte ich "Deutschland" sehen.
-    Und möchte ich "Employee 'Meyer, Hans' successfully created." sehen.
