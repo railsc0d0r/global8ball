@@ -8,18 +8,24 @@ class Country
   end
 
   def self.find_by_id id
-    data = ISO3166::Country.find_country_by_number(id.to_s).data
-    parse_data data
+    country =  ISO3166::Country.find_country_by_number(id.to_s)
+    if country
+      filter_attributes country
+    end
   end
 
   def self.find_by_name name
-    data = ISO3166::Country.find_country_by_name(name).data
-    parse_data data
+    country = ISO3166::Country.find_country_by_name(name)
+    if country
+      filter_attributes country
+    end
   end
 
   def self.find_by_code code
-    data = ISO3166::Country.find_country_by_un_locode(code).data
-    parse_data data
+    country = ISO3166::Country.find_country_by_un_locode(code)
+    if country
+      filter_attributes country
+    end
   end
 
   def self.find_all_by_region name
@@ -28,11 +34,11 @@ class Country
 
   private
 
-  def parse_data data
+  def self.filter_attributes country
     {
-      id: data['number'],
-      name: data['name'],
-      code: data['un_locode']
+      id: country.number,
+      name: country.name,
+      code: country.un_locode
     }
   end
 
