@@ -4,7 +4,7 @@
 #
 class Country
   def self.all
-    ISO3166::Country.all.map{|c| {id: c.number, name: c.name, code: c.un_locode}}
+    ISO3166::Country.all.map{|c| {id: c.number, name: c.name, code: c.un_locode}}.sort{|x,y| x[:name] <=> y[:name]}
   end
 
   def self.find_by_id id
