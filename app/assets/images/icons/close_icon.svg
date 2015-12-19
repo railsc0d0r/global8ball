@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- The icon can be used freely in both personal and commercial projects with no attribution required, but always appreciated. 
+You may NOT sub-license, resell, rent, redistribute or otherwise transfer the icon without express written permission from iconmonstr.com -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   x="0px"
+   y="0px"
+   width="512px"
+   height="512px"
+   viewBox="0 0 512 512"
+   enable-background="new 0 0 512 512"
+   xml:space="preserve"
+   id="svg3413"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="delete_icon.svg"><metadata
+     id="metadata3420"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+     id="defs3418" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview3416"
+     showgrid="false"
+     inkscape:zoom="0.4609375"
+     inkscape:cx="256"
+     inkscape:cy="256"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3413" /><polygon
+     id="x-mark-icon"
+     points="438.393,374.595 319.757,255.977 438.378,137.348 374.595,73.607 255.995,192.225 137.375,73.622    73.607,137.352 192.246,255.983 73.622,374.625 137.352,438.393 256.002,319.734 374.652,438.378 " /><path
+     style="fill:#333333"
+     d="m 105.87144,405.91212 -31.415017,-31.47116 59.624787,-59.65438 59.6248,-59.65438 -59.10135,-59.13066 -59.10134,-59.13067 30.90072,-30.90072 30.90073,-30.900728 59.13066,59.101348 59.13067,59.10134 59.13995,-59.11062 59.13995,-59.110623 31.41489,31.471043 31.41488,31.47103 -59.09243,59.12176 -59.09244,59.12176 59.10663,59.10662 59.10662,59.10662 -30.91028,30.91027 -30.91027,30.91028 -59.10675,-59.10675 -59.10675,-59.10674 -59.69182,59.66326 -59.69182,59.66327 -31.41502,-31.47117 z"
+     id="path3437"
+     inkscape:connector-curvature="0" /></svg>
