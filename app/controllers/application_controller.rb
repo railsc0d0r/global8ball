@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_user_from_token!
+  before_filter :authenticate_user_from_token!, unless: :devise_controller?
   
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user_from_token!
+    # TODO: Workaround because warden still stores the last user.
+    # Investigate and fix this
+    sign_out
+
     token = request.headers['Auth-Token'].presence
     login = request.headers['Auth-Login'].presence
     user = login && User.find_by_login(login)
