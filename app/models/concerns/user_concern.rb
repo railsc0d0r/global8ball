@@ -27,8 +27,7 @@ module UserConcern
 
     after_validation :user_concern_ensure_user_role
 
-    # TODO: has to be implemented yet.
-    # after_validation :user_concern_ensure_auth_obj_type
+    after_validation :user_concern_ensure_auth_obj_type
   end
 
   def name
