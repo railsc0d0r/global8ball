@@ -46,19 +46,30 @@ set :unicorn_config_path,  'config/unicorn.rb'
 
 namespace :deploy do
 
-  desc "Seed db and restart unicorn"
+  desc "Restart unicorn"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
         with rails_env: fetch(:rails_env) do
-          execute "bash -l -c 'cd #{release_path}; pwd; bundle exec rake db:seed RAILS_ENV=#{fetch(:rails_env)}'"
           execute "bash -l -c 'cd #{release_path}; pwd; bundle exec rake unicorn:restart RAILS_ENV=#{fetch(:rails_env)}'"
         end
       end
     end
   end
 
-  after 'deploy:finished', 'deploy:restart'
+  desc "Seed db"
+  task :seed do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        with rails_env: fetch(:rails_env) do
+          execute "bash -l -c 'cd #{release_path}; pwd; bundle exec rake db:seed RAILS_ENV=#{fetch(:rails_env)}'"
+        end
+      end
+    end
+  end
+
+  after 'deploy:finished', 'deploy:seed'
+  after 'deploy:seed', 'deploy:restart'
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
