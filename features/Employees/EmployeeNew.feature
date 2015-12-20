@@ -1,5 +1,5 @@
 # language: de
-@javascript @selenium
+@javascript
 Funktionalität: Mitarbeiter anlegen
   Als Administrator möchte ich
   Mitarbeiter anlegen können

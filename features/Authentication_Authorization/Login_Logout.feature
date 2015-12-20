@@ -1,5 +1,5 @@
 # language: de
-@javascript @selenium
+@javascript
 Funktionalität: Benutzer anmelden
   Als Benutzer möchte ich
   mich an der Applikation mit email oder Benutzernamen anmelden können,

@@ -1,5 +1,5 @@
 # language: de
-@javascript @selenium
+@javascript
 Funktionalität: Mitarbeiter bearbeiten
   Als Administrator möchte ich
   Mitarbeiter bearbeiten können

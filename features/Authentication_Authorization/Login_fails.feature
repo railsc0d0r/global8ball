@@ -1,5 +1,5 @@
 # language: de
-@javascript @selenium
+@javascript
 Funktionalität: Benutzer anmelden
   Als Betreiber möchte ich
   um die Applikation sichern zu können,
