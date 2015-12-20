@@ -1,8 +1,8 @@
 # language: de
 @javascript @selenium
-Funktionalität: Mitarbeiter administrieren
+Funktionalität: Mitarbeiter anlegen
   Als Administrator möchte ich
-  Mitarbeiter anlegen, bearbeiten, löschen und anschauen können
+  Mitarbeiter anlegen können
   um Mitarbeitern das Arbeiten zu ermöglichen.
 
   Grundlage:
