@@ -44,7 +44,7 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee }
       else
         format.html { render action: 'new' }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+        format.json { render @employee.errors.to_json, status: :unprocessable_entity }
       end
     end
   end
@@ -58,7 +58,7 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+        format.json { render @employee.errors.to_json, status: :unprocessable_entity }
       end
     end
   end
