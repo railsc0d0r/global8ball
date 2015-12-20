@@ -6,9 +6,9 @@
 module AddressAttributesConcern
   extend ActiveSupport::Concern
 
-  class_methods do
+  included do
     def fetch_address_attributes params_hash
-      raise "Given argument is not a hash" unless params_hash.class == Hash
+      raise "Given argument is not a hash" unless params_hash.class == ActionController::Parameters
 
       {
         street: params_hash.delete(:street),

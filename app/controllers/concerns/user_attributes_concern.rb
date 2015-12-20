@@ -6,9 +6,9 @@
 module UserAttributesConcern
   extend ActiveSupport::Concern
 
-  class_methods do
+  included do
     def fetch_user_attributes params_hash
-      raise "Given argument is not a hash" unless params_hash.class == Hash
+      raise "Given argument is not a hash" unless params_hash.class == ActionController::Parameters
 
       {
           role_name: params_hash.delete(:role_name),

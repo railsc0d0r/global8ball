@@ -7,9 +7,9 @@ module PersonAttributesConcern
   extend ActiveSupport::Concern
   include AddressAttributesConcern
 
-  class_methods do
+  included do
     def fetch_person_attributes params_hash
-      raise "Given argument is not a hash" unless params_hash.class == Hash
+      raise "Given argument is not a hash" unless params_hash.class == ActionController::Parameters
 
       {
         title: params_hash.delete(:title),
