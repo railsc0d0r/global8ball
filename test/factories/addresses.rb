@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :address do
-    country "DE"
+    country "Germany"
   end
 end
