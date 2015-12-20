@@ -13,13 +13,12 @@ Funktionalität: Mitarbeiter administrieren
       | Employee      |
     Und eine Anmeldung als Administrator.
 
-  @wip
   Szenario: Einen Mitarbeiter anlegen
     Wenn ich aus dem Admin-Menü "Employees" auswähle.
     Und ich den "Add"-Link klicke.
     Und ich "Employee" als Rolle auswähle.
-    Und ich "secret1234" als Passwort eingebe.
-    Und ich "secret1234" als Passwortbestätigung eingebe.
+    Und ich "SecreT_123456789" als Passwort eingebe.
+    Und ich "SecreT_123456789" als Passwortbestätigung eingebe.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -29,7 +28,8 @@ Funktionalität: Mitarbeiter administrieren
     Und ich "Musterstadt" als Stadt eingebe.
     Und ich "Germany" als Land auswähle.
     Und ich den "Save"-Button klicke.
-    Dann möchte ich "Meyer" sehen.
+    Dann möchte ich "Employee 'Meyer, Hans' successfully created." sehen.
+    Und möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
     Und möchte ich "Employee" sehen.
     Und möchte ich "hans_meyer@example.com" sehen.
@@ -37,15 +37,14 @@ Funktionalität: Mitarbeiter administrieren
     Und möchte ich "Auf dem Hinterhof" sehen.
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
-    Und möchte ich "Deutschland" sehen.
-    Und möchte ich "Employee 'Meyer, Hans' sucessfully created." sehen.
+    Und möchte ich "Germany" sehen.
 
   Szenario: Einen Administrator anlegen
     Wenn ich aus dem Admin-Menü "Employee" auswähle.
     Und ich den "Add"-Button klicke.
     Und ich "Administrator" als Rolle auswähle.
-    Und ich "secret1234" als Passwort eingebe.
-    Und ich "secret1234" als Passwortbestätigung eingebe.
+    Und ich "secret_1234" als Passwort eingebe.
+    Und ich "secret_1234" als Passwortbestätigung eingebe.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -64,4 +63,4 @@ Funktionalität: Mitarbeiter administrieren
     Und möchte ich "Auf dem Hinterhof" sehen.
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
-    Und möchte ich "Deutschland" sehen.
+    Und möchte ich "Germany" sehen.

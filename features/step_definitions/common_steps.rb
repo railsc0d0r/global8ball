@@ -1,22 +1,9 @@
 # coding: utf-8
-Angenommen /^ich klicke "([^"]*)"$/ do |option|
-  retval = (option == "Ok") ? "true" : "false"
-
-  page.evaluate_script("window.confirm = function (msg) {
-    $.cookie('confirm_message', msg)
-    return #{retval}
-  }")
-end
-
 Angenommen(/^die App ist im Browser geladen\.$/) do
   steps %{
     Wenn ich die Startseite aufrufe.
     Dann sollte die App im Browser geladen werden.
   }
-end
-
-Wenn(/^ich klicke "(.*?)"\.$/) do |option|
-  steps %{ Angenommen ich klicke "#{option}" }
 end
 
 Angenommen(/^ich wähle "(.*?)" aus\.$/) do |link_name|
