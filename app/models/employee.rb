@@ -10,8 +10,10 @@ class Employee < ActiveRecord::Base
   protected
 
   def set_username
-    unless  %w( stephan mike_neubert ).include? self.user.username
-      user.username = "#{person.lastname.downcase}_#{person.firstname.downcase}_#{StringRandom.new.password}"
+    unless %w( stephan mike_neubert ).include?(self.user.username)
+      unless self.person.lastname.nil? && self.person.firstname.nil?
+        user.username = "#{person.lastname.downcase}_#{person.firstname.downcase}_#{StringRandom.new.password}"
+      end
     end
   end
 
