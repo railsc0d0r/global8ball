@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :user do
+    :role
     sequence :username do |n|
       "myLogin#{n}"
     end
