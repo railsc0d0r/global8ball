@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
   accepts_nested_attributes_for :address
 
   validates :address, presence: true, associated: true
+  validates :firstname, :lastname, presence: true
   validate :validate_date_of_birth
 
   initializes :address
