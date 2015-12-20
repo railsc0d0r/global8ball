@@ -36,6 +36,7 @@ Capybara.register_driver :poltergeist do |app|
           # js_errors: false,
           inspector: true,
           phantomjs_options: phantomjs_options,
+          phantomjs_logger: File.open("#{Rails.root}/log/test_phantomjs.log", "a"),
           timeout: 300
       }
   )
