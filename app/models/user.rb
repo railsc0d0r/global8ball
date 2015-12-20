@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   before_validation :strip_empty_passwords, on: :update
 
-  belongs_to :role
+  belongs_to :role, inverse_of: :users
 
   def ensure_authentication_token
     if authentication_token.blank?
