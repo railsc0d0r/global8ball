@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    :role
+    association :role, name: "Anonymus"
     sequence :username do |n|
       "myLogin#{n}"
     end
