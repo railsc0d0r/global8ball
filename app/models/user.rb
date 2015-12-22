@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   belongs_to :role, inverse_of: :users
 
+  validates_presence_of :role
+
   def ensure_authentication_token
     if authentication_token.blank?
       self.authentication_token = generate_authentication_token
