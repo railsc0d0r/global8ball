@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
+  include ErrorSerializer
+
   before_filter :authenticate_user_from_token!, unless: :devise_controller?
-  
   before_filter :configure_permitted_parameters, if: :devise_controller?
   
   # Prevent CSRF attacks by raising an exception.
