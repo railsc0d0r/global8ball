@@ -1,16 +1,16 @@
 # language: de
 @javascript
-Funktionalität: Mitarbeiter anlegen - Validierungen
+Funktionalität: Mitarbeiter anlegen mit Validierungen
   Als Administrator möchte ich
   Mitarbeiter anlegen können
   um Mitarbeitern das Arbeiten zu ermöglichen.
 
   Grundlage:
-    Angenommen die App ist im Browser geladen.
-    Und folgende Rollen:
+    Angenommen folgende Rollen:
       | Name          |
       | Administrator |
       | Employee      |
+    Und die App ist im Browser geladen.
     Und eine Anmeldung als Administrator.
 
   Szenario: Einen Mitarbeiter anlegen schlägt fehl
