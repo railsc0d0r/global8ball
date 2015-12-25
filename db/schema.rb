@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20151219182412) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string   "street"
     t.string   "street2"
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20151219182412) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id"
+  add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 20151219182412) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "employees", ["person_id"], name: "index_employees_on_person_id"
-  add_index "employees", ["user_id"], name: "index_employees_on_user_id"
+  add_index "employees", ["person_id"], name: "index_employees_on_person_id", using: :btree
+  add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "firstname"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20151219182412) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "players", ["person_id"], name: "index_players_on_person_id"
-  add_index "players", ["user_id"], name: "index_players_on_user_id"
+  add_index "players", ["person_id"], name: "index_players_on_person_id", using: :btree
+  add_index "players", ["user_id"], name: "index_players_on_user_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -85,8 +88,13 @@ ActiveRecord::Schema.define(version: 20151219182412) do
     t.string   "auth_obj_type"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["role_id"], name: "index_users_on_role_id"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["role_id"], name: "index_users_on_role_id", using: :btree
 
+  add_foreign_key "addresses", "people"
+  add_foreign_key "employees", "people"
+  add_foreign_key "employees", "users"
+  add_foreign_key "players", "people"
+  add_foreign_key "players", "users"
 end
