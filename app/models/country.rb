@@ -22,14 +22,14 @@ class Country
   end
 
   def self.find_by_code code
-    country = ISO3166::Country.find_country_by_un_locode(code)
+    country = ISO3166::Country.find_country_by_alpha3(code)
     if country
       filter_attributes country
     end
   end
 
   def self.find_all_by_region name
-    ISO3166::Country.find_all_countries_by_region(name).map{|c| {id: c.number, name: c.name, code: c.un_locode}}
+    ISO3166::Country.find_all_countries_by_region(name).map{|c| {id: c.number, name: c.name, code: c.alpha3}}
   end
 
   private
@@ -38,7 +38,7 @@ class Country
     {
       id: country.number,
       name: country.name,
-      code: country.un_locode
+      code: country.alpha3
     }
   end
 
