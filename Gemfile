@@ -88,3 +88,6 @@ gem 'declarative_authorization', github: "stffn/declarative_authorization"
 
 # We us countries to provide iso-3166-1 compatible country-references
 gem 'countries'
+
+# We want to check certain things before commit to repo
+gem 'pre-commit'
