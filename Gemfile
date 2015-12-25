@@ -62,6 +62,9 @@ group :development, :test do
 
   # include rspec for unit- and functional tests
   gem 'rspec-rails', '~> 3.0'  
+
+  # We want to check certain things before commit to repo
+  gem 'pre-commit'
 end
 
 # Cucumber for BDD
@@ -88,6 +91,3 @@ gem 'declarative_authorization', github: "stffn/declarative_authorization"
 
 # We us countries to provide iso-3166-1 compatible country-references
 gem 'countries'
-
-# We want to check certain things before commit to repo
-gem 'pre-commit'
