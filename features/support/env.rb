@@ -104,7 +104,8 @@ end
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
-Cucumber::Rails::Database.javascript_strategy = :truncation
+# Cucumber::Rails::Database.javascript_strategy = :truncation
+Cucumber::Rails::Database.javascript_strategy = :deletion
 
 # Use thin as testserver - Fixes issues w/ console-ouput and enhances performance
 # => http://stackoverflow.com/a/25214510
@@ -114,7 +115,7 @@ Capybara.server do |app, port|
 end
 
 # Setting timeout while waiting for element to appear
-Capybara.default_wait_time = 10
+Capybara.default_max_wait_time = 15
 
 # Make sure this require is after you require cucumber/rails/world.
 require 'email_spec/cucumber'
@@ -133,15 +134,14 @@ Before('@fs') do |scenario|
 end
 
 Before('@javascript') do |scenario, block|
+  # Clear localStorage from FS
+  FileUtils.rm_rf Dir.glob phantomjs_local_storage_path.join('*')
+  
   # Set Capybara.server explicitly
   Capybara.server_port = 8888 + ENV['TEST_ENV_NUMBER'].to_i
 
   # Switch to poltergeist explicitly
   Capybara.current_driver = :poltergeist
-
-  # Clear localStorage
-  FileUtils.rm_rf Dir.glob phantomjs_local_storage_path.join('*')
-  sleep 1
 end
 
 Before('@selenium') do |scenario, block|
@@ -165,7 +165,6 @@ After('@selenium') do |scenario, block|
 end
 
 After('@javascript') do |scenario|
-  page.evaluate_script('localStorage.clear()')
 end
 
 at_exit do
