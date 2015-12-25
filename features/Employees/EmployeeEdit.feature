@@ -28,6 +28,17 @@ Funktionalität: Mitarbeiter bearbeiten
     Und möchte ich "peter.mueller@example.com" sehen.
     Und möchte ich "Administrator" sehen.
 
+  Szenario: Einen Mitarbeiter bearbeiten ohne Änderungen
+    Angenommen ein Mitarbeiter mit dem Vornamen "Hans", dem Nachnamen "Meier", der Email "hans.meier@example.com" und der Rolle "Employee".
+    Wenn ich aus dem Admin-Menü "Employees" auswähle.
+    Und ich den ersten Mitarbeiter zum Bearbeiten auswähle.
+    Und ich den "Save"-Button klicke.
+    Dann möchte ich "Updating employee failed" nicht sehen.
+    Und möchte ich "Meier" sehen.
+    Und möchte ich "Hans" sehen.
+    Und möchte ich "hans.meier@example.com" sehen.
+    Und möchte ich "Employee" sehen.
+
   Szenario: Einen Administrator bearbeiten
     Angenommen ein Mitarbeiter mit dem Vornamen "Hans", dem Nachnamen "Meier", der Email "hans.meier@example.com" und der Rolle "Administrator".
     Wenn ich aus dem Admin-Menü "Employees" auswähle.
