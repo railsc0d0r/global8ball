@@ -24,4 +24,5 @@ Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", de
   }
   
   @employee = Employee.includes(:person, user: :role).exists?(people: {firstname: firstname, lastname: lastname}, users: {email: email}, roles: {name: role_name}) ? Employee.includes(:person, user: :role).where(people: {firstname: firstname, lastname: lastname}, users: {email: email}, roles: {name: role_name}).first : FactoryGirl.create(:employee, params)
+  sleep 1
 end

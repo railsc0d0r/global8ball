@@ -141,6 +141,7 @@ Before('@javascript') do |scenario, block|
 
   # Clear localStorage
   FileUtils.rm_rf Dir.glob phantomjs_local_storage_path.join('*')
+  sleep 1
 end
 
 Before('@selenium') do |scenario, block|
