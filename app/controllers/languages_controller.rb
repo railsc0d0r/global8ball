@@ -1,5 +1,5 @@
 class LanguagesController < ApplicationController
-  before_action :set_language, only: [:show, :edit, :update, :destroy]
+  before_action :set_language, only: [:show]
 
   # GET /languages
   # GET /languages.json
@@ -7,7 +7,7 @@ class LanguagesController < ApplicationController
     @languages = Language.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @languages }
       format.json { render json: @languages }
     end
   end
@@ -16,57 +16,8 @@ class LanguagesController < ApplicationController
   # GET /languages/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @language }
       format.json { render json: @language }
-    end
-  end
-
-  # GET /languages/new
-  def new
-    @language = Language.new
-  end
-
-  # GET /languages/1/edit
-  def edit
-  end
-
-  # POST /languages
-  # POST /languages.json
-  def create
-    @language = Language.new(language_params)
-
-    respond_to do |format|
-      if @language.save
-        format.html { redirect_to @language, notice: 'Language was successfully created.' }
-        format.json { render json: @language, status: :created }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /languages/1
-  # PATCH/PUT /languages/1.json
-  def update
-    respond_to do |format|
-      if @language.update(language_params)
-        format.html { redirect_to @language, notice: 'Language was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @language.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /languages/1
-  # DELETE /languages/1.json
-  def destroy
-    @language.destroy
-    respond_to do |format|
-      format.html { redirect_to languages_url }
-      format.json { head :no_content }
     end
   end
 
