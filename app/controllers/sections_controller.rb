@@ -7,7 +7,7 @@ class SectionsController < ApplicationController
     @sections = Section.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @sections }
       format.json { render json: @sections }
     end
   end
@@ -16,7 +16,7 @@ class SectionsController < ApplicationController
   # GET /sections/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @section }
       format.json { render json: @section }
     end
   end
@@ -38,10 +38,10 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.save
         format.html { redirect_to @section, notice: 'Section was successfully created.' }
-        format.json { render json: @section, status: :created }
+        format.json { render json: @section }
       else
         format.html { render action: 'new' }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
+        format.json { render json: ErrorSerializer.serialize(@section.errors), status: :unprocessable_entity }
       end
     end
   end
@@ -52,10 +52,10 @@ class SectionsController < ApplicationController
     respond_to do |format|
       if @section.update(section_params)
         format.html { redirect_to @section, notice: 'Section was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @section }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
+        format.json { render json: ErrorSerializer.serialize(@section.errors), status: :unprocessable_entity }
       end
     end
   end

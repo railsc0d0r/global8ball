@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :roles
     resources :employees
     resources :players
+    resources :sections
     resources :contents
     resources :countries, only: [:index, :show]
     resources :languages, only: [:index, :show]
