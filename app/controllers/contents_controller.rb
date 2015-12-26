@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
     @contents = Content.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render html: @contents }
       format.json { render json: @contents }
     end
   end
@@ -16,7 +16,7 @@ class ContentsController < ApplicationController
   # GET /contents/1.json
   def show
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render html: @content }
       format.json { render json: @content }
     end
   end
@@ -38,10 +38,10 @@ class ContentsController < ApplicationController
     respond_to do |format|
       if @content.save
         format.html { redirect_to @content, notice: 'Content was successfully created.' }
-        format.json { render json: @content, status: :created }
+        format.json { render json: @content }
       else
         format.html { render action: 'new' }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
+        format.json { render json: ErrorSerializer.serialize(@content.errors), status: :unprocessable_entity }
       end
     end
   end
@@ -52,10 +52,10 @@ class ContentsController < ApplicationController
     respond_to do |format|
       if @content.update(content_params)
         format.html { redirect_to @content, notice: 'Content was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @content.errors, status: :unprocessable_entity }
+        format.json { render json: ErrorSerializer.serialize(@content.errors), status: :unprocessable_entity }
       end
     end
   end
