@@ -1,3 +1,7 @@
+#
+# Special serialzer for model-errors
+# see http://jaketrent.com/post/jsonapi-errors-serializer-in-rails/
+#
 module ErrorSerializer
 
   def self.serialize(errors)
