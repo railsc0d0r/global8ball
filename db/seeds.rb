@@ -1,3 +1,4 @@
+# encoding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -13,18 +14,42 @@ languages = []
 english = {
   name: "English",
   native_name: "English",
-  i18n_code: "en-US"
+  i18n_code: "en"
 }
 
 languages << english
 
+french = {
+  name: "French",
+  native_name: "Français",
+  i18n_code: "fr"
+}
+
+languages << french
+
 german = {
   name: "German",
   native_name: "Deutsch",
-  i18n_code: "de-DE"
+  i18n_code: "de"
 }
 
 languages << german
+
+russian = {
+  name: "Russian",
+  native_name: "Pусский",
+  i18n_code: "ru"
+}
+
+languages << russian
+
+spanish = {
+  name: "Spanish",
+  native_name: "Español",
+  i18n_code: "esp"
+}
+
+languages << spanish
 
 languages.each do |language|
   old_language = Language.where(name: language[:name], i18n_code: language[:i18n_code]).first
