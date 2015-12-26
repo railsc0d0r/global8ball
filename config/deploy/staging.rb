@@ -59,3 +59,23 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+set :stage, :staging
+set :branch, "master"
+
+# used in case we're deploying multiple versions of the same
+# app side by side. Also provides quick sanity checks when looking
+# at filepaths
+set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
+set :server_name, "global8ball.ignorelist.com"
+
+server 'global8ball.ignorelist.com:42424', user: 'cap', roles: %w{web app db}, primary: true
+
+set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:full_app_name)}"
+
+# set the path to socket
+set :unicorn_options, "--listen /home/#{fetch(:deploy_user)}/#{fetch(:full_app_name)}/shared/tmp/sockets/unicorn.sock"
+
+# dont try and infer something as important as environment from
+# stage name.
+set :rails_env, :production
