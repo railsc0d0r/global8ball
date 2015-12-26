@@ -38,7 +38,8 @@ class Country
     {
       id: country.number,
       name: country.name,
-      code: country.alpha3
+      code: country.alpha3,
+      language: languages.first
     }
   end
 
