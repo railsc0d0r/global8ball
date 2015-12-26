@@ -6,6 +6,38 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+# Defining languages
+puts "Seeding languages\n\r"
+languages = []
+
+english = {
+  name: "English",
+  native_name: "English",
+  i18n_code: "en-US"
+}
+
+languages << english
+
+german = {
+  name: "German",
+  native_name: "Deutsch",
+  i18n_code: "de-DE"
+}
+
+languages << german
+
+languages.each do |language|
+  old_language = Language.where(name: language[:name], i18n_code: language[:i18n_code]).first
+
+  unless old_language
+    puts "Creating language #{language[:name]} ->"
+    Language.create!(language)
+    puts "Done."
+  else
+    puts "Language #{language[:name]} already exists. Nothing to do here."
+  end
+end
+
 # Defining roles
 puts "Seeding roles:\n\r"
 
