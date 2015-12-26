@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151219182412) do
+ActiveRecord::Schema.define(version: 20151226160357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,18 @@ ActiveRecord::Schema.define(version: 20151219182412) do
 
   add_index "addresses", ["person_id"], name: "index_addresses_on_person_id", using: :btree
 
+  create_table "contents", force: :cascade do |t|
+    t.integer  "section_id"
+    t.integer  "language_id"
+    t.string   "headline"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "contents", ["language_id"], name: "index_contents_on_language_id", using: :btree
+  add_index "contents", ["section_id"], name: "index_contents_on_section_id", using: :btree
+
   create_table "employees", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "person_id"
@@ -39,6 +51,14 @@ ActiveRecord::Schema.define(version: 20151219182412) do
 
   add_index "employees", ["person_id"], name: "index_employees_on_person_id", using: :btree
   add_index "employees", ["user_id"], name: "index_employees_on_user_id", using: :btree
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "i18n_code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "native_name"
+  end
 
   create_table "people", force: :cascade do |t|
     t.string   "firstname"
@@ -64,6 +84,12 @@ ActiveRecord::Schema.define(version: 20151219182412) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string   "path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
