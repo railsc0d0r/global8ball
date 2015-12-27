@@ -13,7 +13,6 @@ Funktionalität: Mitarbeiter bearbeiten
     Und die App ist im Browser geladen.
     Und eine Anmeldung als Administrator.
 
-  @wip
   Szenario: Einen Mitarbeiter löschen
     Angenommen ein Mitarbeiter mit dem Vornamen "Hans", dem Nachnamen "Meier", der Email "hans.meier@example.com" und der Rolle "Administrator".
     Wenn ich aus dem Admin-Menü "Employees" auswähle.
