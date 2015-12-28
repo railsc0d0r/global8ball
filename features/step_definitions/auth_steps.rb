@@ -18,6 +18,12 @@ Angenommen(/^ein Administrator mit dem Benutzernamen "(.*?)" und dem Passwort "(
   @user.save
 end
 
+Angenommen(/^ein Editor mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |email, password|
+  steps %{ Angenommen ein Benutzer mit dem Benutzernamen "MyUser" und dem Passwort "secret987654321". }
+  role = Role.find_by_name('Editor')
+  @user.role = role
+  @user.save
+end
 
 Angenommen(/^eine Anmeldung als Benutzer\.$/) do
   username = "MyUser"
@@ -32,9 +38,19 @@ end
 Angenommen(/^eine Anmeldung als Administrator\.$/) do
   username = "MyUser"
   password = "secret987654321"
-  
+
   steps %{
     Angenommen ein Administrator mit dem Benutzernamen "#{username}" und dem Passwort "#{password}".
+    Und ich melde mich mit dem Benutzernamen "#{username}" und dem Passwort "#{password}" an.
+  }
+end
+
+Angenommen(/^eine Anmeldung als Editor\.$/) do
+  username = "MyUser"
+  password = "secret987654321"
+
+  steps %{
+    Angenommen ein Editor mit dem Benutzernamen "#{username}" und dem Passwort "#{password}".
     Und ich melde mich mit dem Benutzernamen "#{username}" und dem Passwort "#{password}" an.
   }
 end

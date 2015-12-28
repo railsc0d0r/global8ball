@@ -42,3 +42,11 @@ end
 Wenn(/^ich "(.*?)" als Land auswähle\.$/) do |country|
   steps %{ Wenn ich "#{country}" als "country" auswähle. }
 end
+
+Wenn(/^ich "(.*?)" als Überschrift eingebe\.$/) do |headline|
+  steps %{ Wenn ich "#{headline}" als "headline" auswähle. }
+end
+
+Wenn(/^ich "(.*?)" als Inhalt eingebe\.$/) do |content|
+  steps %{ Wenn ich "#{content}" als "content" auswähle. }
+end
