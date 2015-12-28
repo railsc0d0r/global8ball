@@ -80,6 +80,12 @@ employee = {
 
 roles << employee
 
+editor = {
+  name: "Editor"
+}
+
+roles << editor
+
 player = {
   name: "Player"
 }
