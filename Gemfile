@@ -78,6 +78,9 @@ group :test do
   gem 'headless'
   gem 'email_spec'
   gem 'capybara-screenshot'
+
+  # we want coverage-reports
+  gem 'simplecov', :require => false
 end
 
 # For running tests parallel

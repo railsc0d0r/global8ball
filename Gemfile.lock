@@ -116,6 +116,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -271,6 +272,11 @@ GEM
       rubyzip (~> 1.0)
       websocket (~> 1.0)
     shellany (0.0.1)
+    simplecov (0.11.1)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     slop (3.6.0)
     spring (1.4.4)
     sprockets (3.4.0)
@@ -348,6 +354,7 @@ DEPENDENCIES
   rvm1-capistrano3
   sdoc (~> 0.4.0)
   selenium-webdriver
+  simplecov
   spring
   sqlite3
   thin

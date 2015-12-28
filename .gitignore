@@ -35,3 +35,6 @@ spec/examples.txt
 
 # ignore generated html for frontend
 /public/_apps
+
+# ignore coverage-reports
+coverage
