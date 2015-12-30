@@ -46,7 +46,7 @@ languages << russian
 spanish = {
   name: "Spanish",
   native_name: "Español",
-  i18n_code: "esp"
+  i18n_code: "es"
 }
 
 languages << spanish
