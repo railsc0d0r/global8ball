@@ -13,7 +13,6 @@ Funktionalität: Neuen Content in die Seite einfügen
     Und die App ist im Browser geladen.
     Und eine Anmeldung als Editor.
 
-  @wip
   Szenario: Neuen Inhaltsabschnitt auf der Startseite einfügen.
     Wenn ich den "Add"-Link klicke.
     Und ich "Test" als Überschrift eingebe.
