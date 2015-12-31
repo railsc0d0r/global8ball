@@ -8,17 +8,17 @@ Funktionalität: Eine Sprache für die Anzeige der Plattform auswählen
   Grundlage:
     Angenommen die App ist im Browser geladen.
 
-  @wip
   Szenario: English auswählen
-    Wenn ich den "English"-Link klicke.
-    Dann möchte ich "Login" sehen.
+    Wenn ich die Sprachauswahl öffne.
+    Und ich "en" als Sprache aus dem Dropdown auswähle.
+    Dann möchte ich "LOGIN" sehen.
 
-  @wip
   Szenario: Deutsch auswählen
-    Wenn ich den "Deutsch"-Link klicke.
+    Wenn ich die Sprachauswahl öffne.
+    Und ich "de" als Sprache aus dem Dropdown auswähle.
     Dann möchte ich "Anmelden" sehen.
 
-  @wip
   Szenario: Français auswählen
-    Wenn ich den "Français"-Link klicke.
-    Dann möchte ich "Anmelden" sehen.
+    Wenn ich die Sprachauswahl öffne.
+    Und ich "fr" als Sprache aus dem Dropdown auswähle.
+    Dann möchte ich "s'identifier" sehen.
