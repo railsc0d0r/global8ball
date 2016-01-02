@@ -21,4 +21,4 @@ Funktionalität: Eine Sprache für die Anzeige der Plattform auswählen
   Szenario: Français auswählen
     Wenn ich die Sprachauswahl öffne.
     Und ich "fr" als Sprache aus dem Dropdown auswähle.
-    Dann möchte ich "s'identifier" sehen.
+    Dann möchte ich "S'identifier" sehen.

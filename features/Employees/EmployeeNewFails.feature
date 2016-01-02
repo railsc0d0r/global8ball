@@ -18,8 +18,8 @@ Funktionalität: Mitarbeiter anlegen mit Validierungen
     Und ich den "Add"-Link klicke.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Creating employee failed:" sehen.
-    Und möchte ich "email can't be blank" sehen.
-    Und möchte ich "password can't be blank" sehen.
+    Und möchte ich "Email can't be blank" sehen.
+    Und möchte ich "Password can't be blank" sehen.
     Und möchte ich "role can't be blank" sehen.
-    Und möchte ich "firstname can't be blank" sehen.
-    Und möchte ich "lastname can't be blank" sehen.
+    Und möchte ich "Firstname can't be blank" sehen.
+    Und möchte ich "Lastname can't be blank" sehen.
