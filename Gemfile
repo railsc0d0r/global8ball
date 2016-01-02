@@ -94,3 +94,6 @@ gem 'declarative_authorization', github: "stffn/declarative_authorization"
 
 # We us countries to provide iso-3166-1 compatible country-references
 gem 'countries'
+
+# We use i18n-js to make our translations from backend available in frontend-app
+gem "i18n-js", ">= 3.0.0.rc11"
