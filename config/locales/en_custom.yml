@@ -25,6 +25,10 @@ en:
     logout: 'LOGOUT'
     brand: 'global8ball.com'
     administration: 'Administration'
+  login:
+     failed: 'Login failed'
+  form:
+    enter_attribute: "Enter %{name}"
   activerecord:
     models:
       employee:

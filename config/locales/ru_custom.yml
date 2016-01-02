@@ -25,6 +25,10 @@ ru:
     logout: 'Выход'
     brand: 'global8ball.com'
     administration: 'Aдминистрация'
+  login:
+     failed: 'Ошибка входа'
+  form:
+    enter_attribute: "Введите %{name}"
   activerecord:
     models:
       employee:

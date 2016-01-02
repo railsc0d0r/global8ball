@@ -25,6 +25,10 @@ fr:
     logout: "Se déconnecter"
     brand: 'global8ball.com'
     administration: 'Administration'
+  login:
+     failed: 'échec de la connexion'
+  form:
+    enter_attribute: "Entrer %{name}"
   activerecord:
     models:
       employee:

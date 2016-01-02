@@ -25,6 +25,10 @@ es:
     logout: 'cerrar sesión'
     brand: 'global8ball.com'
     administration: 'administración'
+  login:
+     failed: 'Error de inicio de sesion'
+  form:
+    enter_attribute: "Escriba %{name}"
   activerecord:
     models:
       employee:
