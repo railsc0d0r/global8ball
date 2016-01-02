@@ -10,4 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// Require i18n-js and translations here
+//= require i18n.js
+//= require i18n/translations
+//
 //= require_tree .
