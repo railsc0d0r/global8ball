@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :sections
     resources :contents
     resources :countries, only: [:index, :show]
-    resources :languages, only: [:index, :show]
   end
   mount_ember_app :frontend, to: "/", controller: "application", action: "index"
 end
