@@ -59,7 +59,7 @@ Angenommen(/^ich melde mich mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?
   steps %{
     Wenn ich zur Anmeldeseite gehe.
     Und ich den Benutzernamen "#{username}" und das Passwort "#{password}" eingebe.
-    Und ich den "Login"-Button klicke.
+    Und ich den "Submit"-Button klicke.
   }
 end
 

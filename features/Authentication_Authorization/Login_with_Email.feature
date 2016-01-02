@@ -12,6 +12,6 @@ Funktionalität: Benutzer mit email und Passwort anmelden
     Angenommen ein Benutzer mit der email "my_user@example.com" und dem Passwort "secret987654321".
     Und ich den "LOGIN"-Link klicke.
     Und ich die email "my_user@example.com" und das Passwort "secret987654321" eingebe.
-    Und ich den "Login"-Button klicke.
+    Und ich den "Submit"-Button klicke.
     Dann möchte ich "Successfully authenticated." sehen.
     Und ich warte 2 Sekunden.
