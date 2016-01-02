@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   navigation:
     login: "S'identifier"
     logout: "Se déconnecter"
@@ -39,6 +39,7 @@ en:
     attributes:
       user:
         login: 'Nom de connexion'
+        email: 'Email'
         password: 'Mot de passe'
         password_confirmation: 'Confirmation du mot de passe'
       person:

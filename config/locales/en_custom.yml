@@ -39,6 +39,7 @@ en:
     attributes:
       user:
         login: 'Login'
+        email: 'Email'
         password: 'Password'
         password_confirmation: 'Passwordconfirmation'
       person:

@@ -19,7 +19,7 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+ru:
   navigation:
     login: 'Войти'
     logout: 'Выход'
@@ -39,6 +39,7 @@ en:
     attributes:
       user:
         login: 'Войти Имя'
+        email: 'е-мейл'
         password: 'пароль'
         password_confirmation: 'подтверждение пароля'
       person:
