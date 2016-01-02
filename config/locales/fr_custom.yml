@@ -29,6 +29,7 @@ fr:
      failed: 'échec de la connexion'
   form:
     enter_attribute: "Entrer %{name}"
+    submit: 'Soumettre'
   activerecord:
     models:
       employee:

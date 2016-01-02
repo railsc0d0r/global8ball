@@ -29,6 +29,7 @@ en:
      failed: 'Login failed'
   form:
     enter_attribute: "Enter %{name}"
+    submit: 'Submit'
   activerecord:
     models:
       employee:

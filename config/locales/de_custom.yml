@@ -29,6 +29,7 @@ de:
      failed: 'Login fehlgeschlagen'
   form:
     enter_attribute: "%{name} eingeben"
+    submit: 'Absenden'
   activerecord:
     models:
       employee:

@@ -29,6 +29,7 @@ es:
      failed: 'Error de inicio de sesion'
   form:
     enter_attribute: "Escriba %{name}"
+    submit: 'Enviar'
   activerecord:
     models:
       employee:

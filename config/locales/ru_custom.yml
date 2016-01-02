@@ -29,6 +29,7 @@ ru:
      failed: 'Ошибка входа'
   form:
     enter_attribute: "Введите %{name}"
+    submit: 'Представить'
   activerecord:
     models:
       employee:
