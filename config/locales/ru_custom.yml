@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 ru:
+  content:
+    no_object: "Нет %{name} ранее..."
   navigation:
     login: 'Войти'
     logout: 'Выход'
@@ -41,6 +43,9 @@ ru:
       country:
         one: 'Cтрана'
         other: 'Cтраны'
+      section:
+        one: раздел
+        other: разделы
     attributes:
       user:
         login: 'Войти Имя'

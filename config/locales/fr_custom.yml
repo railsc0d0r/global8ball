@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 fr:
+  content:
+    no_object: "Aucune des %{name} auparavant..."
   navigation:
     login: "S'identifier"
     logout: "Se déconnecter"
@@ -41,6 +43,9 @@ fr:
       country:
         one: "Pays"
         other: "Pays"
+      section:
+        one: article
+        other: articles
     attributes:
       user:
         login: 'Nom de connexion'

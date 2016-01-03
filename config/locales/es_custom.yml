@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 es:
+  content:
+    no_object: "No hay %{name} previamente..."
   navigation:
     login: 'iniciar sesión'
     logout: 'cerrar sesión'
@@ -41,6 +43,9 @@ es:
       country:
         one: 'País'
         other: 'Países'
+      section:
+        one: sección
+        other: secciónes
     attributes:
       user:
         login: 'Login'
