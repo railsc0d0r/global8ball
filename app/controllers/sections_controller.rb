@@ -4,7 +4,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = Section.all
+    @sections =  params[:path].nil? ? Section.all : Section.where(path: params[:path])
 
     respond_to do |format|
       format.html { render html: @sections }
