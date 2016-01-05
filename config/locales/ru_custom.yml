@@ -31,7 +31,9 @@ ru:
      failed: 'Ошибка входа'
   form:
     enter_attribute: "Введите %{name}"
+    select_attribute: "Bыбрать %{name}"
     submit: 'Представить'
+    save: 'сохранять'
   activerecord:
     models:
       employee:
@@ -43,6 +45,9 @@ ru:
       country:
         one: 'Cтрана'
         other: 'Cтраны'
+      role:
+        one: 'Pоль'
+        other: 'Роли'
       section:
         one: раздел
         other: разделы
@@ -55,6 +60,7 @@ ru:
       person:
         firstname: 'имя'
         lastname: 'фамилия'
+        name: 'имя'
         email: 'е-мейл'
       address:
         street: 'улица'

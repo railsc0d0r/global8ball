@@ -31,7 +31,9 @@ es:
      failed: 'Error de inicio de sesion'
   form:
     enter_attribute: "Escriba %{name}"
+    select_attribute: "Seleccionar %{name}"
     submit: 'Enviar'
+    save: 'Memorizar'
   activerecord:
     models:
       employee:
@@ -43,6 +45,9 @@ es:
       country:
         one: 'País'
         other: 'Países'
+      role:
+        one: 'Rol'
+        other: 'Roles'
       section:
         one: sección
         other: secciónes
@@ -55,6 +60,7 @@ es:
       person:
         firstname: Nombre'
         lastname: 'Apellido'
+        name: 'Nombre'
         email: 'Email'
       address:
         street: 'address'

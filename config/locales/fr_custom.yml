@@ -31,7 +31,9 @@ fr:
      failed: 'échec de la connexion'
   form:
     enter_attribute: "Entrer %{name}"
+    select_attribute: "Sélectionner %{name}"
     submit: 'Soumettre'
+    save: 'sauver'
   activerecord:
     models:
       employee:
@@ -43,6 +45,9 @@ fr:
       country:
         one: "Pays"
         other: "Pays"
+      role:
+        one: 'Rôle'
+        other: 'Rôles'
       section:
         one: article
         other: articles
@@ -55,6 +60,7 @@ fr:
       person:
         firstname: 'Prénom'
         lastname: 'Surname'
+        name: 'Nom'
         email: 'Email'
       address:
         street: 'Rue'

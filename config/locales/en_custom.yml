@@ -31,7 +31,9 @@ en:
      failed: 'Login failed'
   form:
     enter_attribute: "Enter %{name}"
+    select_attribute: "Select %{name}"
     submit: 'Submit'
+    save: 'Save'
   activerecord:
     models:
       employee:
@@ -43,6 +45,9 @@ en:
       country:
         one: Country
         other: Countries
+      role:
+        one: Role
+        other: Roles
       section:
         one: section
         other: sections
@@ -55,6 +60,7 @@ en:
       person:
         firstname: 'Firstname'
         lastname: 'Lastname'
+        name: 'Name'
         email: 'Email'
       address:
         street: 'Street'
