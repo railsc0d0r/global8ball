@@ -98,3 +98,6 @@ gem 'countries'
 
 # We use i18n-js to make our translations from backend available in frontend-app
 gem "i18n-js", ">= 3.0.0.rc11"
+
+# Integrates TinyMCE
+gem 'tinymce-rails'
