@@ -10,12 +10,8 @@ Angenommen(/^ich wähle "(.*?)" aus\.$/) do |link_name|
   steps %{ Wenn ich den "#{link_name}"-Link klicke }
 end
 
-Angenommen(/^ich warte (\d+) Sekunden\.$/) do |seconds|
+Angenommen(/^ich warte (\d+) (?:Sekunde|Sekunden)\.$/) do |seconds|
   sleep seconds.to_i
-end
-
-Wenn(/^ich die Startseite aufrufe\.$/) do
-  visit "/"
 end
 
 Wenn(/^ich in einem Dialog sehe "(.*?)"$/) do |content|

@@ -7,6 +7,18 @@ Wenn(/^ich die "(.*?)"\-Seite aufrufe\.$/) do |page|
   steps %{ Wenn ich zur "#{page}"-Seite gehe. }
 end
 
+Wenn(/^ich zur Startseite gehe\.$/) do
+  steps %{ Wenn ich zur "Startseite"-Seite gehe. }
+end
+
+Wenn(/^ich die Startseite aufrufe\.$/) do
+  steps %{ Wenn ich zur "Startseite"-Seite gehe. }
+end
+
+Wenn(/^ich mich auf der Startseite befinde\.$/) do
+  steps %{ Dann sollte ich auf der "Startseite"-Seite sein. }
+end
+
 Wenn(/^ich zur Anmeldeseite gehe\.$/) do
   steps %{ Wenn ich zur "Login"-Seite gehe. }
 end

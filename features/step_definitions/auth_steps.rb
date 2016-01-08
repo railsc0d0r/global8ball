@@ -60,6 +60,7 @@ Angenommen(/^ich melde mich mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?
     Wenn ich zur Anmeldeseite gehe.
     Und ich den Benutzernamen "#{username}" und das Passwort "#{password}" eingebe.
     Und ich den "Submit"-Button klicke.
+    Und ich warte 1 Sekunde.
   }
 end
 
