@@ -13,12 +13,12 @@ Funktionalität: Neuen Content in die Seite einfügen
     Und die App ist im Browser geladen.
     Und eine Anmeldung als Editor.
 
-  @wip
   Szenario: Neuen Inhaltsabschnitt auf der Startseite einfügen.
-    Wenn ich den "Add"-Link klicke.
+    Wenn ich mich auf der Startseite befinde.
+    Und ich den "Add"-Link klicke.
     Und ich "Test" als Überschrift eingebe.
-    Und ich "Inhalte" als Inhalt eingebe.
+    Und ich "Meine neuen Inhalte" in den Editor eingebe.
     Und ich den "Save"-Button klicke.
-    Dann möchte ich "Content successfully created." sehen.
+    Dann möchte ich "Section and content on 'index' successfully created." sehen.
     Und möchte ich "Test" sehen.
-    Und möchte ich "Inhalte" sehen.
+    Und möchte ich "Meine neuen Inhalte" sehen.
