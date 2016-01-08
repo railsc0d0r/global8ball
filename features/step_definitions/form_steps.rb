@@ -47,6 +47,6 @@ Wenn(/^ich "(.*?)" als Überschrift eingebe\.$/) do |headline|
   steps %{ Wenn ich "#{headline}" als "headline" eingebe. }
 end
 
-Wenn(/^ich "(.*?)" als Inhalt eingebe\.$/) do |content|
-  steps %{ Wenn ich "#{content}" als "content" eingebe. }
+Wenn(/^ich "(.*?)" in den Editor eingebe\.$/) do |content|
+  page.execute_script("$(tinymce.editors[0].setContent('#{content}'));")
 end
