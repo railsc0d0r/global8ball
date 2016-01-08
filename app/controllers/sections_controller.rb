@@ -78,6 +78,6 @@ class SectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params[:section]
+      params.require(:section).permit(:path)
     end
 end
