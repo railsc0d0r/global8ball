@@ -22,6 +22,7 @@
 de:
   content:
     no_object: "Keine %{name} bisher..."
+    not_translated: "%{name} noch nicht übersetzt."
   navigation:
     login: 'Anmelden'
     logout: 'Abmelden'

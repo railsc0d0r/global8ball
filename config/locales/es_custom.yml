@@ -22,6 +22,7 @@
 es:
   content:
     no_object: "No hay %{name} previamente..."
+    not_translated: "%{name} no traducido aún."
   navigation:
     login: 'iniciar sesión'
     logout: 'cerrar sesión'

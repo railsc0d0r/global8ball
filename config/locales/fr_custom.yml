@@ -22,6 +22,7 @@
 fr:
   content:
     no_object: "Aucune des %{name} auparavant..."
+    not_translated: "%{name} pas encore traduit."
   navigation:
     login: "S'identifier"
     logout: "Se déconnecter"

@@ -22,6 +22,7 @@
 ru:
   content:
     no_object: "Нет %{name} ранее..."
+    not_translated: "%{name} пока не переведено."
   navigation:
     login: 'Войти'
     logout: 'Выход'
