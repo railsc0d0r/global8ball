@@ -21,3 +21,10 @@ Wenn(/^ich "(.*?)" als Sprache aus dem Dropdown auswähle\.$/) do |language|
     end
   end
 end
+
+Wenn(/^ich "(.*?)" als Sprache auswähle\.$/) do |language|
+  steps %{
+    Wenn ich die Sprachauswahl öffne.
+    Und ich "#{language}" als Sprache aus dem Dropdown auswähle.
+  }
+end
