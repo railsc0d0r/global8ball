@@ -48,5 +48,6 @@ Wenn(/^ich "(.*?)" als Überschrift eingebe\.$/) do |headline|
 end
 
 Wenn(/^ich "(.*?)" in den Editor eingebe\.$/) do |content|
+  page.has_css?('.mce-tinymce', visible: true)
   page.execute_script("$(tinymce.editors[0].setContent('#{content}'));")
 end
