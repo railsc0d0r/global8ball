@@ -128,7 +128,7 @@ Wenn(/^ich die Checkbox "(.*?)" deaktiviere\.$/) do |locator|
 end
 
 Wenn(/^ich "(.*?)" auf der Startseite auswähle\.$/) do |link_name|
-  raise "Not on root." unless current_page == path_for('Startseite')
+  raise "Not on root." unless current_page == path_for('Start')
   steps %{ Wenn ich den "#{link_name}"-Link klicke }
 end
 
