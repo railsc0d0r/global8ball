@@ -172,6 +172,7 @@ After('@selenium') do |scenario, block|
 end
 
 After('@javascript') do |scenario|
+  page.driver.restart if page.driver.respond_to? :restart
 end
 
 at_exit do
