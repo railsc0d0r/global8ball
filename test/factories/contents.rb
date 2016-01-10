@@ -5,7 +5,7 @@ FactoryGirl.define do
       "Headline-#{n}"
     end
     sequence :content do |n|
-      "Here goes content #{n}"
+      "<p>Here goes content #{n}</p>"
     end
   end
 
