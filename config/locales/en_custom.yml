@@ -50,8 +50,11 @@ en:
         one: Role
         other: Roles
       section:
-        one: section
-        other: sections
+        one: Section
+        other: Sections
+      content:
+        one: Content
+        other: Content
     attributes:
       user:
         login: 'Login'
@@ -68,3 +71,6 @@ en:
         street2: 'Additional information'
         zip: 'Zip-code'
         city: 'City'
+      content:
+        headline: Headline
+        content: Content

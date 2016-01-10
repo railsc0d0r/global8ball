@@ -52,6 +52,9 @@ fr:
       section:
         one: article
         other: articles
+      content:
+        one: Contenu
+        other: Contenu
     attributes:
       user:
         login: 'Nom de connexion'
@@ -68,3 +71,6 @@ fr:
         street2: 'Information supplémentaire'
         zip: 'Code postal'
         city: 'Ville'
+      content:
+        headline: Rubrique
+        content: Teneur

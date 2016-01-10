@@ -52,6 +52,9 @@ ru:
       section:
         one: раздел
         other: разделы
+      content:
+        one: содержание
+        other: содержимое
     attributes:
       user:
         login: 'Войти Имя'
@@ -68,3 +71,6 @@ ru:
         street2: 'дополнительная информация'
         zip: 'почтовый индекс'
         city: 'город'
+      content:
+        headline: заголовок
+        content: содержание

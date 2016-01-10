@@ -52,6 +52,9 @@ es:
       section:
         one: sección
         other: secciónes
+      content:
+        one: contenido
+        other: contenidos
     attributes:
       user:
         login: 'Login'
@@ -68,3 +71,6 @@ es:
         street2: 'Información adicional'
         zip: 'Código postal'
         city: 'Ciudad'
+      content:
+        headline: Denominación
+        content: Contenido
