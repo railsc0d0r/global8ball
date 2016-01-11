@@ -1,6 +1,6 @@
 # language: de
 @javascript
-Funktionalität: Mitarbeiter bearbeiten
+Funktionalität: Mitarbeiter löschen
   Als Administrator möchte ich
   Mitarbeiter löschen können
   um Mitarbeitern das Arbeiten zu ermöglichen.
