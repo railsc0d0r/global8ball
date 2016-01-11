@@ -13,7 +13,6 @@ Funktionalität: Bestehenden Content auf einer Seite bearbeiten
     Und ein Abschnitt auf der Startseite mit Inhalten für "en".
     Und die App ist im Browser geladen.
 
-  @wip
   Szenario: Als Editor einen Inhaltsabschnitt auf der Startseite bearbeiten.
     Angenommen eine Anmeldung als Editor.
     Wenn ich mich auf der Startseite befinde.
@@ -21,6 +20,6 @@ Funktionalität: Bestehenden Content auf einer Seite bearbeiten
     Und ich "Test_bearbeitet" als Überschrift eingebe.
     Und ich "Meine bearbeiteten Inhalte" in den Editor eingebe.
     Und ich den "Save"-Button klicke.
-    Dann möchte ich "Content on 'index' successfully edited." sehen.
+    Dann möchte ich "Content on 'index' successfully updated." sehen.
     Und möchte ich "Test_bearbeitet" sehen.
     Und möchte ich "Meine bearbeiteten Inhalte" sehen.
