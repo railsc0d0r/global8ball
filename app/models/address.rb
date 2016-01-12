@@ -1,5 +1,6 @@
 class Address < ActiveRecord::Base
-  has_papertrail
+
+  has_paper_trail
   
   belongs_to :person
 end

@@ -1,6 +1,6 @@
 class Content < ActiveRecord::Base
 
-  has_papertrail
+  has_paper_trail
   
   belongs_to :section, inverse_of: :contents
 

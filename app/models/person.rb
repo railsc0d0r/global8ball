@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
-  has_papertrail
+
+  has_paper_trail
 
   has_one :address, dependent: :destroy
 
