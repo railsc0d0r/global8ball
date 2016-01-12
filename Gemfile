@@ -101,3 +101,6 @@ gem "i18n-js", ">= 3.0.0.rc11"
 
 # Integrates TinyMCE
 gem 'tinymce-rails'
+
+# Tracks changes to models
+gem 'paper_trail', '~> 4.0.0'
