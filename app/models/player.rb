@@ -1,4 +1,6 @@
 class Player < ActiveRecord::Base
+  has_papertrail
+  
   include UserConcern
   include PersonConcern
 

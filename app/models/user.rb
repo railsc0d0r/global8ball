@@ -1,5 +1,7 @@
 # Our primary authorization-model
 class User < ActiveRecord::Base
+  has_papertrail
+  
   before_save :ensure_authentication_token
 
   # Include default devise modules. Others available are:

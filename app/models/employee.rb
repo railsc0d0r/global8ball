@@ -1,4 +1,6 @@
 class Employee < ActiveRecord::Base
+  has_papertrail
+  
   include UserConcern
   include PersonConcern
 
