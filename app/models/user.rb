@@ -1,7 +1,7 @@
 # Our primary authorization-model
 class User < ActiveRecord::Base
 
-  has_paper_trail
+  has_paper_trail, ignore: [:sign_in_count, :current_sign_in_at, :updated_at]
 
   before_save :ensure_authentication_token
 
