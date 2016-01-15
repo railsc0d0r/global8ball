@@ -1,0 +1,76 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  content:
+    no_object: "No %{name} yet..."
+    not_translated: "%{name} not translated yet."
+  navigation:
+    login: 'LOGIN'
+    logout: 'LOGOUT'
+    brand: 'global8ball.com'
+    administration: 'Administration'
+  login:
+     failed: 'Login failed'
+  form:
+    enter_attribute: "Enter %{name}"
+    select_attribute: "Select %{name}"
+    submit: 'Submit'
+    save: 'Save'
+  activerecord:
+    models:
+      employee:
+        one: Employee
+        other: Employees
+      address:
+        one: Address
+        other: Addresses
+      country:
+        one: Country
+        other: Countries
+      role:
+        one: Role
+        other: Roles
+      section:
+        one: Section
+        other: Sections
+      content:
+        one: Content
+        other: Content
+    attributes:
+      user:
+        login: 'Login'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Passwordconfirmation'
+      person:
+        firstname: 'Firstname'
+        lastname: 'Lastname'
+        name: 'Name'
+        email: 'Email'
+      address:
+        street: 'Street'
+        street2: 'Additional information'
+        zip: 'Zip-code'
+        city: 'City'
+      content:
+        headline: Headline
+        content: Content
