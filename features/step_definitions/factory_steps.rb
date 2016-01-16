@@ -28,7 +28,12 @@ Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", de
 end
 
 Angenommen(/^ein Abschnitt auf der Startseite mit Inhalten für "(.*?)"\.$/) do |language|
-  @section = FactoryGirl.create(:section, path: 'index')
+  steps %{ Und ein Abschnitt auf der "Start"-Seite mit Inhalten für "#{language}". }
+end
+
+Angenommen(/^ein Abschnitt auf der "(.*?)"\-Seite mit Inhalten für "(.*?)"\.$/) do |routename, language|
+  path = route_for routename
+  @section = FactoryGirl.create(:section, path: path)
   @content = FactoryGirl.build(:content, language: language)
   @section.contents << @content
 
