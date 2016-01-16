@@ -10,6 +10,8 @@ def path_for pathname
     "/employees"
   when 'Neuer Mitarbeiter'
     "/employees/new"
+  when 'FAQ'
+    "/faq"
   else
     raise "No path defined for page named '#{pagename}'."
   end
