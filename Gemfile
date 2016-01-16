@@ -104,3 +104,6 @@ gem 'tinymce-rails'
 
 # Tracks changes to models
 gem 'paper_trail', '~> 4.0.0'
+
+# Handles file-attachements
+gem "paperclip", "~> 4.3"

@@ -79,7 +79,11 @@ GEM
       launchy
     childprocess (0.5.8)
       ffi (~> 1.0, >= 1.0.11)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
     cliver (0.3.2)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -177,6 +181,7 @@ GEM
       mime-types (>= 1.16, < 3)
     method_source (0.8.2)
     mime-types (2.99)
+    mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.3)
     multi_json (1.11.2)
@@ -197,6 +202,12 @@ GEM
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
       request_store (~> 1.1)
+    paperclip (4.3.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
     parallel (1.6.1)
     parallel_tests (2.0.0)
       parallel
@@ -356,6 +367,7 @@ DEPENDENCIES
   i18n-js (>= 3.0.0.rc11)
   mysql2
   paper_trail (~> 4.0.0)
+  paperclip (~> 4.3)
   parallel_tests
   pg
   poltergeist
