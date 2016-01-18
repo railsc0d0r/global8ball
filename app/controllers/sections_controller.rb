@@ -1,4 +1,6 @@
 class SectionsController < ApplicationController
+  include DataUrlConcern
+
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
   # GET /sections
@@ -78,6 +80,11 @@ class SectionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def section_params
-      params.require(:section).permit(:path)
+      if params[:section] && params[:section][:background]
+        background_params = params[:section][:background]
+
+        params[:section][:background] = convert_to_file(background_params)
+      end
+      params.require(:section).permit(:path, :background)
     end
 end
