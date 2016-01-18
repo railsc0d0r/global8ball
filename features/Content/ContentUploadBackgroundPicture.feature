@@ -18,7 +18,6 @@ Funktionalität: Background für Content setzen
   Szenario: Hintergrundbild für einen Abschnitt hochladen
     Angenommen eine Anmeldung als Editor.
     Wenn ich zur "FAQ"-Seite gehe.
-    Und screenshot.
     Und ich den "Upload"-Link klicke.
     Und ich das Bild "test.jpg" als Hintergrundbild auswähle.
     Und ich den "Save"-Button klicke.
