@@ -14,7 +14,6 @@ Funktionalität: Background für Content setzen
     Und ein Abschnitt auf der "FAQ"-Seite mit Inhalten für "en".
     Und die App ist im Browser geladen.
 
-  @wip
   Szenario: Hintergrundbild für einen Abschnitt hochladen
     Angenommen eine Anmeldung als Editor.
     Wenn ich zur "FAQ"-Seite gehe.
