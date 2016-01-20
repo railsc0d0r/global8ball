@@ -9,3 +9,11 @@ Wenn(/^ich das Bild "(.*?)" als Hintergrundbild auswähle\.$/) do |filename|
   data_url = DataUrl.from_image filename
   evaluate_script("Frontend.__container__.lookup('controller:section.upload-background').set('background',#{data_url.to_json});")
 end
+
+Dann(/^möchte ich "(.*?)" als Hintergrundbild auf der Seite sehen\.$/) do |picturename|
+  sleep 3
+  page.has_css?('.parallax')
+  parallax = page.find(:css, '.parallax')
+  style = parallax[:style]
+  raise "#{picturename} is not displayed as background." unless !style.nil? && style.include?("background-image:") && style.include?(picturename)
+end
