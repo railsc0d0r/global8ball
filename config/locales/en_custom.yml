@@ -23,6 +23,10 @@ en:
   content:
     no_object: "No %{name} yet..."
     not_translated: "%{name} not translated yet."
+  imprint:
+    headline: Imprint
+    owner_of_website: 'Owner and operator of the website'
+    responsible_for_content: 'Responsible for content'
   navigation:
     login: 'LOGIN'
     logout: 'LOGOUT'
