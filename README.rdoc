@@ -1,28 +1,40 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Global8ball is an ambitious project to combine online-gaming w/ a real-world-experience.
 
-Things you may want to cover:
+The subject is 8ball-pool-billiard, supported by WPA, EPBF and IPB.
 
-* Ruby version
+This project consists of a backend written in ruby-on-rails[http://api.rubyonrails.org/] and a javascript-app based an ember-cli[http://ember-cli.com/].
+The game is written in javascript using phaser[http://phaser.io/].
 
-* System dependencies
+To get started, you need to install rvm[http://rvm.io/] and install ruby 2.2.3. After that you just go into the projectroot and rvm creates the gemset automatically. Now you need to install bundler
 
-* Configuration
+<tt>gem install bundler</tt>
 
-* Database creation
+and all gems
 
-* Database initialization
+<tt>bundle</tt>
+
+as well as the dependecies required by them w/ the softwaremanager of your OS.
+
+After you choose your database (PostgreSQL[http://www.postgresql.org/] or MySQL[https://www.mysql.de/]) and created an user w/ the privilege to at least create and use databases you can configure your database-setup in config/database.yml
+
+When done so, do a
+
+<tt>bundle exec rake db:create db:migrate db:seed</tt>
+
+to setup your development-environment. Now start thin w/
+
+<tt>bundle exec rails s</tt>
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+<tt>bundle exec rake cucumber</tt>
 
 * Deployment instructions
 
-* ...
+Run
 
+<tt>bundle exec cap staging deploy</tt>
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+to deploy to staging under https://global8ball.ignorelist.com/.
