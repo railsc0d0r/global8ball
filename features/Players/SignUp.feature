@@ -31,3 +31,11 @@ Funktionalität: Spieler Registrierung
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Successfully signed up. Please check your emails" sehen.
     Und möchte ich eine Email mit dem Betreff "Please confirm your email address" bekommen haben.
+
+  @wip
+  Szenario: Bestätigen eines Spielers durch email
+    Angenommen ein neu registrierter Spieler.
+    Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
+    Dann wird die "Registrierungsbestätigung"-Seite aufgerufen.
+    Und ich möchte "Email successfully confirmed." sehen.
+    Und sollte dieser Spieler aktiviert sein.
