@@ -11,6 +11,10 @@ SimpleCov.start 'rails'
 require 'cucumber/rails'
 require 'capybara-screenshot/cucumber'
 
+# Make sure this require is after you require cucumber/rails/world.
+require 'email_spec' # add this line if you use spork
+require 'email_spec/cucumber'
+
 # drop db, create new and migrate
 require 'rake'
 Rails.application.load_tasks
