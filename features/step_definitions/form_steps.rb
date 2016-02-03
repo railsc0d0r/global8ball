@@ -47,6 +47,14 @@ Wenn(/^ich "(.*?)" als Überschrift eingebe\.$/) do |headline|
   steps %{ Wenn ich "#{headline}" als "headline" eingebe. }
 end
 
+Wenn(/^ich "(.*?)" als Kreditkartennummer eingebe\.$/) do |card_number|
+  steps %{ Wenn ich "#{card_number}" als "card_number" eingebe. }
+end
+
+Wenn(/^ich "(.*?)" als Geburtsdatum eingebe\.$/) do |date_of_birth|
+  steps %{ Wenn ich "#{date_of_birth}" als "date_of_birth" eingebe. }
+end
+
 Wenn(/^ich "(.*?)" in den Editor eingebe\.$/) do |content|
   page.has_css?('.mce-tinymce', visible: true)
   page.execute_script("$(tinymce.editors[0].setContent('#{content}'));")
