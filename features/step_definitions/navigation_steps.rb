@@ -38,6 +38,11 @@ Wenn(/^ich die Seite zum Löschen dieses Mitarbeiters aufrufe\.$/) do
   visit(path)
 end
 
+Wenn(/^dieser Spieler den Bestätigungslink in seiner Email klickt\.$/) do
+  path = path_for('Spielerbestätigung') + "/#{@player.confirmation_token}"
+  visit(path)
+end
+
 Dann(/^sollte ich auf die "(.*?)"\-Seite umgeleitet werden\.$/) do |page|
   steps %{ Dann sollte ich auf der "#{page}"-Seite sein. }
 end
@@ -45,4 +50,8 @@ end
 Dann(/^sollte ich auf der "(.*?)"\-Seite sein\.$/) do |page|
   expected_path = path_for(page)
   raise "Expected to be on '#{expected_path}', but current_path is '#{current_path}'" unless current_path == expected_path
+end
+
+Dann(/^wird die "(.*?)"\-Seite aufgerufen\.$/) do |page|
+  steps %{ Dann sollte ich auf der "#{page}"-Seite sein. }
 end
