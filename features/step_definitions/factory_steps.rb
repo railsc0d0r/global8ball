@@ -9,6 +9,10 @@ Angenommen(/^die Rolle "(.*?)"\.$/) do |name|
   @role = Role.exists?(name: name) ? Role.find_by_name(name) : FactoryGirl.create(:role, name: name)
 end
 
+Angenommen(/^ein neu registrierter Spieler\.$/) do
+  @player = FactoryGirl.create(:player, confirmed: false)
+end
+
 Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", der Email "(.*?)" und der Rolle "(.*?)"\.$/) do |firstname, lastname, email, role_name|
 
   params = {
