@@ -38,4 +38,5 @@ Funktionalität: Spieler Registrierung
     Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
     Dann wird die "Registrierungsbestätigung"-Seite aufgerufen.
     Und ich möchte "Email successfully confirmed." sehen.
+    Und sollte dieser Spieler bestätigt sein.
     Und sollte dieser Spieler aktiviert sein.
