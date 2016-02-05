@@ -61,9 +61,6 @@ group :development, :test do
   gem 'guard'
   gem 'guard-livereload'
 
-  # include rspec for unit- and functional tests
-  gem 'rspec-rails', '~> 3.0'  
-
   # We want to check certain things before commit to repo
   gem 'pre-commit'
 end
@@ -82,6 +79,9 @@ group :test do
 
   # we want coverage-reports
   gem 'simplecov', :require => false
+
+  # include rspec for unit- and functional tests
+  gem 'rspec-rails', '~> 3.0'
 end
 
 # For running tests parallel
