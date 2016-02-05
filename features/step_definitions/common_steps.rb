@@ -19,8 +19,7 @@ Wenn(/^ich in einem Dialog sehe "(.*?)"$/) do |content|
 end
 
 Wenn(/^ich den Modal-Dialog "(.*?)" sehe\.$/) do |content|
-  raise "No dialog found." unless page.has_css?(".modal-dialog", :visible => true)
-
+  expect(page.has_css?(".modal-dialog", :visible => true)).to be_truthy
   steps %{ Dann möchte ich "#{content}" sehen. }
 end
 
@@ -88,7 +87,8 @@ Wenn(/^ich den Button "(.*?)" im Dialog drücke$/) do |button_name|
   # Wait for dialog to appear
   sleep 1
 
-  raise "No dialog found." unless page.has_css?(".modal-dialog", :visible => true)
+  expect(page.has_css?(".modal-dialog", :visible => true)).to be_truthy
+
   within '.modal-dialog' do
     if Capybara.current_driver == :poltergeist
       find(:link_or_button, button_name).trigger('click')
@@ -128,7 +128,7 @@ Wenn(/^ich die Checkbox "(.*?)" deaktiviere\.$/) do |locator|
 end
 
 Wenn(/^ich "(.*?)" auf der Startseite auswähle\.$/) do |link_name|
-  raise "Not on root." unless current_page == path_for('Start')
+  expect(current_page).to eq(path_for('Start'))
   steps %{ Wenn ich den "#{link_name}"-Link klicke }
 end
 
@@ -143,7 +143,7 @@ Dann(/^(?:möchte ich|ich möchte) "(.*?)" sehen\.?$/) do |content|
 end
 
 Dann(/^möchte ich "(.*?)" nicht sehen$/) do |content|
-  raise "Content '#{content}' found, but not expected to be shown." if page.has_content?(:all, content)
+  expect(page.has_content?(:all, content)).to_not be_truthy
 end
 
 Angenommen(/^ich sehe den Dialog "(.*?)"$/) do | dialog_content |
@@ -159,7 +159,7 @@ Dann(/^möchte ich "(.*?)" nicht sehen\.$/) do |content|
 end
 
 Dann(/^möchte ich einen Button "(.*?)" sehen\.$/) do |button_name|
-  raise "Button '#{button_name}' not found, but expected to be shown." if page.first('a', text: button_name).nil?
+  expect(page.first('a', text: button_name).nil?).to_not be_truthy
 end
 
 Dann(/^debug(?:ger|)$/) do

@@ -49,7 +49,7 @@ end
 
 Dann(/^sollte ich auf der "(.*?)"\-Seite sein\.$/) do |page|
   expected_path = path_for(page)
-  raise "Expected to be on '#{expected_path}', but current_path is '#{current_path}'" unless current_path == expected_path
+  expect(expected_path).to eq(current_path)
 end
 
 Dann(/^wird die "(.*?)"\-Seite aufgerufen\.$/) do |page|

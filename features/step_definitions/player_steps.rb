@@ -1,8 +1,8 @@
 # coding: utf-8
 Dann(/^sollte dieser Spieler bestätigt sein\.$/) do
-  raise "Player is not confirmed" unless @player.confirmed
+  expect(@player.confirmed).to be_truthy
 end
 
 Dann(/^sollte dieser Spieler aktiviert sein\.$/) do
-  raise "Player is not activated" unless @player.activated
+  expect(@player.activated).to be_truthy
 end
