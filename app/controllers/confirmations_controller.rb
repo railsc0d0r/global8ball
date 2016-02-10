@@ -68,7 +68,12 @@ class ConfirmationsController < Devise::ConfirmationsController
 
   def do_confirm
     @confirmable.confirm!
-    set_flash_message :notice, :confirmed
-    sign_in_and_redirect(resource_name, @confirmable)
+    sign_in(resource_name, @confirmable)
+    data = {
+      token: @confirmable.authentication_token,
+      login: @confirmable.email,
+      user_id: @confirmable.id
+    }
+    render json: data, status: 201
   end
 end
