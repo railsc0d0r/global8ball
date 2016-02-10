@@ -22,7 +22,9 @@ def path_for pathname
     "/rules"
   when 'Privacy Policy'
     "/privacy"
+  when 'Spielerbestätigung'
+    "/confirmation"
   else
-    raise "No path defined for page named '#{pagename}'."
+    raise "No path defined for page named '#{pathname}'."
   end
 end

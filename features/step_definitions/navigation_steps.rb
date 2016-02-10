@@ -39,7 +39,7 @@ Wenn(/^ich die Seite zum Löschen dieses Mitarbeiters aufrufe\.$/) do
 end
 
 Wenn(/^dieser Spieler den Bestätigungslink in seiner Email klickt\.$/) do
-  path = path_for('Spielerbestätigung') + "/#{@player.confirmation_token}"
+  path = path_for('Spielerbestätigung') + "/#{@player.user.confirmation_token}"
   visit(path)
 end
 
