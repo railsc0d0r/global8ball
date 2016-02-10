@@ -63,6 +63,9 @@ group :development, :test do
 
   # We want to check certain things before commit to repo
   gem 'pre-commit'
+
+  # We want to catch mails in development and tests
+  gem 'mailcatcher'
 end
 
 # Cucumber for BDD
