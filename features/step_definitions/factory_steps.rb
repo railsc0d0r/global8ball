@@ -10,7 +10,9 @@ Angenommen(/^die Rolle "(.*?)"\.$/) do |name|
 end
 
 Angenommen(/^ein neu registrierter Spieler\.$/) do
-  @player = FactoryGirl.create(:player, confirmed: false)
+  @player = FactoryGirl.build(:player)
+  @player.deactivate!
+  @player.save!
 end
 
 Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", der Email "(.*?)" und der Rolle "(.*?)"\.$/) do |firstname, lastname, email, role_name|
