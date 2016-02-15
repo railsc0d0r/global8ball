@@ -16,8 +16,6 @@ Funktionalität: Spieler Registrierung
   @wip
   Szenario: Registrieren eines Spielers
     Wenn ich den "SIGNUP"-Link klicke.
-    Und ich "SecreT_123456789" als Passwort eingebe.
-    Und ich "SecreT_123456789" als Passwortbestätigung eingebe.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -26,8 +24,8 @@ Funktionalität: Spieler Registrierung
     Und ich "00815" als Postleitzahl eingebe.
     Und ich "Musterstadt" als Stadt eingebe.
     Und ich "Germany" als Land auswähle.
-    Und ich "" als Kreditkartennummer eingebe.
-    Und ich "" als Geburtsdatum eingebe.
+    Und ich "344458255604261" als Kreditkartennummer eingebe.
+    Und ich "23.04.1983" als Geburtsdatum eingebe.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Successfully signed up. Please check your emails" sehen.
     Und möchte ich eine Email mit dem Betreff "Please confirm your email address" bekommen haben.
@@ -36,7 +34,10 @@ Funktionalität: Spieler Registrierung
   Szenario: Bestätigen eines Spielers durch email
     Angenommen ein neu registrierter Spieler.
     Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
-    Dann wird die "Registrierungsbestätigung"-Seite aufgerufen.
-    Und ich möchte "Email successfully confirmed." sehen.
+    Und ich mich auf der Registrierungsbestätigungsseite für diesen Spieler befinde.
+    Und ich "SecreT_123456789" als Passwort eingebe.
+    Und ich "SecreT_123456789" als Passwortbestätigung eingebe.
+    Und ich den "Confirm"-Button klicke.
+    Dann möchte ich "Successfully confirmed your account." sehen.
     Und sollte dieser Spieler bestätigt sein.
     Und sollte dieser Spieler aktiviert sein.

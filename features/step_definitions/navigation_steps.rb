@@ -7,6 +7,10 @@ Wenn(/^ich die "(.*?)"\-Seite aufrufe\.$/) do |page|
   steps %{ Wenn ich zur "#{page}"-Seite gehe. }
 end
 
+Wenn(/^die "(.*?)"\-Seite aufgerufen wird\.$/) do |page|
+  steps %{ Wenn ich zur "#{page}"-Seite gehe. }
+end
+
 Wenn(/^ich zur Startseite gehe\.$/) do
   steps %{ Wenn ich zur "Start"-Seite gehe. }
 end
@@ -41,6 +45,11 @@ end
 Wenn(/^dieser Spieler den Bestätigungslink in seiner Email klickt\.$/) do
   path = path_for('Spielerbestätigung') + "/#{@player.user.confirmation_token}"
   visit(path)
+end
+
+Wenn(/^ich mich auf der Registrierungsbestätigungsseite für diesen Spieler befinde\.$/) do
+  expected_path = path_for('Spielerbestätigung') + "/#{@player.user.confirmation_token}"
+  expect(expected_path).to eq(current_path)
 end
 
 Dann(/^sollte ich auf die "(.*?)"\-Seite umgeleitet werden\.$/) do |page|
