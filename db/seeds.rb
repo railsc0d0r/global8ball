@@ -94,7 +94,8 @@ employees.each do |employee|
         username: username,
         role_name: role_name,
         password: password,
-        password_confirmation: password
+        password_confirmation: password,
+        confirmed_at: DateTime.now
       },
       person_attributes: {
         firstname: firstname,
