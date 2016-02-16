@@ -9,6 +9,7 @@ zh:
   navigation:
     login: 'LOGIN'
     logout: 'LOGOUT'
+    signup: 'SIGNUP'
     brand: 'global8ball.com'
     administration: 'Administration'
   login:

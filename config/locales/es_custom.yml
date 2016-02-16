@@ -9,6 +9,7 @@ es:
   navigation:
     login: 'iniciar sesión'
     logout: 'cerrar sesión'
+    signup: 'Registrar'
     brand: 'global8ball.com'
     administration: 'administración'
   login:

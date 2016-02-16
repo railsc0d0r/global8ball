@@ -9,6 +9,7 @@ de:
   navigation:
     login: 'Anmelden'
     logout: 'Abmelden'
+    signup: 'Registrieren'
     brand: 'global8ball.com'
     administration: 'Verwaltung'
   login:
