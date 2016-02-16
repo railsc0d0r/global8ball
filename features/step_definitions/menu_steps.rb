@@ -28,3 +28,8 @@ Wenn(/^ich "(.*?)" als Sprache auswähle\.$/) do |language|
     Und ich "#{language}" als Sprache aus dem Dropdown auswähle.
   }
 end
+
+Dann(/^sollten die Übersetzungen für "(.*?)" in der Benutzeroberfläche angezeigt werden\.$/) do |language|
+  current_language = page.evaluate_script('I18n.locale;')
+  expect(current_language).to eq(language)
+end

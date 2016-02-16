@@ -8,17 +8,17 @@ Funktionalität: Eine Sprache für die Anzeige der Plattform auswählen
   Grundlage:
     Angenommen die App ist im Browser geladen.
 
-  Szenario: English auswählen
+  Szenariogrundriss: Sprachauswahl
     Wenn ich die Sprachauswahl öffne.
-    Und ich "en" als Sprache aus dem Dropdown auswähle.
-    Dann möchte ich "LOGIN" sehen.
+    Und ich "<Sprache>" als Sprache aus dem Dropdown auswähle.
+    Dann sollten die Übersetzungen für "<Sprache>" in der Benutzeroberfläche angezeigt werden.
 
-  Szenario: Deutsch auswählen
-    Wenn ich die Sprachauswahl öffne.
-    Und ich "de" als Sprache aus dem Dropdown auswähle.
-    Dann möchte ich "Anmelden" sehen.
-
-  Szenario: Français auswählen
-    Wenn ich die Sprachauswahl öffne.
-    Und ich "fr" als Sprache aus dem Dropdown auswähle.
-    Dann möchte ich "S'identifier" sehen.
+    Beispiele:
+      | Sprache |
+      | de      |
+      | en      |
+      | es      |
+      | fr      |
+      | hi      |
+      | ru      |
+      | zh      |
