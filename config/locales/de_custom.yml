@@ -19,6 +19,7 @@ de:
     select_attribute: "%{name} auswählen"
     submit: 'Absenden'
     save: 'Speichern'
+    confirm: 'Bestätigen'
   activerecord:
     models:
       employee:
@@ -30,6 +31,9 @@ de:
       country:
         one: Land
         other: 'Länder'
+      player:
+        one: Spieler
+        other: Spieler
       role:
         one: Rolle
         other: Rollen
@@ -50,6 +54,7 @@ de:
         lastname: 'Nachname'
         name: 'Name'
         email: 'Email'
+        date_of_birth: 'Geburtsdatum'
       address:
         street: 'Strasse'
         street2: 'Zusätzliche Informationen'
@@ -58,3 +63,5 @@ de:
       content:
         headline: Überschrift
         content: Inhalt
+      player:
+        card_number: Kreditkartennummer

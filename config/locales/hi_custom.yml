@@ -19,6 +19,7 @@ hi:
     select_attribute: "Select %{name}"
     submit: 'Submit'
     save: 'Save'
+    confirm: 'इस बात की पुष्टि'
   activerecord:
     models:
       employee:
@@ -30,6 +31,9 @@ hi:
       country:
         one: Country
         other: Countries
+      player:
+        one: खिलाड़ी
+        other: खिलाड़ियों
       role:
         one: Role
         other: Roles
@@ -50,6 +54,7 @@ hi:
         lastname: 'Lastname'
         name: 'Name'
         email: 'Email'
+        date_of_birth: 'जन्म तिथि'
       address:
         street: 'Street'
         street2: 'Additional information'
@@ -58,3 +63,5 @@ hi:
       content:
         headline: Headline
         content: Content
+      player:
+        card_number: क्रेडिट कार्ड नंबर

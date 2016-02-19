@@ -30,6 +30,9 @@ zh:
       country:
         one: Country
         other: Countries
+      player:
+        one: Player
+        other: Player
       role:
         one: Role
         other: Roles
@@ -50,6 +53,7 @@ zh:
         lastname: 'Lastname'
         name: 'Name'
         email: 'Email'
+        date_of_birth: 'Date of Birth'
       address:
         street: 'Street'
         street2: 'Additional information'
@@ -58,3 +62,5 @@ zh:
       content:
         headline: Headline
         content: Content
+      player:
+        card_number: Creditcardnumber

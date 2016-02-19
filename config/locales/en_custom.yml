@@ -40,6 +40,7 @@ en:
     select_attribute: "Select %{name}"
     submit: 'Submit'
     save: 'Save'
+    confirm: 'Confirm'
   activerecord:
     models:
       employee:
@@ -51,6 +52,9 @@ en:
       country:
         one: Country
         other: Countries
+      player:
+        one: Player
+        other: Players
       role:
         one: Role
         other: Roles
@@ -71,6 +75,7 @@ en:
         lastname: 'Lastname'
         name: 'Name'
         email: 'Email'
+        date_of_birth: 'Date of Birth'
       address:
         street: 'Street'
         street2: 'Additional information'
@@ -79,3 +84,5 @@ en:
       content:
         headline: Headline
         content: Content
+      player:
+        card_number: Creditcardnumber

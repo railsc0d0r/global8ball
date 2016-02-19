@@ -19,6 +19,7 @@ ru:
     select_attribute: "Bыбрать %{name}"
     submit: 'Представить'
     save: 'сохранять'
+    confirm: 'удостоверять'
   activerecord:
     models:
       employee:
@@ -30,6 +31,9 @@ ru:
       country:
         one: 'Cтрана'
         other: 'Cтраны'
+      player:
+        one: игрок
+        other: игроки
       role:
         one: 'Pоль'
         other: 'Роли'
@@ -50,6 +54,7 @@ ru:
         lastname: 'фамилия'
         name: 'имя'
         email: 'е-мейл'
+        date_of_birth: 'день рождения'
       address:
         street: 'улица'
         street2: 'дополнительная информация'
@@ -58,3 +63,5 @@ ru:
       content:
         headline: заголовок
         content: содержание
+      player:
+        card_number: Номер кредитной карты
