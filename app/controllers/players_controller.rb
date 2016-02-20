@@ -44,7 +44,7 @@ class PlayersController < ApplicationController
         format.json { render json: @player }
       else
         format.html { render action: 'new' }
-        format.json { render json: @player.errors, status: :unprocessable_entity }
+        format.json { render json: ErrorSerializer.serialize(@player.errors), status: :unprocessable_entity }
       end
     end
   end
