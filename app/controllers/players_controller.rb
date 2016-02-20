@@ -84,6 +84,7 @@ class PlayersController < ApplicationController
       params_hash = params.require(:player)
 
       result = {
+        card_number: params_hash.delete(:card_number),
         user_attributes: fetch_user_attributes(params_hash),
         person_attributes: fetch_person_attributes(params_hash)
       }
