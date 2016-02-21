@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'game' => 'games#show', as: :game
+
   # scope the backend to provide deeplinks for ember-app
   scope '/backend' do
 
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
       patch '/users/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
     end
     devise_for :users, controllers: { sessions: 'sessions', :confirmations => 'confirmations' }
+
     resources :users
     resources :roles
     resources :employees
