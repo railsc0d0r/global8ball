@@ -13,7 +13,6 @@ Funktionalität: Spieler Registrierung
       | Player        |
     Und die App ist im Browser geladen.
 
-  @wip
   Szenario: Registrieren eines Spielers
     Wenn ich den "SIGNUP"-Link klicke.
     Und ich "Meyer" als Nachname eingebe.
@@ -28,7 +27,7 @@ Funktionalität: Spieler Registrierung
     Und ich "09/23/1983" als Geburtsdatum eingebe.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
-    Und möchte ich eine Email mit dem Betreff "Please confirm your email address" bekommen haben.
+    Und möchte ich eine Email mit dem Betreff "Confirmation instructions" bekommen haben.
 
   @wip
   Szenario: Bestätigen eines Spielers durch email
