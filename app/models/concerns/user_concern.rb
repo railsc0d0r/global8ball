@@ -25,9 +25,13 @@ module UserConcern
 
     delegate :email, to: :user
 
-    after_validation :user_concern_ensure_user_role
+    attr_accessor :skip_setting_username_and_email
 
-    after_validation :user_concern_ensure_auth_obj_type
+    before_validation :set_username, on: :create, unless: :skip_setting_username_and_email
+    before_validation :set_user_email_from_person, unless: :skip_setting_username_and_email
+
+    before_validation :user_concern_ensure_user_role
+    before_validation :user_concern_ensure_auth_obj_type
   end
 
   def name
@@ -60,6 +64,18 @@ module UserConcern
 
   def user_concern_ensure_auth_obj_type
     user.auth_obj_type = self.class.name if user
+  end
+
+  def set_username
+    unless %w( stephan mike_neubert ).include?(self.user.username)
+      unless self.person.lastname.nil? && self.person.firstname.nil?
+        user.username = "#{person.lastname.downcase}_#{person.firstname.downcase}_#{StringRandom.new.password}"
+      end
+    end
+  end
+
+  def set_user_email_from_person
+    user.email = person.email if person.email
   end
 
   # Makes sure, a role is set for this user
