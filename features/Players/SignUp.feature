@@ -25,7 +25,7 @@ Funktionalität: Spieler Registrierung
     Und ich "Musterstadt" als Stadt eingebe.
     Und ich "Germany" als Land auswähle.
     Und ich "344458255604261" als Kreditkartennummer eingebe.
-    Und ich "23.04.1983" als Geburtsdatum eingebe.
+    Und ich "09/23/1983" als Geburtsdatum eingebe.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
     Und möchte ich eine Email mit dem Betreff "Please confirm your email address" bekommen haben.
