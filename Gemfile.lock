@@ -171,6 +171,14 @@ GEM
     i18n_data (0.7.0)
     json (1.8.3)
     kgio (2.10.0)
+    konacha (4.0.0)
+      actionpack (>= 4.1, < 5)
+      capybara
+      colorize
+      railties (>= 4.1, < 5)
+      sprockets (>= 2, < 4)
+      sprockets-rails (>= 2, < 4)
+      tilt
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.0.5)
@@ -389,6 +397,7 @@ DEPENDENCIES
   headless
   highline
   i18n-js (>= 3.0.0.rc11)
+  konacha
   mailcatcher
   mysql2
   paper_trail (~> 4.0.0)

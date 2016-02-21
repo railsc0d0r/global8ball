@@ -66,6 +66,9 @@ group :development, :test do
 
   # We want to catch mails in development and tests
   gem 'mailcatcher'
+
+  # Test your javascript
+  gem 'konacha'
 end
 
 # Cucumber for BDD
