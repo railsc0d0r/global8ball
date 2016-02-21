@@ -115,6 +115,10 @@ class User < ActiveRecord::Base
     pending_any_confirmation {yield}
   end
 
+  def password_required?
+    (!persisted? || !password.nil? || !password_confirmation.nil? ) && confirmed?
+  end
+
   private
 
   def generate_authentication_token
