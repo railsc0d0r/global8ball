@@ -42,7 +42,11 @@ module UserConcern
     user.role.name rescue nil
   end
 
-  def activated
+  def confirmed?
+    self.user.confirmed?
+  end
+
+  def activated?
     self.user.activated
   end
 
