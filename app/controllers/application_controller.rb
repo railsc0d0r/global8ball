@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user_from_token!, unless: :devise_controller?
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_paper_trail_whodunnit
+  before_filter :store_request_details
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -14,6 +15,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def store_request_details
+    RequestStore.store[:protocol] = request.protocol
+    RequestStore.store[:host] = request.host
+    RequestStore.store[:port] = request.port
+  end
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password, :password_confirmation, :remember_me, :terms_and_conditions) }
