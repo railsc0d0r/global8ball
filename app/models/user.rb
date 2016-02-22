@@ -119,6 +119,10 @@ class User < ActiveRecord::Base
     (!persisted? || !password.nil? || !password_confirmation.nil? ) && confirmed?
   end
 
+  def password_match?
+    password == password_confirmation
+  end
+
   private
 
   def generate_authentication_token
