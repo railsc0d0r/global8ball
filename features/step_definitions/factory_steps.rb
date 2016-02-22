@@ -12,6 +12,7 @@ end
 Angenommen(/^ein neu registrierter Spieler\.$/) do
   @player = FactoryGirl.build(:player)
   @player.deactivate!
+  @player.user.encrypted_password = ""
   @player.save!
 end
 
