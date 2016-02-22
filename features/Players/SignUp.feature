@@ -29,8 +29,7 @@ Funktionalität: Spieler Registrierung
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
     Und möchte ich eine Email mit dem Betreff "Confirmation instructions" bekommen haben.
 
-  @wip
-  Szenario: Bestätigen eines Spielers durch email
+  Szenario: Bestätigen eines Spielers durch Token und Setzen des Passworts
     Angenommen ein neu registrierter Spieler.
     Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
     Und ich mich auf der Registrierungsbestätigungsseite für diesen Spieler befinde.
@@ -40,3 +39,14 @@ Funktionalität: Spieler Registrierung
     Dann möchte ich "Successfully confirmed your account." sehen.
     Und sollte dieser Spieler bestätigt sein.
     Und sollte dieser Spieler aktiviert sein.
+
+  Szenario: Bestätigen eines Spielers - Setzen des Passworts schlägt fehl
+    Angenommen ein neu registrierter Spieler.
+    Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
+    Und ich mich auf der Registrierungsbestätigungsseite für diesen Spieler befinde.
+    Und ich "SecreT_123456789" als Passwort eingebe.
+    Und ich "SecreT_12345678" als Passwortbestätigung eingebe.
+    Und ich den "Confirm"-Button klicke.
+    Dann möchte ich "Successfully confirmed your account." nicht sehen.
+    Und sollte dieser Spieler nicht bestätigt sein.
+    Und sollte dieser Spieler nicht aktiviert sein.
