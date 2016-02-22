@@ -12,8 +12,7 @@ class ConfirmationsController < Devise::ConfirmationsController
         if @confirmable.valid? and @confirmable.password_match?
           do_confirm
         else
-          do_show
-          @confirmable.errors.clear #so that we wont render :new
+          @confirmable.errors.add(:password, :doesnt_match)
         end
       else
         @confirmable.errors.add(:email, :password_already_set)
@@ -21,24 +20,6 @@ class ConfirmationsController < Devise::ConfirmationsController
     end
 
     if !@confirmable.errors.empty?
-      self.resource = @confirmable
-      respond_to do |format|
-        format.html { render html: @confirmable }
-        format.json { render json: ErrorSerializer.serialize(@confirmable.errors), status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # GET /resource/confirmation?confirmation_token=abcdef
-  def show
-    with_unconfirmed_confirmable do
-      if @confirmable.has_no_password?
-        do_show
-      else
-        do_confirm
-      end
-    end
-    unless @confirmable.errors.empty?
       self.resource = @confirmable
       respond_to do |format|
         format.html { render html: @confirmable }
@@ -67,7 +48,8 @@ class ConfirmationsController < Devise::ConfirmationsController
   end
 
   def do_confirm
-    @confirmable.confirm!
+    @confirmable.confirm
+    @confirmable.activate!
     sign_in(resource_name, @confirmable)
     data = {
       token: @confirmable.authentication_token,
