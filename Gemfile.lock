@@ -409,6 +409,7 @@ DEPENDENCIES
   pry
   railroady
   rails (= 4.2.5)
+  request_store
   rspec-rails (~> 3.0)
   rvm1-capistrano3
   sdoc (~> 0.4.0)

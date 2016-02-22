@@ -113,3 +113,6 @@ gem 'paper_trail', '~> 4.0.0'
 
 # Handles file-attachements
 gem "paperclip", "~> 4.3"
+
+# We want to store stuff app-wide per request, but hesitate to use Thread.current
+gem 'request_store'
