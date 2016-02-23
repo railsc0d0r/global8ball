@@ -7,6 +7,7 @@
   <script type="text/javascript">
     window.assets = window.assets || {};
     window.assets.images = <%= raw(image_assets.to_json) %>;
+    window.addEventListener('load', window.initGlobal8Ball, false);
   </script>
 </head>
 <body>
