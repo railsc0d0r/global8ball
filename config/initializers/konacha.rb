@@ -4,11 +4,13 @@ Konacha.configure do |config|
   config.driver       = :selenium
 end if defined?(Konacha)
 
-# Disable paper trail for specs controller. Paper trail enables itself for
-# all controllers by default, causing the specs to error out when trying to get
-# the "current user".
-Konacha::SpecsController.class_eval do
-  def paper_trail_enabled_for_controller
-    false
+if defined?(Konacha)
+  # Disable paper trail for specs controller. Paper trail enables itself for
+  # all controllers by default, causing the specs to error out when trying to get
+  # the "current user".
+  Konacha::SpecsController.class_eval do
+    def paper_trail_enabled_for_controller
+      false
+    end
   end
 end
