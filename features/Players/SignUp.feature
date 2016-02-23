@@ -25,6 +25,9 @@ Funktionalität: Spieler Registrierung
     Und ich "Germany" als Land auswähle.
     Und ich "344458255604261" als Kreditkartennummer eingebe.
     Und ich "09/23/1983" als Geburtsdatum eingebe.
+    Und ich die Terms of Use akzeptiere.
+    Und ich bestätige, das ich die Datenschutzpolicy gelesen habe.
+    Und ich bestätige, das ich die Regeln des Games gelesen habe.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
     Und möchte ich eine Email mit dem Betreff "Confirmation instructions" bekommen haben.
