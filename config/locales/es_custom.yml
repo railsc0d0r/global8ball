@@ -20,6 +20,8 @@ es:
     submit: 'Enviar'
     save: 'Memorizar'
     confirm: Confirmar'
+    read: "He leído las %{object}"
+    accepted: "He leído y aceptado las %{object}"
   activerecord:
     models:
       employee:

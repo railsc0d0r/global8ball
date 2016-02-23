@@ -20,6 +20,8 @@ fr:
     submit: 'Soumettre'
     save: 'sauver'
     confirm: 'confirmer'
+    read: "J'ai lu les %{object}"
+    accepted: "Je l'ai lu et accepté les %{object}"
   activerecord:
     models:
       employee:

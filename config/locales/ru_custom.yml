@@ -20,6 +20,8 @@ ru:
     submit: 'Представить'
     save: 'сохранять'
     confirm: 'удостоверять'
+    read: "Я прочитал %{object}"
+    accepted: "Я прочел и принял %{object}"
   activerecord:
     models:
       employee:

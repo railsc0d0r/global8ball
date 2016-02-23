@@ -20,6 +20,8 @@ de:
     submit: 'Absenden'
     save: 'Speichern'
     confirm: 'Bestätigen'
+    read: "Ich habe die %{object} gelesen"
+    accepted: "Ich habe die %{object} gelesen und akzeptiert"
   activerecord:
     models:
       employee:

@@ -18,7 +18,10 @@ zh:
     enter_attribute: "Enter %{name}"
     select_attribute: "Select %{name}"
     submit: 'Submit'
+    confirm: 'Confirm'
     save: 'Save'
+    read: "I have read the %{object}"
+    accepted: "I have read and accepted the %{object}"
   activerecord:
     models:
       employee:
