@@ -1,4 +1,16 @@
 # coding: utf-8
+Wenn(/^ich die Terms of Use akzeptiere\.$/) do
+  steps %{ Wenn ich die Checkbox "acceptedTermsOfUse" aktiviere. }
+end
+
+Wenn(/^ich bestätige, das ich die Datenschutzpolicy gelesen habe\.$/) do
+  steps %{ Wenn ich die Checkbox "readPrivacyPolicy" aktiviere. }
+end
+
+Wenn(/^ich bestätige, das ich die Regeln des Games gelesen habe\.$/) do
+  steps %{ Wenn ich die Checkbox "readRules" aktiviere. }
+end
+
 Dann(/^sollte dieser Spieler( nicht|) bestätigt sein\.$/) do |nicht|
   @player.reload
   if nicht.size == 0
