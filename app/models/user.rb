@@ -16,9 +16,8 @@ class User < ActiveRecord::Base
   validates_presence_of :username, :email
   validates_uniqueness_of :username, :email
   validates :username, length: 5..50
-  validate :validate_password
-
-  before_validation :strip_empty_passwords, on: :update
+  validate :validate_password, on: :update
+  validate :password_on_confirmation, on: :update
 
   belongs_to :role, inverse_of: :users
 
@@ -95,24 +94,9 @@ class User < ActiveRecord::Base
     self.role.name == 'Administrator'
   end
 
-  # new function to set the password without knowing the current
-  # password used in our confirmation controller.
-  def attempt_set_password(params)
-    p = {}
-    p[:password] = params[:password]
-    p[:password_confirmation] = params[:password_confirmation]
-    update_attributes(p)
-  end
-
   # new function to return whether a password has been set
   def has_no_password?
     self.encrypted_password.blank?
-  end
-
-  # Devise::Models:unless_confirmed` method doesn't exist in Devise 2.0.0 anymore.
-  # Instead you should use `pending_any_confirmation`.
-  def only_if_unconfirmed
-    pending_any_confirmation {yield}
   end
 
   def password_required?
@@ -124,6 +108,13 @@ class User < ActiveRecord::Base
   end
 
   private
+
+  def password_on_confirmation
+    if (!confirmed? || pending_reconfirmation?)
+      validates_presence_of :password
+      validates_confirmation_of :password
+    end
+  end
 
   def generate_authentication_token
     loop do
@@ -138,11 +129,6 @@ class User < ActiveRecord::Base
     errors.add :password, :must_be_different_from_username if password == username
     errors.add :password, :must_not_be_this if PASSWORD_BLACKLIST[password]
     return errors[:password].empty?
-  end
-
-  def strip_empty_passwords
-    self.password = nil if password && password.blank?
-    self.password_confirmation = nil if password_confirmation && password_confirmation.blank?
   end
 
   # Needed for declarative authorization
