@@ -11,6 +11,8 @@ FactoryGirl.define do
     password_confirmation "secret123456789"
     sign_in_count 0
     activated true
+    confirmed_at Time.now.utc
+    unconfirmed_email nil
   end
 
 end

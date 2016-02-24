@@ -13,7 +13,18 @@ Angenommen(/^ein neu registrierter Spieler\.$/) do
   @player = FactoryGirl.build(:player)
   @player.deactivate!
   @player.user.encrypted_password = ""
+  @player.user.confirmed_at = nil
+  @player.user.unconfirmed_email = @player.user.email
   @player.save!
+end
+
+Angenommen(/^ein neu registrierter Mitarbeiter\.$/) do
+  @employee = FactoryGirl.build(:employee)
+  @employee.deactivate!
+  @employee.user.encrypted_password = ""
+  @employee.user.confirmed_at = nil
+  @employee.user.unconfirmed_email = @employee.user.email
+  @employee.save!
 end
 
 Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", der Email "(.*?)" und der Rolle "(.*?)"\.$/) do |firstname, lastname, email, role_name|
@@ -31,6 +42,10 @@ Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", de
   }
   
   @employee = Employee.includes(:person, user: :role).exists?(people: {firstname: firstname, lastname: lastname}, users: {email: email}, roles: {name: role_name}) ? Employee.includes(:person, user: :role).where(people: {firstname: firstname, lastname: lastname}, users: {email: email}, roles: {name: role_name}).first : FactoryGirl.create(:employee, params)
+
+  # We need to do this, because devise somehow overwrites our factory on create :S
+  @employee.user.update_attribute(:unconfirmed_email, nil)
+
   sleep 1
 end
 
