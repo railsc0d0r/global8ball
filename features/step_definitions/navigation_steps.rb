@@ -47,8 +47,18 @@ Wenn(/^dieser Spieler den Bestätigungslink in seiner Email klickt\.$/) do
   visit(path)
 end
 
+Wenn(/^dieser Mitarbeiter den Bestätigungslink in seiner Email klickt\.$/) do
+  path = path_for('Spielerbestätigung') + "/#{@employee.user.confirmation_token}"
+  visit(path)
+end
+
 Wenn(/^ich mich auf der Registrierungsbestätigungsseite für diesen Spieler befinde\.$/) do
   expected_path = path_for('Spielerbestätigung') + "/#{@player.user.confirmation_token}"
+  expect(expected_path).to eq(current_path)
+end
+
+Wenn(/^ich mich auf der Registrierungsbestätigungsseite für diesen Mitarbeiter befinde\.$/) do
+  expected_path = path_for('Spielerbestätigung') + "/#{@employee.user.confirmation_token}"
   expect(expected_path).to eq(current_path)
 end
 
