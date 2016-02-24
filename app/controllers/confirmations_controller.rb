@@ -4,58 +4,40 @@ class ConfirmationsController < Devise::ConfirmationsController
   skip_before_filter :require_no_authentication
   skip_before_filter :authenticate_user_from_token!
 
+  before_action :set_confirmable, only: :update
+
   # PUT /resource/confirmation
   def update
-    with_unconfirmed_confirmable do
-      if @confirmable.has_no_password?
-        @confirmable.attempt_set_password(params[:user])
-        if @confirmable.valid? and @confirmable.password_match?
-          do_confirm
-        else
-          @confirmable.errors.add(:password, :doesnt_match)
+    respond_to do |format|
+      if @confirmable.update(user_params)
+        format.html { super }
+        format.json do
+          @confirmable.confirm
+          @confirmable.activate!
+          sign_in(resource_name, @confirmable)
+          data = {
+            token: @confirmable.authentication_token,
+            login: @confirmable.email,
+            user_id: @confirmable.id
+          }
+          render json: data, status: 201
         end
       else
-        @confirmable.errors.add(:email, :password_already_set)
-      end
-    end
-
-    if !@confirmable.errors.empty?
-      self.resource = @confirmable
-      respond_to do |format|
-        format.html { render html: @confirmable }
+        format.html { render action: 'edit' }
         format.json { render json: ErrorSerializer.serialize(@confirmable.errors), status: :unprocessable_entity }
       end
     end
   end
 
-  protected
+  private
 
-  def with_unconfirmed_confirmable
-    @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
-    if !@confirmable.new_record?
-      @confirmable.only_if_unconfirmed {yield}
+    def set_confirmable
+      @confirmable = User.find_or_initialize_with_error_by(:confirmation_token, params[:confirmation_token])
     end
-  end
 
-  def do_show
-    @confirmation_token = params[:confirmation_token]
-    @requires_password = true
-    self.resource = @confirmable
-    respond_to do |format|
-      format.html { render html: @confirmable }
-      format.json { render json: @confirmable }
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def user_params
+      params.require(:user).permit(:password, :password_confirmation)
     end
-  end
 
-  def do_confirm
-    @confirmable.confirm
-    @confirmable.activate!
-    sign_in(resource_name, @confirmable)
-    data = {
-      token: @confirmable.authentication_token,
-      login: @confirmable.email,
-      user_id: @confirmable.id
-    }
-    render json: data, status: 201
-  end
 end
