@@ -11,14 +11,12 @@ Funktionalität: Mitarbeiter anlegen
       | Administrator |
       | Employee      |
     Und die App ist im Browser geladen.
-    Und eine Anmeldung als Administrator.
 
   Szenario: Einen Mitarbeiter anlegen
+    Angenommen eine Anmeldung als Administrator.
     Wenn ich aus dem Admin-Menü "Employees" auswähle.
     Und ich den "Add"-Link klicke.
     Und ich "Employee" als Rolle auswähle.
-    Und ich "SecreT_123456789" als Passwort eingebe.
-    Und ich "SecreT_123456789" als Passwortbestätigung eingebe.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -40,11 +38,10 @@ Funktionalität: Mitarbeiter anlegen
     Und möchte ich "Germany" sehen.
 
   Szenario: Einen Administrator anlegen
+    Angenommen eine Anmeldung als Administrator.
     Wenn ich aus dem Admin-Menü "Employee" auswähle.
     Und ich den "Add"-Button klicke.
     Und ich "Administrator" als Rolle auswähle.
-    Und ich "secret_1234" als Passwort eingebe.
-    Und ich "secret_1234" als Passwortbestätigung eingebe.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -64,3 +61,14 @@ Funktionalität: Mitarbeiter anlegen
     Und möchte ich "00815" sehen.
     Und möchte ich "Musterstadt" sehen.
     Und möchte ich "Germany" sehen.
+
+  Szenario: Bestätigen eines Mitarbeiter durch Token und Setzen des Passworts
+    Angenommen ein neu registrierter Mitarbeiter.
+    Wenn dieser Mitarbeiter den Bestätigungslink in seiner Email klickt.
+    Und ich mich auf der Registrierungsbestätigungsseite für diesen Mitarbeiter befinde.
+    Und ich "SecreT_123456789" als Passwort eingebe.
+    Und ich "SecreT_123456789" als Passwortbestätigung eingebe.
+    Und ich den "Confirm"-Button klicke.
+    Dann möchte ich "Successfully confirmed your account." sehen.
+    Und sollte dieser Mitarbeiter bestätigt sein.
+    Und sollte dieser Mitarbeiter aktiviert sein.
