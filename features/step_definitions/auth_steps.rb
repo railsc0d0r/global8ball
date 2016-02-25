@@ -72,6 +72,10 @@ Wenn(/^ich mich mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)" anmelde\.
   steps %{ Angenommen ich melde mich mit dem Benutzernamen "#{username}" und dem Passwort "#{password}" an. }
 end
 
+Wenn(/^ich mich mit der Email\-Adresse "(.*?)" und dem Passwort "(.*?)" anmelde\.$/) do |email, password|
+  steps %{ Angenommen ich melde mich mit dem Benutzernamen "#{email}" und dem Passwort "#{password}" an. }
+end
+
 Wenn(/^ich den Benutzernamen "(.*?)" und das Passwort "(.*?)" eingebe\.$/) do |username, password|
   page.has_css?('input#login', visible: true)
   fill_in 'login', :with => username

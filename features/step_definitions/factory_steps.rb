@@ -49,6 +49,32 @@ Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", de
   sleep 1
 end
 
+Angenommen(/^ein bestätigter Mitarbeiter mit folgenden Eigenschaften:$/) do |table|
+  attributes = table.rows_hash
+  attributes["role_name"] = "Employee" unless attributes.key?("role_name")
+
+  params = {
+    user_attributes: {
+      email: attributes["email"],
+      role_name: attributes["role_name"]
+    },
+    person_attributes: {
+      firstname: attributes["firstname"],
+      lastname: attributes["lastname"],
+      email: attributes["email"]
+    }
+  }
+
+  params[:user_attributes].merge!({password: attributes["password"], password_confirmation: attributes["password"]}) if attributes.key?("password")
+
+  @employee = FactoryGirl.create(:employee, params)
+
+  # We need to do this, because devise somehow overwrites our factory on create :S
+  @employee.user.update_attribute(:unconfirmed_email, nil)
+
+  sleep 1
+end
+
 Angenommen(/^ein Abschnitt auf der Startseite mit Inhalten für "(.*?)"\.$/) do |language|
   steps %{ Und ein Abschnitt auf der "Start"-Seite mit Inhalten für "#{language}". }
 end
