@@ -6,15 +6,11 @@ Funktionalität: Account-Page
   eine Seite präsentiert bekommen, auf der ich alle meine Accountdaten und Funktionen dargestellt bekomme.
 
   Grundlage:
-    Angenommen folgende Rollen:
-      | Name          |
-      | Player        |
-      | Employee      |
-      | Administrator |
-    Und die App ist im Browser geladen.
+    Angenommen die App ist im Browser geladen.
 
   @wip
   Szenario: Accountpage für Mitarbeiter
+    Angenommen die Rolle "Employee".
     Angenommen ein bestätigter Mitarbeiter mit folgenden Eigenschaften:
       | firstname | Hans                   |
       | lastname  | Meier                  |
