@@ -135,6 +135,11 @@ require 'email_spec/cucumber'
 require 'headless'
 headless = Headless.new
 
+Before() do
+  # Create Role "Administrator" because otherwise FactoryGirl behaves strange when creating AuthObjects like employees or players
+  FactoryGirl.create(:role, name: "Administrator")
+end
+
 Before('@dont_run') do |scenario, block|
   scenario.skip_invoke!
 end
