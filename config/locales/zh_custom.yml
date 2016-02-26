@@ -10,6 +10,7 @@ zh:
     login: 'LOGIN'
     logout: 'LOGOUT'
     signup: 'SIGNUP'
+    account: '帳戶'
     brand: 'global8ball.com'
     administration: 'Administration'
   login:

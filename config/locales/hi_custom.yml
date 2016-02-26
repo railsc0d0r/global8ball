@@ -10,6 +10,7 @@ hi:
     login: 'LOGIN'
     logout: 'LOGOUT'
     signup: 'SIGNUP'
+    account: 'कारण'
     brand: 'global8ball.com'
     administration: 'Administration'
   login:

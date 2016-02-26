@@ -10,6 +10,7 @@ ru:
     login: 'Войти'
     logout: 'Выход'
     signup: 'Pегистр'
+    account: 'счет'
     brand: 'global8ball.com'
     administration: 'Aдминистрация'
   login:

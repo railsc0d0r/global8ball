@@ -31,6 +31,7 @@ en:
     login: 'LOGIN'
     logout: 'LOGOUT'
     signup: 'SIGNUP'
+    account: 'Account'
     brand: 'global8ball.com'
     administration: 'Administration'
   login:
