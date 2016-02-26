@@ -31,7 +31,6 @@ Angenommen(/^ein Mitarbeiter mit dem Vornamen "(.*?)", dem Nachnamen "(.*?)", de
 
   params = {
     user_attributes: {
-      email: email,
       role_name: role_name
     },
     person_attributes: {
@@ -55,7 +54,6 @@ Angenommen(/^ein bestätigter Mitarbeiter mit folgenden Eigenschaften:$/) do |ta
 
   params = {
     user_attributes: {
-      email: attributes["email"],
       role_name: attributes["role_name"]
     },
     person_attributes: {
@@ -67,10 +65,10 @@ Angenommen(/^ein bestätigter Mitarbeiter mit folgenden Eigenschaften:$/) do |ta
 
   params[:user_attributes].merge!({password: attributes["password"], password_confirmation: attributes["password"]}) if attributes.key?("password")
 
-  @employee = FactoryGirl.create(:employee, params)
+  @employee = Employee.includes(:person, user: :role).exists?(people: {firstname: attributes["firstname"], lastname: attributes["lastname"]}, users: {email: attributes["email"]}, roles: {name: attributes["role_name"]}) ? Employee.includes(:person, user: :role).where(people: {firstname: attributes["firstname"], lastname: attributes["lastname"]}, users: {email: attributes["email"]}, roles: {name: attributes["role_name"]}).first : FactoryGirl.create(:employee, params)
 
   # We need to do this, because devise somehow overwrites our factory on create :S
-  @employee.user.update_attribute(:unconfirmed_email, nil)
+  @employee.user.confirm
 
   sleep 1
 end
