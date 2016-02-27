@@ -10,6 +10,12 @@ group :production do
   gem 'mysql2'
 end
 
+# Uses ohm to provide an abstraction-layer for redis-models
+# https://github.com/soveran/ohm
+# https://github.com/cyx/ohm-contrib
+gem 'ohm'
+gem 'ohm-contrib'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
