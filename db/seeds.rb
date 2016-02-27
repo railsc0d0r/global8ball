@@ -124,6 +124,7 @@ employees.each do |employee|
     end
 
     new_employee.save
+    new_employee.confirm
     new_employee.activate!
 
     puts "Done.\n\r"
