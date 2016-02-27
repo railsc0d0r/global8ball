@@ -46,6 +46,10 @@ module UserConcern
     self.user.confirmed?
   end
 
+  def confirm
+    self.user.confirm
+  end
+
   def activated?
     self.user.activated
   end
