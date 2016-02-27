@@ -73,6 +73,31 @@ Angenommen(/^ein bestätigter Mitarbeiter mit folgenden Eigenschaften:$/) do |ta
   sleep 1
 end
 
+Angenommen(/^ein bestätigter Spieler mit folgenden Eigenschaften:$/) do |table|
+  attributes = table.rows_hash
+  attributes["role_name"] = "Player"
+
+  params = {
+    user_attributes: {
+      role_name: attributes["role_name"]
+    },
+    person_attributes: {
+      firstname: attributes["firstname"],
+      lastname: attributes["lastname"],
+      email: attributes["email"]
+    }
+  }
+
+  params[:user_attributes].merge!({password: attributes["password"], password_confirmation: attributes["password"]}) if attributes.key?("password")
+
+  @player = Player.includes(:person, user: :role).exists?(people: {firstname: attributes["firstname"], lastname: attributes["lastname"]}, users: {email: attributes["email"]}, roles: {name: attributes["role_name"]}) ? Player.includes(:person, user: :role).where(people: {firstname: attributes["firstname"], lastname: attributes["lastname"]}, users: {email: attributes["email"]}, roles: {name: attributes["role_name"]}).first : FactoryGirl.create(:player, params)
+
+  # We need to do this, because devise somehow overwrites our factory on create :S
+  @player.user.confirm
+
+  sleep 1
+end
+
 Angenommen(/^ein Abschnitt auf der Startseite mit Inhalten für "(.*?)"\.$/) do |language|
   steps %{ Und ein Abschnitt auf der "Start"-Seite mit Inhalten für "#{language}". }
 end
