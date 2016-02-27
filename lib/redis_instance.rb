@@ -4,6 +4,10 @@ module RedisInstance
     def start
       return false unless redis_installed?
 
+      check_snapshot_folder
+
+      `redis-server #{config_file_path} --port #{port} --logfile #{log_file_path} --pidfile #{pid_file_path} --dir #{snapshot_folder_path}`
+
       sleep 1
 
       is_running?
@@ -11,11 +15,14 @@ module RedisInstance
 
     # Stops RedisInstance
     def stop
-      `kill -s QUIT #{pid}`
+      `kill -s SIGTERM #{pid}`
       sleep 1
 
-      `kill -s TERM #{pid}` if is_running?
-      sleep 1
+      if is_running?
+        puts "Redis is still running. Exiting now w/o saving a snapshot."
+        `kill -s QUIT #{pid}`
+        sleep 1
+      end
 
       !is_running?
     end
@@ -33,7 +40,9 @@ module RedisInstance
       result = ""
       result = `ps -p #{pid} -o cmd=`.gsub("\n", "") unless pid.empty?
 
-      result.split.first == "redis-server" ? true : false
+      running = result.split.first == "redis-server" ? true : false
+
+      running
     end
 
     private
@@ -46,20 +55,40 @@ module RedisInstance
         result.empty? ? false : true
       end
 
+      # Looks for a folder to dump .rdb-snapshots into
+      # If none exists, create it
+      def check_snapshot_folder
+        Dir.mkdir(snapshot_folder_path) unless Dir.exists?(snapshot_folder_path)
+      end
+
+      # Path to snapshot-folder
+      def snapshot_folder_path
+        rails_root + "/tmp/rdb_snapshots/"
+      end
+
+      # Returns the port redis listens to
+      def port
+        7777
+      end
+
       # Returns PID from file
       def pid
-        pid_file_path = rails_root + "/tmp/pids/redis_#{rails_env}#{test_env}.pid"
         `cat #{pid_file_path}`.gsub("\n", "")
       end
 
-      # Returns current environment
-      def rails_env
-        ENV['RAILS_ENV'] || 'development'
+      # Returns PID-file-path
+      def pid_file_path
+        rails_root + "/tmp/pids/redis.pid"
       end
 
-      # Returns current test-environment
-      def test_env
-        ENV['TEST_ENV_NUMBER']
+      # Returns path to config file
+      def config_file_path
+        rails_root + "/config/redis.conf"
+      end
+
+      # Returns path to log file
+      def log_file_path
+        rails_root + "/log/redis.log"
       end
 
       # Returns path to rails-root
