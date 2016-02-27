@@ -18,12 +18,18 @@ Dir.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
-  system "bin/rake db:setup"
+  system "bin/rake db:drop db:create db:migrate db:seed"
 
   puts "\n== Removing old logs and tempfiles =="
   system "rm -f log/*"
   system "rm -rf tmp/cache"
+  system "rm -rf tmp/ember-cli-*"
+  system "rm -rf tmp/capybara/*"
 
   puts "\n== Restarting application server =="
   system "touch tmp/restart.txt"
+
+  puts "\n== Restarting Redis =="
+  system "bin/rake redis:restart"
+  system "bin/rake redis:status"
 end
