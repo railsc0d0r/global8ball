@@ -33,7 +33,7 @@ module RedisInstance
       result = ""
       result = `ps -p #{pid} -o cmd=`.gsub("\n", "") unless pid.empty?
 
-      result.split.first == "redis" ? true : false
+      result.split.first == "redis-server" ? true : false
     end
 
     private
@@ -41,7 +41,7 @@ module RedisInstance
       def redis_installed?
         result = `which redis-server`.gsub("\n", "")
 
-        puts "redis-binary not found" if result.empty?
+        puts "redis-server-binary not found" if result.empty?
 
         result.empty? ? false : true
       end
