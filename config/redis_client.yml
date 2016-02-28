@@ -19,4 +19,4 @@ development:
 
 test: &test
   <<: *default
-  database: <%= 2 + (ENV['TEST_ENV_NUMBER'] || 0) %>
+  database: <%= 2 + (ENV['TEST_ENV_NUMBER'].to_i || 0) %>
