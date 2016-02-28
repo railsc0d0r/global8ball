@@ -15,9 +15,14 @@ require 'capybara-screenshot/cucumber'
 require 'email_spec' # add this line if you use spork
 require 'email_spec/cucumber'
 
-# drop db, create new and migrate
+# Starts redis if necessary
+require 'redis_instance'
+RedisInstance.start unless RedisInstance.is_running?
+
 require 'rake'
 Rails.application.load_tasks
+
+# Drops db, creates new and migrates
 Rake::Task['test:prepare'].invoke
 
 # Build ember-app
@@ -136,8 +141,12 @@ require 'headless'
 headless = Headless.new
 
 Before() do
-  # Create Role "Administrator" because otherwise FactoryGirl behaves strange when creating AuthObjects like employees or players
+  # Creates Role "Administrator" because otherwise FactoryGirl behaves strange when creating AuthObjects like employees or players
   FactoryGirl.create(:role, name: "Administrator")
+  # Flushes the corresponding redis-db
+  Ohm.redis.call "FLUSHDB"
+
+  sleep 1
 end
 
 Before('@dont_run') do |scenario, block|
