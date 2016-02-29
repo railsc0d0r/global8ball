@@ -123,12 +123,13 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 # Cucumber::Rails::Database.javascript_strategy = :deletion
 
-# Use thin as testserver - Fixes issues w/ console-ouput and enhances performance
-# => http://stackoverflow.com/a/25214510
+# Use puma as testserver
 Capybara.server do |app, port|
- require 'rack/handler/thin'
- Rack::Handler::Thin.run(app, :Port => port)
+ require 'rack/handler/puma'
+ Rack::Handler::Puma.run(app, :Port => port)
 end
+
+
 
 # Setting timeout while waiting for element to appear
 Capybara.default_max_wait_time = 15
