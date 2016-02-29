@@ -30,16 +30,20 @@ gem 'active_model_serializers'
 # Use Unicorn as the app server
 gem 'unicorn'
 
-# Use Thin for development
-gem 'thin', group: :development
+# Try puma as a substitute for thin
+gem 'puma', group: :development
 
 # Use Capistrano for deployment
 gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-bundler'
 gem 'rvm1-capistrano3', require: false
+
 # This is needed. because cap doesn't support submodules anymore and we have to use our own strategy
 gem 'capistrano-git-submodule-strategy', '~> 0.1', :github => 'ekho/capistrano-git-submodule-strategy'
+
+# Adds task to manage puma via capistrano
+gem 'capistrano3-puma' , group: :development
 
 # Use highline to manage console-input like passwords for capistrano
 gem 'highline'
