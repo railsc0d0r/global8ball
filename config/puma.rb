@@ -20,6 +20,7 @@ stdout_redirect "#{rails_root}/log/puma.stdout.log", "#{rails_root}/log/puma.std
 pidfile "#{rails_root}/tmp/pids/puma.pid"
 state_path "#{rails_root}/tmp/pids/puma.state"
 activate_control_app
+preload_app!
 
 on_worker_boot do
   require "active_record"
