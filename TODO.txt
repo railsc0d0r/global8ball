@@ -1,0 +1,6 @@
+diff and resolve conflicts:
+
+config/puma.rb
+config/environments/development.rb
+config/environments/test.rb
+bin/setup
