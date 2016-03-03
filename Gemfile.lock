@@ -5,12 +5,6 @@ GIT
     capistrano-git-submodule-strategy (0.1.19)
       capistrano (~> 3.1)
 
-GIT
-  remote: git://github.com/stffn/declarative_authorization.git
-  revision: 45e91af20eba71b2828c5c84066bcce3ef032e8a
-  specs:
-    declarative_authorization (1.0.0.pre)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -60,6 +54,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
+    cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -407,6 +402,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
+  cancancan (~> 1.10)
   capistrano
   capistrano-bundler
   capistrano-git-submodule-strategy (~> 0.1)!
@@ -417,7 +413,6 @@ DEPENDENCIES
   countries
   cucumber-rails
   database_cleaner (<= 1.0.1)
-  declarative_authorization!
   devise
   email_spec
   ember-cli-rails (= 0.5.1)
