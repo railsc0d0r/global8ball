@@ -1,3 +1,0 @@
-diff and resolve conflicts:
-
-bin/setup
