@@ -104,7 +104,7 @@ end
 gem "parallel_tests", :group => :development
 
 # We use devise (https://github.com/plataformatec/devise) for authentication and authorization
-gem 'devise'
+gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 
 # We want to use https://github.com/CanCanCommunity/cancancan for authorization
 gem 'cancancan', '~> 1.10'
