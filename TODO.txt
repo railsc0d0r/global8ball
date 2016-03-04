@@ -1,4 +1,3 @@
 diff and resolve conflicts:
 
-config/environments/test.rb
 bin/setup
