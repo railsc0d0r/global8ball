@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     as :user do
       patch '/users/confirmation' => 'confirmations#update', :via => :patch, :as => :update_user_confirmation
     end
-    devise_for :users, controllers: { sessions: 'sessions', :confirmations => 'confirmations' }
+    devise_for :users, controllers: { sessions: 'sessions' }
 
     resources :users
     resources :roles
