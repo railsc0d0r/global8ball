@@ -125,8 +125,8 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 
 # Use puma as testserver
 Capybara.server do |app, port|
- require 'rack/handler/puma'
- Rack::Handler::Puma.run(app, :Port => port)
+ require 'rack/handler/thin'
+ Rack::Handler::Thin.run(app, :Port => port)
 end
 
 
