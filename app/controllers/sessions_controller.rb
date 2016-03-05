@@ -3,9 +3,9 @@
 # We just provide token-based authentication and return JSON
 #
 class SessionsController < Devise::SessionsController
-  prepend_before_filter :require_no_authentication, only: :create 
-  prepend_before_filter :allow_params_authentication!, only: :create
-  
+  prepend_before_action :require_no_authentication, only: :create
+  prepend_before_action :allow_params_authentication!, only: :create
+
   def create
     respond_to do |format|
       format.html { super }
