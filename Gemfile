@@ -49,14 +49,14 @@ gem 'capistrano3-puma' , group: :development
 gem 'highline'
 
 # we use ember-cli for our frontend-app
-gem "ember-cli-rails", '0.5.1'
+gem "ember-cli-rails", "0.7.2"
+
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0', group: :development
 
 group :development, :test do
   # Call 'binding.pry' anywhere in the code to stop execution and get a debugger console
   gem 'pry'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
 
   # Pretty print objects
   gem 'awesome_print'
