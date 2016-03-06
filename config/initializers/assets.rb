@@ -10,6 +10,8 @@ RailsUpload.setup
 Paperclip::Attachment.default_options[:path] = "#{RailsUpload.folder_path}/:class/:attachment/:id_:style_:filename"
 Paperclip::Attachment.default_options[:url] = "#{RailsUpload.base_url}/:class/:attachment/:id_:style_:filename"
 
+# TODO: this is a workaround for ember-cli-rails. It doesn't precompile because of a different behaviour in sprockets3
+# Remove this, when this is sorted out!!!
 ember_build_folder = Rails.root.join("tmp", "ember-cli","apps").to_s
 
 # Add additional assets to the asset load path
