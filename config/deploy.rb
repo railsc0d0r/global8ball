@@ -41,6 +41,9 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # Default value for keep_releases is 5
 set :keep_releases, 4
 
+# Number of jobs bundler runs in parallel
+set :bundle_jobs, 4
+
 # Set path to unicorn.rb
 set :unicorn_config_path,  'config/unicorn.rb' 
 
