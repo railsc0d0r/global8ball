@@ -49,7 +49,7 @@ gem 'capistrano3-puma' , group: :development
 gem 'highline'
 
 # we use ember-cli for our frontend-app
-gem "ember-cli-rails", "0.7.2"
+gem "ember-cli-rails", "0.5.8"
 
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', '~> 2.0', group: :development
