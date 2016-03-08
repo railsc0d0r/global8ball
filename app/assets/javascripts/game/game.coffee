@@ -12,6 +12,8 @@ class Boot extends Phaser.State
   create: ->
     @game.state.start 'Preload'
 
+  # To avoid using the image URL mapping over and over again, replace image
+  # methods on loader with methods doing the mapping before.
   overloadImageLoading: ->
     imageUrlMap = @imageUrlMap # For lexical binding
     load = @game.load
