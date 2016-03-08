@@ -45,11 +45,14 @@ class Preload extends Phaser.State
     whiteBall:  'white_ball.png'
     yellowBall: 'yellow_ball.png'
 
-class PlayForBegin extends Phaser.State
+# Base class for all full Phaser states (i.e. with all images etc.)
+class FullState extends Phaser.State
 
-class PlayForVictory extends Phaser.State
+class PlayForBegin extends FullState
 
-class ShowResult extends Phaser.State
+class PlayForVictory extends FullState
+
+class ShowResult extends FullState
 
 class Game
   constructor: (@config)->
