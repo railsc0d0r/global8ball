@@ -1,9 +1,6 @@
-window.initGlobal8Ball = (e) ->
-  size =
-    width: 800
-    height: 600
-  game = new Game size, document.getElementById('da-game'), window.assets.images
-  game.start()
+# window for Browser
+# exports for Node
+root = @
 
 class Boot extends Phaser.State
   constructor: (@imageUrlMap)->
@@ -43,3 +40,5 @@ class Game
     @phaserGame = new Phaser.Game @size.width, @size.height, @renderer, @parent
     @phaserGame.state.add 'Boot', new Boot(@imageUrlMap), true
     @phaserGame.state.add 'Preload', new Preload
+
+root.Game = Game

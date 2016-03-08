@@ -4,6 +4,7 @@
   <title>Play!</title>
   <%= javascript_include_tag 'game/phaser.min' %>
   <%= javascript_include_tag 'game/game' %>
+  <%= javascript_include_tag 'game/init' %>
   <script type="text/javascript">
     window.assets = window.assets || {};
     window.assets.images = <%= raw(image_assets.to_json) %>;
