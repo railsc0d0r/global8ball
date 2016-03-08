@@ -1,5 +1,8 @@
 window.initGlobal8Ball = (e) ->
-  game = new Game { width: 800, height: 600}, document.getElementById('da-game'), window.assets.images
+  size =
+    width: 800
+    height: 600
+  game = new Game size, document.getElementById('da-game'), window.assets.images
   game.start()
 
 class Boot extends Phaser.State
