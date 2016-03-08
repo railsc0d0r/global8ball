@@ -31,7 +31,7 @@ class Preload extends Phaser.State
 
 class PlayForBegin extends Phaser.State
 
-class Play extends Phaser.State
+class PlayForVictory extends Phaser.State
 
 class ShowResult extends Phaser.State
 
