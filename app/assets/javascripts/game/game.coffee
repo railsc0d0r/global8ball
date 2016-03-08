@@ -36,15 +36,15 @@ class Play extends Phaser.State
 class ShowResult extends Phaser.State
 
 class Game
-  constructor: (@size, @parent, @imageUrlMap)->
+  constructor: (@config)->
     @renderer = Phaser.AUTO
 
   headless: ->
     @renderer = Phaser.HEADLESS
 
   start: ->
-    @phaserGame = new Phaser.Game @size.width, @size.height, @renderer, @parent
-    @phaserGame.state.add 'Boot', new Boot(@imageUrlMap), true
+    @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
+    @phaserGame.state.add 'Boot', new Boot(@config.imageUrlMap), true
     @phaserGame.state.add 'Preload', new Preload
     @phaserGame.state.add 'PlayForBegin', new PlayForBegin
     @phaserGame.state.add 'Play', new Play
