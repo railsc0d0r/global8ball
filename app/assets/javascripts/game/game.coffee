@@ -30,6 +30,20 @@ class Preload extends Phaser.State
   preload: ->
     preloader = @game.add.sprite 400, 300, 'preloader-bar'
     preloader.anchor.setTo 0.5, 0.5
+    loader = @game.load
+    for key of Preload.IMAGES
+      url = 'game/' + Preload.IMAGES[key]
+      loader.image key, url
+
+  @IMAGES:
+    background: 'background.png'
+    blackBall:  'black_ball.png'
+    crosshair:  'crosshair.png'
+    hole:       'hole.png'
+    redBall:    'red_ball.png'
+    table:      'table_pool_without_background.png'
+    whiteBall:  'white_ball.png'
+    yellowBall: 'yellow_ball.png'
 
 class PlayForBegin extends Phaser.State
 
