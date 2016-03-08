@@ -5,5 +5,5 @@ window.initGlobal8Ball = (e) ->
     size:
       width: 800
       height: 600
-  game = new Game config
+  game = new Game config, { state: 'PlayForBegin' }
   game.start()
