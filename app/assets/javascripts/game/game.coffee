@@ -37,10 +37,7 @@ class ShowResult extends Phaser.State
 
 class Game
   constructor: (@config)->
-    @renderer = Phaser.AUTO
-
-  headless: ->
-    @renderer = Phaser.HEADLESS
+    @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
 
   start: ->
     @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
