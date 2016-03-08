@@ -71,6 +71,7 @@ class Game
   # @data is the current state of the game, i.e. which ball is where, has anybody won, etc.
   constructor: (@config, @data)->
     @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
+    @I18n = root.I18n
 
   start: ->
     @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
