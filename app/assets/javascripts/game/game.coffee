@@ -60,7 +60,7 @@ class Game
     @phaserGame.state.add 'Boot', new Boot(@config.imageUrlMap), true
     @phaserGame.state.add 'Preload', new Preload
     @phaserGame.state.add 'PlayForBegin', new PlayForBegin
-    @phaserGame.state.add 'Play', new Play
+    @phaserGame.state.add 'PlayForVictory', new PlayForVictory
     @phaserGame.state.add 'ShowResult', new ShowResult
 
 root.Game = Game
