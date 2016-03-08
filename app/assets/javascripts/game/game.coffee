@@ -34,7 +34,6 @@ class Preload extends Phaser.State
 
 class Game
   constructor: (@size, @parent, @imageUrlMap)->
-    console.log @imageUrlMap
     @renderer = Phaser.AUTO
 
   headless: ->
