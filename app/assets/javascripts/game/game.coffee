@@ -9,13 +9,24 @@ class Boot extends Phaser.State
   constructor: (@imageUrlMap)->
 
   preload: ->
-    @game.load.image 'preloader-bar', @imageUrlMap['game/preloader_bar.png']
+    @overloadImageLoading()
+    @game.load.image 'preloader-bar', 'game/preloader_bar.png'
 
   create: ->
     @game.state.start 'Preload'
 
+  overloadImageLoading: ->
+    imageUrlMap = @imageUrlMap # For lexical binding
+    load = @game.load
+    oldLoadImage = load.image.bind load
+    load.image = (key, url, overwrite) ->
+      oldLoadImage key, imageUrlMap[url], overwrite
+    oldLoadImages = load.images.bind load
+    load.images = (keys, urls) ->
+      oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
+
 class Preload extends Phaser.State
-  constructor: (@imageUrlMap)->
+  constructor: ->
 
   preload: ->
     preloader = @game.add.sprite 400, 300, 'preloader-bar'
@@ -32,4 +43,4 @@ class Game
   start: ->
     @phaserGame = new Phaser.Game @size.width, @size.height, @renderer, @parent
     @phaserGame.state.add 'Boot', new Boot(@imageUrlMap), true
-    @phaserGame.state.add 'Preload', new Preload(@imageUrlMap)
+    @phaserGame.state.add 'Preload', new Preload
