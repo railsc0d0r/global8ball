@@ -3,10 +3,11 @@
 root = @
 
 class Boot extends Phaser.State
-  constructor: (@imageUrlMap)->
+  constructor: (@g8bGame)->
 
   preload: ->
     @overloadImageLoading()
+    @makeTextsTranslatable()
     @game.load.image 'preloader-bar', 'game/preloader_bar.png'
 
   create: ->
@@ -17,7 +18,7 @@ class Boot extends Phaser.State
   # To avoid using the image URL mapping over and over again, replace image
   # methods on loader with methods doing the mapping before.
   overloadImageLoading: ->
-    imageUrlMap = @imageUrlMap # For lexical binding
+    imageUrlMap = @g8bGame.config.imageUrlMap # For lexical binding
     load = @game.load
     oldLoadImage = load.image.bind load
     load.image = (key, url, overwrite) ->
@@ -25,6 +26,13 @@ class Boot extends Phaser.State
     oldLoadImages = load.images.bind load
     load.images = (keys, urls) ->
       oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
+
+  makeTextsTranslatable: ->
+    game = @g8bGame
+    add = @game.add
+    oldText = add.text.bind add
+    add.text = (x, y, text, style, group) ->
+      oldText x, y, (if typeof text is 'string' then game.t(text) else game.t(text.message, text.context)), style, group
 
 class Preload extends Phaser.State
   constructor: (@g8bGame) ->
@@ -65,6 +73,13 @@ class PlayForBegin extends FullState
 class PlayForVictory extends FullState
 
 class ShowResult extends FullState
+  constructor: (@g8bGame) ->
+
+  create: ->
+    super()
+    @victoryText = @game.add.text @game.width / 2, 10, {message: 'game.show_victory.win', context: { name: @g8bGame.winner() }}
+    @victoryText.anchor.setTo 0.5, 0
+    @victoryText.fill = '#ffffff'
 
 class Game
   # @config is the game config
@@ -73,9 +88,12 @@ class Game
     @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
     @I18n = root.I18n
 
+  t: (args...) ->
+    @I18n.t.apply @I18n, args
+
   start: ->
     @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
-    @phaserGame.state.add 'Boot', new Boot(@config.imageUrlMap), true
+    @phaserGame.state.add 'Boot', new Boot(@), true
     @phaserGame.state.add 'Preload', new Preload @
     @phaserGame.state.add 'PlayForBegin', new PlayForBegin @
     @phaserGame.state.add 'PlayForVictory', new PlayForVictory @
@@ -85,5 +103,8 @@ class Game
     switch @data.state
       when 'PlayForBegin', 'PlayForVictory', 'ShowResult' then @data.state
       else throw new Error "Invalid game state."
+
+  winner: ->
+    "Someone"
 
 root.Game = Game

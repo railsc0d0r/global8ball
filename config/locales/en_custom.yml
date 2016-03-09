@@ -89,3 +89,6 @@ en:
         content: Content
       player:
         card_number: Creditcardnumber
+  game:
+    show_victory:
+      win: '%{name} is the winner!'
