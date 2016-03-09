@@ -6,33 +6,14 @@ class Boot extends Phaser.State
   constructor: (@g8bGame)->
 
   preload: ->
-    @overloadImageLoading()
-    @makeTextsTranslatable()
+    @g8bGame.overloadImageLoading()
+    @g8bGame.makeTextsTranslatable()
     @game.load.image 'preloader-bar', 'game/preloader_bar.png'
 
   create: ->
     @game.state.start 'Preload'
     @game.scale.setGameSize 1200, 800
     @game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
-
-  # To avoid using the image URL mapping over and over again, replace image
-  # methods on loader with methods doing the mapping before.
-  overloadImageLoading: ->
-    imageUrlMap = @g8bGame.config.imageUrlMap # For lexical binding
-    load = @game.load
-    oldLoadImage = load.image.bind load
-    load.image = (key, url, overwrite) ->
-      oldLoadImage key, imageUrlMap[url], overwrite
-    oldLoadImages = load.images.bind load
-    load.images = (keys, urls) ->
-      oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
-
-  makeTextsTranslatable: ->
-    game = @g8bGame
-    add = @game.add
-    oldText = add.text.bind add
-    add.text = (x, y, text, style, group) ->
-      oldText x, y, (if typeof text is 'string' then game.t(text) else game.t(text.message, text.context)), style, group
 
 class Preload extends Phaser.State
   constructor: (@g8bGame) ->
@@ -106,5 +87,24 @@ class Game
 
   winner: ->
     "Someone"
+
+  # To avoid using the image URL mapping over and over again, replace image
+  # methods on loader with methods doing the mapping before.
+  overloadImageLoading: ->
+    imageUrlMap = @config.imageUrlMap # For lexical binding
+    load = @phaserGame.load
+    oldLoadImage = load.image.bind load
+    load.image = (key, url, overwrite) ->
+      oldLoadImage key, imageUrlMap[url], overwrite
+    oldLoadImages = load.images.bind load
+    load.images = (keys, urls) ->
+      oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
+
+  makeTextsTranslatable: ->
+    I18n = @I18n
+    add = @phaserGame.add
+    oldText = add.text.bind add
+    add.text = (x, y, text, style, group) ->
+      oldText x, y, (if typeof text is 'string' then I18n.t(text) else I18n.t(text.message, text.context)), style, group
 
 root.Game = Game
