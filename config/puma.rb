@@ -50,7 +50,7 @@ activate_control_app
 on_worker_boot do
   require "active_record"
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
-  ActiveRecord::Base.establish_connection(YAML.load_file("#{rails_root}/config/database.yml")[rails_env])
+  ActiveRecord::Base.establish_connection(YAML.load(ERB.new(File.read("#{rails_root}/config/database.yml")).result)[rails_env])
 end
 
 # Allow puma to be restarted by `rails restart` command.
