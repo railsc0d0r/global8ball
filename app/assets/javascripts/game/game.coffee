@@ -54,8 +54,6 @@ class PlayForBegin extends FullState
 class PlayForVictory extends FullState
 
 class ShowResult extends FullState
-  constructor: (@g8bGame) ->
-
   create: ->
     super()
     @victoryText = @game.add.text @game.width / 2, 10, {message: 'game.show_victory.win', context: { name: @g8bGame.winner() }}
