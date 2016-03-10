@@ -48,6 +48,38 @@ class FullState extends Phaser.State
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
+    @createHoles()
+
+  createHoles: ->
+    holesData = @holesData()
+    @holes = (@createHole key, holesData[key] for key of holesData)
+
+  createHole: (key, holeData) ->
+    sprite = @game.add.sprite holeData.pos.x, holeData.pos.y, 'hole'
+    sprite.anchor.setTo 0.5, 0.5
+    new Hole key, sprite
+
+  holesData: () ->
+    center = new Phaser.Point @game.width / 2, @game.height / 2
+    xDiff = 480
+    yDiff = 235
+    yCenterDiff = 5
+    # Minor corrections because table is slightly asymmetrical.
+    leftTop:
+      pos: center.clone().add -xDiff, -yDiff
+    centerTop:
+      pos: center.clone().add 0, -yDiff - yCenterDiff
+    rightTop:
+      pos: center.clone().add xDiff, -yDiff
+    leftBottom:
+      pos: center.clone().add -xDiff, yDiff - 5
+    centerBottom:
+      pos: center.clone().add 0, yDiff + yCenterDiff
+    rightBottom:
+      pos: center.clone().add xDiff, yDiff - 7
+
+class Hole
+  constructor: (@key, @sprite) ->
 
 class PlayForBegin extends FullState
 
