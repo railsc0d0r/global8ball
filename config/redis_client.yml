@@ -11,12 +11,12 @@ default: &default
 
 production:
   <<: *default
-  database: 0
+  database: 1
 
 development:
   <<: *default
-  database: 1
+  database: 2
 
 test: &test
   <<: *default
-  database: <%= 2 + (ENV['TEST_ENV_NUMBER'].to_i || 0) %>
+  database: <%= 3 + (ENV['TEST_ENV_NUMBER'].to_i || 0) %>
