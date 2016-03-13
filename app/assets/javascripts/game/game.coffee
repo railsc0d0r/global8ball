@@ -155,4 +155,9 @@ class Game
     add.text = (x, y, text, style, group) ->
       oldText x, y, (if typeof text is 'string' then I18n.t(text) else I18n.t(text.message, text.context)), style, group
 
+class Game.Overload
+  overload: (context, methodName, newMethodFactory) ->
+    oldMethod = context[methodName].bind context
+    context[methodName] = newMethodFactory oldMethod
+
 root.Game = Game
