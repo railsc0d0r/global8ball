@@ -174,4 +174,25 @@ class Game.Overload
     oldMethod = context[methodName].bind context
     context[methodName] = newMethodFactory oldMethod
 
+class Game.PositionTranslation
+  constructor: (@first, @second) ->
+    @firstWidth = @first.right - @first.left
+    @firstHeight = @first.bottom - @first.top
+    @secondWidth = @second.right - @second.left
+    @secondHeight = @second.bottom - @second.top
+    @toFactor =
+      horizontal: @secondWidth / @firstWidth
+      vertical: @secondHeight / @firstHeight
+    @fromFactor =
+      horizontal: 1 / @toFactor.horizontal
+      vertical: 1 / @toFactor.vertical
+
+  to: (point) ->
+    x: @second.left + (point.x - @first.left) * @toFactor.horizontal
+    y: @second.top + (point.y - @first.top) * @toFactor.vertical
+
+  from: (point) ->
+    x: @first.left + (point.x - @second.left)  * @fromFactor.horizontal
+    y: @first.top + (point.y - @second.top) * @fromFactor.vertical
+
 root.Game = Game
