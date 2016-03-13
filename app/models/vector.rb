@@ -2,7 +2,7 @@ class Vector < Ohm::Model
   include Ohm::Timestamps
   include Ohm::DataTypes
 
-  reference :event, :Event
+  reference :shot, :Shot
 
   attribute :start_x, Type::Float
   attribute :start_y, Type::Float
