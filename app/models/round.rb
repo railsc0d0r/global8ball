@@ -3,5 +3,6 @@ class Round < Ohm::Model
   include Ohm::DataTypes
 
   reference :game, :Game
-  collection :events, :Event
+  collection :balls, :Ball
+  collection :shots, :Shot
 end
