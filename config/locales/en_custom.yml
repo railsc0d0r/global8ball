@@ -100,3 +100,6 @@ en:
   game:
     show_victory:
       win: '%{name} is the winner!'
+    player_info:
+      you: 'You: %{name}'
+      enemy: 'Opponent: %{name}'

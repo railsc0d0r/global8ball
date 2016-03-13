@@ -52,6 +52,7 @@ class FullState extends Phaser.State
     @table.anchor.setTo 0.5, 0.5
     @createHoles()
     @createBalls()
+    @createPlayerInfos()
 
   createHoles: ->
     holesData = @holesData()
@@ -88,6 +89,17 @@ class FullState extends Phaser.State
     sprite = @game.add.sprite ballData.pos.x, ballData.pos.y, ballData.color + 'Ball'
     sprite.anchor.setTo 0.5, 0.5
     new Ball ballData.color, sprite
+
+  createPlayerInfos: () ->
+    you = @game.add.text 20, 30, {message: 'game.player_info.you', context: { name: @g8bGame.you().name } }
+    you.anchor.setTo 0, 0
+    you.fill = '#ffffff'
+    enemy = @game.add.text @game.width - 20, 30, {message: 'game.player_info.enemy', context: { name: @g8bGame.enemy().name } }
+    enemy.anchor.setTo 1, 0
+    enemy.fill = '#ffffff'
+    @players =
+      you: you
+      enemy: enemy
 
 class Hole
   constructor: (@key, @sprite) ->
@@ -135,6 +147,12 @@ class Game
 
   balls: ->
     @data.balls ? []
+
+  enemy: ->
+    @data.players.enemy
+
+  you: ->
+    @data.players.you
 
   # To avoid using the image URL mapping over and over again, replace image
   # methods on loader with methods doing the mapping before.

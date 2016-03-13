@@ -10,6 +10,11 @@ window.initGlobal8Ball = (e) ->
       width: 800
       height: 600
   gameState =
+    players:
+      you:
+        name: "David"
+      enemy:
+        name: "Goliath"
     state: 'ShowResult'
     balls: [
       {
