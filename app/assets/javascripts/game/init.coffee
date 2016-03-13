@@ -1,5 +1,7 @@
 #= require game/game
 
+# Currently mostly for testing purposes.
+# The real game will take data and events from the server.
 window.initGlobal8Ball = (e) ->
   config =
     imageUrlMap: window.assets.images
