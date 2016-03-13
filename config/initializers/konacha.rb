@@ -1,4 +1,7 @@
 if defined?(Konacha)
+  # Avoids tilt autoloading tilt/coffee in a 'non-thread-safe way'.
+  require 'tilt/coffee'
+
   Konacha.configure do |config|
     config.spec_dir     = "spec/javascripts"
     config.spec_matcher = /_spec\.|_test\./
