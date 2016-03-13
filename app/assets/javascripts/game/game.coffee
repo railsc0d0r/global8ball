@@ -86,7 +86,8 @@ class FullState extends Phaser.State
     @balls = @g8bGame.balls().map (ballData) => @createBall ballData
 
   createBall: (ballData) ->
-    sprite = @game.add.sprite ballData.pos.x, ballData.pos.y, ballData.color + 'Ball'
+    pos = @g8bGame.translatePosition ballData.pos
+    sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
     sprite.anchor.setTo 0.5, 0.5
     new Ball ballData.color, sprite
 
@@ -125,6 +126,23 @@ class Game
     @overload = new Game.Overload
     @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
     @I18n = root.I18n
+    @createPositionTranslation()
+
+  createPositionTranslation: ->
+    first =
+      left: -100
+      right: 100
+      top: -50
+      bottom: 50
+    second =
+      left: 120
+      right: 1080
+      top: 170
+      bottom: 630
+    @positionTranslation = new Game.PositionTranslation first, second
+
+  translatePosition: (point) ->
+    @positionTranslation.to point
 
   t: (args...) ->
     @I18n.t.apply @I18n, args
@@ -174,6 +192,7 @@ class Game.Overload
     oldMethod = context[methodName].bind context
     context[methodName] = newMethodFactory oldMethod
 
+# Translates coordinates from one coordinate system to another and back.
 class Game.PositionTranslation
   constructor: (@first, @second) ->
     @firstWidth = @first.right - @first.left

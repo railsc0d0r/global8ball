@@ -15,23 +15,17 @@ window.initGlobal8Ball = (e) ->
         name: "David"
       enemy:
         name: "Goliath"
-    state: 'ShowResult'
+    state: 'PlayForBegin'
     balls: [
       {
-        color: 'black'
-        pos: x: 200, y: 300
-      },
-      {
-        color: 'red'
-        pos: x: 250, y: 300
-      },
-      {
+        id: 'you'
         color: 'white'
-        pos: x: 300, y: 300
+        pos: x: -75, y: -25
       },
       {
-        color: 'yellow'
-        pos: x: 350, y: 300
+        id: 'enemy'
+        color: 'white'
+        pos: x: -75, y: 25
       }
     ]
   game = new Game config, gameState
