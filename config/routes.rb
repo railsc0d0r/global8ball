@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  # use this route only to simplify development of the game
   get 'game' => 'games#show', as: :game
+
+  # mount websocket-server here to make use of racks ability to let the middleware to be highjacked
+  mount ActionCable.server => '/cable'
 
   # scope the backend to provide deeplinks for ember-app
   scope '/backend' do
