@@ -110,6 +110,7 @@ class Game
   # @config is the game config
   # @data is the current state of the game, i.e. which ball is where, has anybody won, etc.
   constructor: (@config, @data)->
+    @overload = new Game.Overload
     @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
     @I18n = root.I18n
 
@@ -139,21 +140,15 @@ class Game
   # methods on loader with methods doing the mapping before.
   overloadImageLoading: ->
     imageUrlMap = @config.imageUrlMap # For lexical binding
-    load = @phaserGame.load
-    oldLoadImage = load.image.bind load
-    load.image = (key, url, overwrite) ->
-      oldLoadImage key, imageUrlMap[url], overwrite
-    oldLoadImages = load.images.bind load
-    load.images = (keys, urls) ->
-      oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
+    @overload.overload @phaserGame.load, 'image', (oldLoadImage) -> (key, url, overwrite) -> oldLoadImage key, imageUrlMap[url], overwrite
+    @overload.overload @phaserGame.load, 'images', (oldLoadImages) -> (key, urls) -> oldLoadImages keys, urls.map (url) -> imageUrlMap[url]
 
   # For easier use of translations, overload Phaser text method.
   makeTextsTranslatable: ->
     I18n = @I18n
-    add = @phaserGame.add
-    oldText = add.text.bind add
-    add.text = (x, y, text, style, group) ->
-      oldText x, y, (if typeof text is 'string' then I18n.t(text) else I18n.t(text.message, text.context)), style, group
+    @overload.overload @phaserGame.add, 'text', (oldAddText) ->
+      (x, y, text, style, group) ->
+        oldAddText x, y, (if typeof text is 'string' then I18n.t(text) else I18n.t(text.message, text.context)), style, group
 
 class Game.Overload
   overload: (context, methodName, newMethodFactory) ->
