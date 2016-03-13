@@ -1,7 +1,4 @@
-class Round < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-
+class Round < OhmBaseModel
   reference :game, :Game
   collection :balls, :Ball
   collection :shots, :Shot

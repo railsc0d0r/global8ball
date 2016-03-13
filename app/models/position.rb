@@ -1,7 +1,4 @@
-class Position < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-
+class Position < OhmBaseModel
   reference :shot, :Shot
   reference :ball, :Ball
   attribute :x, Type::Float

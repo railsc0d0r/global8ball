@@ -1,8 +1,4 @@
-class Ball < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-  include Ohm::Callbacks
-
+class Ball < OhmBaseModel
   reference :round, :Round
   attribute :type
   attribute :owner_id, Type::Integer

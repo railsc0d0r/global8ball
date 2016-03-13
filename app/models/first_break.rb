@@ -1,6 +1,3 @@
-class FirstBreak < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-
+class FirstBreak < OhmBaseModel
   reference :game, :Game
 end

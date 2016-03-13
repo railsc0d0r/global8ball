@@ -1,8 +1,4 @@
-class Shot < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-  include Ohm::Callbacks
-
+class Shot < OhmBaseModel
   reference :round, :Round
   collection :positions, :Position
   collection :collisions, :Collision

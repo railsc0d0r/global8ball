@@ -1,7 +1,4 @@
-class Vector < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-
+class Vector < OhmBaseModel
   reference :shot, :Shot
 
   attribute :start_x, Type::Float

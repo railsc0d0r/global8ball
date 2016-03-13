@@ -1,8 +1,4 @@
-class Game < Ohm::Model
-  include Ohm::Timestamps
-  include Ohm::DataTypes
-  include Ohm::Callbacks
-
+class Game < OhmBaseModel
   collection :rounds, :Round
 
   attribute :player_1_id, Type::Integer
