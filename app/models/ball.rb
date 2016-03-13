@@ -5,7 +5,7 @@ class Ball < Ohm::Model
 
   reference :round, :Round
   attribute :type
-  attribute :owner_id , Type::Integer
+  attribute :owner_id, Type::Integer
 
   def before_save
     validate_presence_of_type
