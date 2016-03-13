@@ -130,6 +130,7 @@ class Game
     load.images = (keys, urls) ->
       oldLoadImage keys, urls.map (url) -> imageUrlMap[url]
 
+  # For easier use of translations, overload Phaser text method.
   makeTextsTranslatable: ->
     I18n = @I18n
     add = @phaserGame.add
