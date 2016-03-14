@@ -1,6 +1,7 @@
 <%= render_ember_app :frontend do |head| %>
   <% head.append do %>
     <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
     <link href='https://fonts.googleapis.com/css?family=Oxygen:300,700&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag 'application' %>
     <%= tinymce_assets %>
