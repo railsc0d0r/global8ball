@@ -85,6 +85,8 @@ class PlayersController < ApplicationController
 
       result = {
         card_number: params_hash.delete(:card_number),
+        id_type: params_hash.delete(:id_type),
+        id_number: params_hash.delete(:id_number),
         user_attributes: fetch_user_attributes(params_hash),
         person_attributes: fetch_person_attributes(params_hash)
       }
