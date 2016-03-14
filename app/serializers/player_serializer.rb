@@ -19,7 +19,10 @@ class PlayerSerializer < ActiveModel::Serializer
              :zip,
              :city,
              :region,
-             :country
+             :country,
+             :id_type,
+             :id_number
+
   def username
     object.user.username
   end
