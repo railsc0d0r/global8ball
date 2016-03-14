@@ -35,7 +35,10 @@ en:
     brand: 'global8ball.com'
     administration: 'Administration'
   login:
-     failed: 'Login failed'
+    failed: 'Login failed'
+  signup:
+    passport: Passport
+    id-card: ID-Card
   form:
     enter_attribute: "Enter %{name}"
     select_attribute: "Select %{name}"
@@ -89,6 +92,8 @@ en:
         content: Content
       player:
         card_number: Creditcardnumber
+        id_type: 'Type of ID-Document'
+        id_number: 'Number of ID-Document'
   game:
     show_victory:
       win: '%{name} is the winner!'
