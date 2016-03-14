@@ -9,6 +9,8 @@ class Player < ActiveRecord::Base
 
   after_rollback :clean_up_associations, on: :create
 
+  validates_presence_of :id_number, :id_type
+
   protected
 
   # called when saving has failed for some reason, but some of the associated
