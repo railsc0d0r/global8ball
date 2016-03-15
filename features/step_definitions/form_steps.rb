@@ -43,6 +43,14 @@ Wenn(/^ich "(.*?)" als Land auswähle\.$/) do |country|
   steps %{ Wenn ich "#{country}" als "country" auswähle. }
 end
 
+Wenn(/^ich "([^"]*)" als ID\-Typ auswähle\.$/) do |id_type|
+  steps %{ Wenn ich "#{id_type}" als "id_type" auswähle. }
+end
+
+Wenn(/^ich "([^"]*)" als ID\-Nummer eingebe\.$/) do |id_number|
+  steps %{ Wenn ich "#{id_number}" als "id_number" eingebe. }
+end
+
 Wenn(/^ich "(.*?)" als Überschrift eingebe\.$/) do |headline|
   steps %{ Wenn ich "#{headline}" als "headline" eingebe. }
 end
