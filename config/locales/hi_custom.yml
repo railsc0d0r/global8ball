@@ -15,6 +15,9 @@ hi:
     administration: 'Administration'
   login:
      failed: 'Login failed'
+  signup:
+    passport: पासपोर्ट
+    id-card: आईडी कार्ड
   form:
     enter_attribute: "Enter %{name}"
     select_attribute: "Select %{name}"
@@ -68,3 +71,8 @@ hi:
         content: Content
       player:
         card_number: क्रेडिट कार्ड नंबर
+        id_type: 'आईडी दस्तावेज़ के प्रकार'
+        id_number: 'आईडी दस्तावेज़ की संख्या'
+  game:
+    show_victory:
+      win: '%{name} विजेता है!'

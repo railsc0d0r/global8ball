@@ -15,6 +15,9 @@ es:
     administration: 'administración'
   login:
      failed: 'Error de inicio de sesion'
+  signup:
+    passport: pasaporte
+    id-card: tarjeta de identificación
   form:
     enter_attribute: "Escriba %{name}"
     select_attribute: "Seleccionar %{name}"
@@ -68,3 +71,8 @@ es:
         content: Contenido
       player:
         card_number: Número de tarjeta de crédito
+        id_type: 'Tipo de Identificación-documento'
+        id_number: 'Número de Identificación-documento'
+  game:
+    show_victory:
+      win: '%{name} es el ganador!'

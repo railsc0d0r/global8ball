@@ -15,6 +15,9 @@ ru:
     administration: 'Aдминистрация'
   login:
      failed: 'Ошибка входа'
+  signup:
+    passport: заграничный пасспорт
+    id-card: идентификационная карта
   form:
     enter_attribute: "Введите %{name}"
     select_attribute: "Bыбрать %{name}"
@@ -68,3 +71,8 @@ ru:
         content: содержание
       player:
         card_number: Номер кредитной карты
+        id_type: 'тип Ид документа'
+        id_number: 'номер удостоверения личности-документа'
+  game:
+    show_victory:
+      win: '%{name} является победителем!'

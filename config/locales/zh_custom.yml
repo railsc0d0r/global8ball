@@ -15,6 +15,9 @@ zh:
     administration: 'Administration'
   login:
      failed: 'Login failed'
+  signup:
+    passport: 护照
+    id-card: 识别卡
   form:
     enter_attribute: "Enter %{name}"
     select_attribute: "Select %{name}"
@@ -68,3 +71,8 @@ zh:
         content: Content
       player:
         card_number: Creditcardnumber
+        id_type: '识别文档类型'
+        id_number: '识别文档的数量'
+  game:
+    show_victory:
+      win: '%{name} 是赢家!'

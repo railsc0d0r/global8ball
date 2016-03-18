@@ -15,6 +15,9 @@ de:
     administration: 'Verwaltung'
   login:
      failed: 'Login fehlgeschlagen'
+  signup:
+    passport: Pass
+    id-card: Ausweis
   form:
     enter_attribute: "%{name} eingeben"
     select_attribute: "%{name} auswählen"
@@ -68,3 +71,8 @@ de:
         content: Inhalt
       player:
         card_number: Kreditkartennummer
+        id_type: 'Type of ID-Document'
+        id_number: 'Number of ID-Document'
+  game:
+    show_victory:
+      win: '%{name} ist der Gewinner!'
