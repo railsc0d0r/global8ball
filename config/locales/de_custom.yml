@@ -71,8 +71,8 @@ de:
         content: Inhalt
       player:
         card_number: Kreditkartennummer
-        id_type: 'Type of ID-Document'
-        id_number: 'Number of ID-Document'
+        id_type: 'Typ des ID-Dokumentes'
+        id_number: 'Dokument-Nummer'
   game:
     show_victory:
       win: '%{name} ist der Gewinner!'
