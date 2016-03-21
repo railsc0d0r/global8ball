@@ -47,6 +47,8 @@ class FullState extends Phaser.State
   constructor: (@g8bGame) ->
 
   create: ->
+    @physics.startSystem Phaser.Physics.P2JS
+    @game.physics.p2.restitution = 0.99999
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
     @tableFloor.anchor.setTo 0.5, 0.5
@@ -92,7 +94,8 @@ class FullState extends Phaser.State
     sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
     sprite.anchor.setTo 0.5, 0.5
     ball = new Ball ballData.color, sprite
-    @game.physics.enable ball, Phaser.Physics.P2
+    @game.physics.enable sprite, Phaser.Physics.P2
+    @game.physics.p2.enable sprite
     ball
 
   createPlayerInfos: () ->
