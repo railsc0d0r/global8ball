@@ -13,6 +13,7 @@ class Boot extends Phaser.State
     @game.load.image 'preloader-bar', 'game/preloader_bar.png'
 
   create: ->
+    @game.stage.backgroundColor = '#000000'
     @game.state.start 'Preload'
     @game.scale.setGameSize 1200, 800
     @game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL
@@ -110,27 +111,77 @@ class Ball
   constructor: (@color, @sprite) ->
 
 class PlayState extends FullState
-  constructor: (g8bGame) ->
+  constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
+    @shotLine = null
 
   create: ->
     super()
-    @game.input.onDown.add @pointerDown
-    @game.input.onUp.add @pointerUp
-    @game.input.addMoveCallback @pointerMove
+    if @hasUi
+      @game.input.onDown.add @pointerDown
+      @game.input.onUp.add @pointerUp
+      @game.input.addMoveCallback @pointerMove
+      @shotBmd = @game.make.bitmapData @game.width, @game.height
+      @shotBmd.addToWorld()
 
   update: ->
     super()
+    if @shotLine
+      @shotLine.draw @shotBmd
 
   pointerDown: (event, rawEvent) =>
+    if @canShoot()
+      @shotLine = new ShotLine x: event.x, y: event.y
 
   pointerUp: (event, rawEvent) =>
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
-      0 # Do nothing
+      @releaseShot()
+
+  releaseShot: ->
+    if @shotLine
+      @shotBmd.cls()
+      @shotLine = null
 
   pointerMove: (pointer, x, y, down) =>
+    if @shotLine
+      @shotLine.setEnd x: x, y: y
+
+  canShoot: ->
+    @shotLine is null
 
 class PlayForBegin extends PlayState
+  constructor: (g8bGame, @eventSource) ->
+    super g8bGame
+
+  create: ->
+    super()
+    @youShot = @g8bGame.data.players.you.shot
+    @enemyShot = @g8bGame.data.players.enemy.shot
+
+  update: ->
+    super()
+    if @eventSource.youShot() and not @youShot
+      @youShot = true
+    if @eventSource.enemyShot() and not @enemyShot
+      @enemyShot = true
+
+class EventSource
+  youShot: () ->
+    false
+
+  enemyShot: () ->
+    false
+
+class ShotLine
+  constructor: (@start) ->
+    @end = x: @start.x, y: @start.y
+
+  draw: (bitmapData) ->
+    bitmapData.cls()
+    bitmapData.line @start.x, @start.y, @end.x, @end.y, '#ff0000', 5
+
+  setEnd: (point) ->
+    @end = x: point.x, y: point.y
 
 class PlayForVictory extends PlayState
 
@@ -166,6 +217,9 @@ class Game
   translatePosition: (point) ->
     @positionTranslation.to point
 
+  translatePositionBack: (point) ->
+    @positionTranslation.from point
+
   t: (args...) ->
     @I18n.t.apply @I18n, args
 
@@ -173,7 +227,7 @@ class Game
     @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
     @phaserGame.state.add 'Boot', new Boot(@), true
     @phaserGame.state.add 'Preload', new Preload @
-    @phaserGame.state.add 'PlayForBegin', new PlayForBegin @
+    @phaserGame.state.add 'PlayForBegin', new PlayForBegin @, new EventSource
     @phaserGame.state.add 'PlayForVictory', new PlayForVictory @
     @phaserGame.state.add 'ShowResult', new ShowResult @
 

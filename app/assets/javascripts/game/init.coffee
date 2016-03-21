@@ -13,8 +13,10 @@ window.initGlobal8Ball = (e) ->
     players:
       you:
         name: "David"
+        shot: false
       enemy:
         name: "Goliath"
+        shot: false
     state: 'PlayForBegin'
     balls: [
       {
