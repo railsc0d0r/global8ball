@@ -127,3 +127,6 @@ gem "paperclip", "~> 4.3"
 
 # We want to store stuff app-wide per request, but hesitate to use Thread.current
 gem 'request_store'
+
+# We are using figaro to configure our app the easy way
+gem 'figaro'
