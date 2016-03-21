@@ -46,6 +46,7 @@ class FullState extends Phaser.State
   constructor: (@g8bGame) ->
 
   create: ->
+    @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
@@ -108,9 +109,27 @@ class Hole
 class Ball
   constructor: (@color, @sprite) ->
 
-class PlayForBegin extends FullState
+class PlayState extends FullState
+  create: ->
+    super()
+    @game.input.onDown.add @pointerDown
+    @game.input.onUp.add @pointerUp
+    @game.input.addMoveCallback @pointerMove
 
-class PlayForVictory extends FullState
+  update: ->
+    super()
+
+  pointerDown: (event, rawEvent) =>
+
+  pointerUp: (event, rawEvent) =>
+    if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
+      0 # Do nothing
+
+  pointerMove: (pointer, x, y, down) =>
+
+class PlayForBegin extends PlayState
+
+class PlayForVictory extends PlayState
 
 class ShowResult extends FullState
   create: ->
