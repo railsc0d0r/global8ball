@@ -91,7 +91,9 @@ class FullState extends Phaser.State
     pos = @g8bGame.translatePosition ballData.pos
     sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
     sprite.anchor.setTo 0.5, 0.5
-    new Ball ballData.color, sprite
+    ball = new Ball ballData.color, sprite
+    @game.physics.enable ball, Phaser.Physics.P2
+    ball
 
   createPlayerInfos: () ->
     you = @game.add.text 20, 30, {message: 'game.player_info.you', context: { name: @g8bGame.you().name } }
