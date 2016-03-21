@@ -4,6 +4,9 @@
 # exports for Node
 root = @
 
+FORCE_FACTOR = 0.1
+MAX_FORCE = 100
+
 class Boot extends Phaser.State
   constructor: (@g8bGame)->
 
@@ -93,7 +96,7 @@ class FullState extends Phaser.State
     pos = @g8bGame.translatePosition ballData.pos
     sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
     sprite.anchor.setTo 0.5, 0.5
-    ball = new Ball ballData.color, sprite
+    ball = new Ball ballData, sprite
     @game.physics.enable sprite, Phaser.Physics.P2
     @game.physics.p2.enable sprite
     ball
@@ -113,7 +116,7 @@ class Hole
   constructor: (@key, @sprite) ->
 
 class Ball
-  constructor: (@color, @sprite) ->
+  constructor: (@data, @sprite) ->
 
 class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
@@ -177,6 +180,13 @@ class PlayForBegin extends PlayState
   shoot: (start, end) =>
     rs = @g8bGame.translatePositionBack start
     re = @g8bGame.translatePositionBack end
+    dx = re.x - rs.x
+    dy = re.y - rs.y
+    abs = Math.sqrt dx*dx + dy*dy
+    f = if abs > MAX_FORCE then MAX_FORCE / abs else 1
+    dx *= FORCE_FACTOR / f
+    dy *= FORCE_FACTOR / f
+    @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) -> ball.sprite.body.applyImpulse [-dx, -dy]
 
 class EventSource
   youShot: () ->
