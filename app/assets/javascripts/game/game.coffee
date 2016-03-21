@@ -110,6 +110,9 @@ class Ball
   constructor: (@color, @sprite) ->
 
 class PlayState extends FullState
+  constructor: (g8bGame) ->
+    super(g8bGame)
+
   create: ->
     super()
     @game.input.onDown.add @pointerDown
