@@ -114,6 +114,7 @@ class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
     @shotLine = null
+    @shot = new Phaser.Signal
 
   create: ->
     super()
@@ -140,7 +141,9 @@ class PlayState extends FullState
   releaseShot: ->
     if @shotLine
       @shotBmd.cls()
+      shot = @shotLine
       @shotLine = null
+      @shot.dispatch shot.start, shot.end
 
   pointerMove: (pointer, x, y, down) =>
     if @shotLine
@@ -152,6 +155,7 @@ class PlayState extends FullState
 class PlayForBegin extends PlayState
   constructor: (g8bGame, @eventSource) ->
     super g8bGame
+    @shot.add @shoot
 
   create: ->
     super()
@@ -164,6 +168,10 @@ class PlayForBegin extends PlayState
       @youShot = true
     if @eventSource.enemyShot() and not @enemyShot
       @enemyShot = true
+
+  shoot: (start, end) =>
+    rs = @g8bGame.translatePositionBack start
+    re = @g8bGame.translatePositionBack end
 
 class EventSource
   youShot: () ->
