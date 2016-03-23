@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def store_request_details
     RequestStore.store[:protocol] = request.protocol
-    RequestStore.store[:host] = request.host
+    RequestStore.store[:host] = request.host == 'localhost' ? request.host : ENV['domain']
     RequestStore.store[:port] = request.port
   end
   
