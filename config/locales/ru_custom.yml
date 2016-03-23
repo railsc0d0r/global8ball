@@ -14,7 +14,8 @@ ru:
     brand: 'global8ball.com'
     administration: 'Aдминистрация'
   login:
-     failed: 'Ошибка входа'
+    failed: 'Ошибка входа'
+    confirmation_failed: 'подтверждение не удалось'
   signup:
     passport: заграничный пасспорт
     id-card: идентификационная карта

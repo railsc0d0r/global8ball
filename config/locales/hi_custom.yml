@@ -14,7 +14,8 @@ hi:
     brand: 'global8ball.com'
     administration: 'Administration'
   login:
-     failed: 'Login failed'
+    failed: 'लॉगिन विफल'
+    confirmation_failed: 'पुष्टि विफल रहा है'
   signup:
     passport: पासपोर्ट
     id-card: आईडी कार्ड

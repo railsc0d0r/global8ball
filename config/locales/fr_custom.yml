@@ -14,7 +14,8 @@ fr:
     brand: 'global8ball.com'
     administration: 'Administration'
   login:
-     failed: 'échec de la connexion'
+    failed: 'échec de la connexion'
+    confirmation_failed: 'confirmation a échoué'
   signup:
     passport: passeport
     id-card: carte d'identité

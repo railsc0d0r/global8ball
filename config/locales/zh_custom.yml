@@ -14,7 +14,8 @@ zh:
     brand: 'global8ball.com'
     administration: 'Administration'
   login:
-     failed: 'Login failed'
+    failed: '登录失败'
+    confirmation_failed: '确认失败'
   signup:
     passport: 护照
     id-card: 识别卡

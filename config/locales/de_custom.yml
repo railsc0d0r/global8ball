@@ -14,7 +14,8 @@ de:
     brand: 'global8ball.com'
     administration: 'Verwaltung'
   login:
-     failed: 'Login fehlgeschlagen'
+    failed: 'Login fehlgeschlagen'
+    confirmation_failed: 'Bestätigung fehlgeschlagen'
   signup:
     passport: Pass
     id-card: Ausweis

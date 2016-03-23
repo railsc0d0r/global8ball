@@ -36,6 +36,7 @@ en:
     administration: 'Administration'
   login:
     failed: 'Login failed'
+    confirmation_failed: 'Confirmation failed'
   signup:
     passport: Passport
     id-card: ID-Card

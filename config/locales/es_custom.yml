@@ -14,7 +14,8 @@ es:
     brand: 'global8ball.com'
     administration: 'administración'
   login:
-     failed: 'Error de inicio de sesion'
+    failed: 'Error de inicio de sesion'
+    confirmation_failed: 'Confirmación falló'
   signup:
     passport: pasaporte
     id-card: tarjeta de identificación
