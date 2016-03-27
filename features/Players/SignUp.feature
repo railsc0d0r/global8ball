@@ -36,6 +36,16 @@ Funktionalität: Spieler Registrierung
 
   Szenario: Einen Spieler registrieren schlägt fehl
     Wenn ich den "SIGNUP"-Link klicke.
+    Und ich "" als Nachname eingebe.
+    Und ich "" als Vorname eingebe.
+    Und ich "" als Email eingebe.
+    Und ich "" als Strasse eingebe.
+    Und ich "" als Strassenzusatz eingebe.
+    Und ich "" als Postleitzahl eingebe.
+    Und ich "" als Stadt eingebe.
+    Und ich "" als Kreditkartennummer eingebe.
+    Und ich "" als ID-Nummer eingebe.
+    Und ich "" als Geburtsdatum eingebe.
     Und ich die Terms of Use akzeptiere.
     Und ich bestätige, das ich die Datenschutzpolicy gelesen habe.
     Und ich bestätige, das ich die Regeln des Games gelesen habe.
@@ -44,8 +54,8 @@ Funktionalität: Spieler Registrierung
     Und möchte ich "Email can't be blank" sehen.
     Und möchte ich "Firstname can't be blank" sehen.
     Und möchte ich "Lastname can't be blank" sehen.
-    Und möchte ich "City can't be blank" sehen.
-    Und möchte ich "Country can't be blank" sehen.
+    Und möchte ich "city can't be blank" sehen.
+    Und möchte ich "country can't be blank" sehen.
     Und möchte ich "Type of ID-Document can't be blank" sehen.
     Und möchte ich "Number of ID-Document can't be blank" sehen.
 
