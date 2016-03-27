@@ -34,6 +34,21 @@ Funktionalität: Spieler Registrierung
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
     Und möchte ich eine Email mit dem Betreff "Confirmation instructions" bekommen haben.
 
+  Szenario: Einen Spieler registrieren schlägt fehl
+    Wenn ich den "SIGNUP"-Link klicke.
+    Und ich die Terms of Use akzeptiere.
+    Und ich bestätige, das ich die Datenschutzpolicy gelesen habe.
+    Und ich bestätige, das ich die Regeln des Games gelesen habe.
+    Und ich den "Save"-Button klicke.
+    Dann möchte ich "Signing up player failed:" sehen.
+    Und möchte ich "Email can't be blank" sehen.
+    Und möchte ich "Firstname can't be blank" sehen.
+    Und möchte ich "Lastname can't be blank" sehen.
+    Und möchte ich "City can't be blank" sehen.
+    Und möchte ich "Country can't be blank" sehen.
+    Und möchte ich "Type of ID-Document can't be blank" sehen.
+    Und möchte ich "Number of ID-Document can't be blank" sehen.
+
   Szenario: Bestätigen eines Spielers durch Token und Setzen des Passworts
     Angenommen ein neu registrierter Spieler.
     Wenn dieser Spieler den Bestätigungslink in seiner Email klickt.
