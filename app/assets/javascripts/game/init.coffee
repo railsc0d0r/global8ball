@@ -1,3 +1,4 @@
+#= require game/Game
 #= require game/game
 
 # Currently mostly for testing purposes.
@@ -30,5 +31,5 @@ window.initGlobal8Ball = (e) ->
         pos: x: -75, y: 25
       }
     ]
-  game = new Game config, gameState
+  game = new global8ball.Game config, gameState
   game.start()
