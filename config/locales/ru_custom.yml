@@ -27,6 +27,7 @@ ru:
     confirm: 'удостоверять'
     read: "Я прочитал %{object}"
     accepted: "Я прочел и принял %{object}"
+    required_fields: '* Поля, отмеченные требуют ввода.'
   activerecord:
     models:
       employee:
@@ -61,7 +62,6 @@ ru:
         lastname: 'фамилия'
         name: 'имя'
         email: 'е-мейл'
-        date_of_birth: 'день рождения'
       address:
         street: 'улица'
         street2: 'дополнительная информация'
@@ -72,6 +72,7 @@ ru:
         content: содержание
       player:
         card_number: Номер кредитной карты
+        date_of_birth: 'день рождения'
         id_type: 'тип Ид документа'
         id_number: 'номер удостоверения личности-документа'
   game:

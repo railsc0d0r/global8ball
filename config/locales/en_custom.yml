@@ -48,6 +48,7 @@ en:
     confirm: 'Confirm'
     read: "I have read the %{object}"
     accepted: "I have read and accepted the %{object}"
+    required_fields: '* Fields marked require input.'
   activerecord:
     models:
       employee:
@@ -82,17 +83,18 @@ en:
         lastname: 'Lastname'
         name: 'Name'
         email: 'Email'
-        date_of_birth: 'Date of Birth'
       address:
         street: 'Street'
         street2: 'Additional information'
         zip: 'Zip-code'
         city: 'City'
+        country: 'Country'
       content:
         headline: Headline
         content: Content
       player:
         card_number: Creditcardnumber
+        date_of_birth: 'Date of Birth'
         id_type: 'Type of ID-Document'
         id_number: 'Number of ID-Document'
   game:

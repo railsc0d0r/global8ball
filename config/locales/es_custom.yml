@@ -27,6 +27,7 @@ es:
     confirm: Confirmar'
     read: "He leído las %{object}"
     accepted: "He leído y aceptado las %{object}"
+    required_fields: '* Los campos marcados requerir la entrada.'
   activerecord:
     models:
       employee:
@@ -61,7 +62,6 @@ es:
         lastname: 'Apellido'
         name: 'Nombre'
         email: 'Email'
-        date_of_birth: 'fecha de nacimiento'
       address:
         street: 'address'
         street2: 'Información adicional'
@@ -72,6 +72,7 @@ es:
         content: Contenido
       player:
         card_number: Número de tarjeta de crédito
+        date_of_birth: 'fecha de nacimiento'
         id_type: 'Tipo de Identificación-documento'
         id_number: 'Número de Identificación-documento'
   game:

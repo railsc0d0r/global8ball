@@ -27,6 +27,7 @@ hi:
     confirm: 'इस बात की पुष्टि'
     read: "I have read the %{object}"
     accepted: "I have read and accepted the %{object}"
+    required_fields: '* फील्ड्स इनपुट की आवश्यकता चिह्नित.'
   activerecord:
     models:
       employee:
@@ -61,7 +62,6 @@ hi:
         lastname: 'Lastname'
         name: 'Name'
         email: 'Email'
-        date_of_birth: 'जन्म तिथि'
       address:
         street: 'Street'
         street2: 'Additional information'
@@ -72,6 +72,7 @@ hi:
         content: Content
       player:
         card_number: क्रेडिट कार्ड नंबर
+        date_of_birth: 'जन्म तिथि'
         id_type: 'आईडी दस्तावेज़ के प्रकार'
         id_number: 'आईडी दस्तावेज़ की संख्या'
   game:

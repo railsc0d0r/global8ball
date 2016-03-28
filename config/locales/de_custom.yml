@@ -27,6 +27,7 @@ de:
     confirm: 'Bestätigen'
     read: "Ich habe die %{object} gelesen"
     accepted: "Ich habe die %{object} gelesen und akzeptiert"
+    required_fields: '* Felder die eine Eingabe erfordern.'
   activerecord:
     models:
       employee:
@@ -61,17 +62,18 @@ de:
         lastname: 'Nachname'
         name: 'Name'
         email: 'Email'
-        date_of_birth: 'Geburtsdatum'
       address:
         street: 'Strasse'
         street2: 'Zusätzliche Informationen'
         zip: 'Postleitzahl'
         city: 'Stadt'
+        country: 'Country'
       content:
         headline: Überschrift
         content: Inhalt
       player:
         card_number: Kreditkartennummer
+        date_of_birth: 'Geburtsdatum'
         id_type: 'Typ des ID-Dokumentes'
         id_number: 'Dokument-Nummer'
   game:
