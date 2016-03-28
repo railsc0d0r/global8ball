@@ -17,9 +17,5 @@ module PersonSerializerConcern
     def phone
       object.person.phone
     end
-
-    def date_of_birth
-      object.person.date_of_birth
-    end
   end
 end

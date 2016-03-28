@@ -13,7 +13,6 @@ class EmployeeSerializer < ActiveModel::Serializer
              :title,
              :email,
              :phone,
-             :date_of_birth,
              :street,
              :street2,
              :zip,
