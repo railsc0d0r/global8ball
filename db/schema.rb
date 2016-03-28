@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314190209) do
+ActiveRecord::Schema.define(version: 20160327235535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,21 +56,21 @@ ActiveRecord::Schema.define(version: 20160314190209) do
     t.string   "lastname"
     t.string   "nickname"
     t.string   "title"
-    t.string   "email",         null: false
+    t.string   "email",      null: false
     t.string   "phone"
-    t.date     "date_of_birth"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "person_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "card_number"
     t.string   "id_type"
     t.string   "id_number"
+    t.date     "date_of_birth"
   end
 
   add_index "players", ["person_id"], name: "index_players_on_person_id", using: :btree
