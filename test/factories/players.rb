@@ -5,5 +5,6 @@ FactoryGirl.define do
     card_number '123456789'
     id_type 'Passport'
     id_number '123456789'
+    date_of_birth Date.today.years_ago(19)
   end
 end
