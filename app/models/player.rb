@@ -9,7 +9,8 @@ class Player < ActiveRecord::Base
 
   after_rollback :clean_up_associations, on: :create
 
-  validates_presence_of :id_number, :id_type
+  validates_presence_of :id_number, :id_type, :date_of_birth
+  validate :validate_date_of_birth
 
   protected
 
@@ -20,4 +21,10 @@ class Player < ActiveRecord::Base
     person.destroy if person.try :persisted?
   end
   
+  def validate_date_of_birth
+    if date_of_birth && date_of_birth > 18.years.ago
+      errors.add :date_of_birth, :too_young
+    end
+  end
+
 end

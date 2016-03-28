@@ -8,16 +8,6 @@ class Person < ActiveRecord::Base
 
   validates :address, presence: true, associated: true
   validates :firstname, :lastname, presence: true
-  validate :validate_date_of_birth
 
   initializes :address
-
-  protected
-
-  def validate_date_of_birth
-    if date_of_birth && date_of_birth > 18.years.ago
-      errors.add :date_of_birth, :too_young
-    end
-  end
-  
 end
