@@ -58,6 +58,7 @@ Funktionalität: Spieler Registrierung
     Und möchte ich "country can't be blank" sehen.
     Und möchte ich "Type of ID-Document can't be blank" sehen.
     Und möchte ich "Number of ID-Document can't be blank" sehen.
+    Und möchte ich "Date of Birth can't be blank" sehen.
 
   Szenario: Bestätigen eines Spielers durch Token und Setzen des Passworts
     Angenommen ein neu registrierter Spieler.
