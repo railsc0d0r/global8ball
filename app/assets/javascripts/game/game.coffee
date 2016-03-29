@@ -190,6 +190,7 @@ class global8ball.PlayForBegin extends PlayState
   createCue: (player) ->
     sprite = @add.sprite 'whiteBall'
     sprite.visible = no
+    sprite.position.setTo -500, -500
     cue = new Cue sprite, player
     return cue
 
