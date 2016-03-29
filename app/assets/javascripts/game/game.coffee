@@ -67,6 +67,7 @@ class FullState extends Phaser.State
     holesData = @holesData()
     @holes = (@createHole key, holesData[key] for key of holesData)
 
+  # @return {Hole}
   createHole: (key, holeData) ->
     sprite = @game.add.sprite holeData.pos.x, holeData.pos.y, 'hole'
     sprite.anchor.setTo 0.5, 0.5
@@ -94,6 +95,7 @@ class FullState extends Phaser.State
   createBalls: () ->
     @balls = @g8bGame.balls().map (ballData) => @createBall ballData
 
+  # @return {Ball}
   createBall: (ballData) ->
     pos = @g8bGame.translatePosition ballData.pos
     sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
@@ -164,9 +166,11 @@ class PlayState extends FullState
     if @aimLine
       @aimLine.setEnd x: x, y: y
 
+  # @return {Boolean}
   canAim: ->
     @aimLine is null and @canShoot()
 
+  # @return {Boolean}
   canShoot: ->
     no
 
@@ -182,6 +186,7 @@ class global8ball.PlayForBegin extends PlayState
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
 
+  # @return {Cue}
   createCue: (player) ->
     sprite = @add.sprite 'whiteBall'
     cue = new Cue sprite, player
@@ -212,6 +217,7 @@ class global8ball.PlayForBegin extends PlayState
     dy *= FORCE_FACTOR / f
     @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) -> ball.sprite.body.applyImpulse [-dx, -dy]
 
+  # @inheritdoc
   canShoot: ->
     not @youShot
 
