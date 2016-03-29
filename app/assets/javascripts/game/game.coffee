@@ -168,7 +168,7 @@ class PlayState extends FullState
     @canShoot()
 
   canShoot: ->
-    @aimLine is null
+    no
 
 class global8ball.PlayForBegin extends PlayState
   constructor: (g8bGame, @eventSource) ->
