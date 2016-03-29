@@ -145,7 +145,7 @@ class PlayState extends FullState
       @aimLine.draw @shotBmd
 
   pointerDown: (event, rawEvent) =>
-    if @canShoot()
+    if @canAim()
       @aimLine = new AimLine x: event.x, y: event.y
 
   pointerUp: (event, rawEvent) =>
@@ -163,6 +163,9 @@ class PlayState extends FullState
   pointerMove: (pointer, x, y, down) =>
     if @aimLine
       @aimLine.setEnd x: x, y: y
+
+  canAim: ->
+    @canShoot()
 
   canShoot: ->
     @aimLine is null
