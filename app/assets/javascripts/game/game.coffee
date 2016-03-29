@@ -201,6 +201,7 @@ class global8ball.PlayForBegin extends PlayState
 
   # Attempt to shoot. If shooting is allowed, teleport the shooting player's
   # cue to an appropriate position and accelerate it accordingly.
+  # Shooting positions are abstract board positions and must be translated back.
   #
   # @param {Point} start
   # @param {Point} end
