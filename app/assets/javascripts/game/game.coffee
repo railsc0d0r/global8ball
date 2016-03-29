@@ -117,7 +117,10 @@ class FullState extends Phaser.State
       enemy: enemy
 
   # By default, everything collides.
-  doesCollide: =>
+  #
+  # @param {Phaser.Physics.P2.Body[]} Two P2 physics bodies.
+  # @return {Boolean}
+  doesCollide: (bodies...)=>
     true
 
 class Hole
