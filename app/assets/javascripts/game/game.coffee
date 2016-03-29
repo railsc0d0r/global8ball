@@ -165,7 +165,7 @@ class PlayState extends FullState
       @aimLine.setEnd x: x, y: y
 
   canAim: ->
-    @canShoot()
+    @aimLine is null and @canShoot()
 
   canShoot: ->
     no
