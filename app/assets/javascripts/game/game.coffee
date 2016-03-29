@@ -212,6 +212,9 @@ class global8ball.PlayForBegin extends PlayState
     dy *= FORCE_FACTOR / f
     @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) -> ball.sprite.body.applyImpulse [-dx, -dy]
 
+  canShoot: ->
+    not @youShot
+
 class Cue
   constructor: (@sprite, @player) ->
 
