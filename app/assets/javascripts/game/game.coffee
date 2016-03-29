@@ -53,6 +53,7 @@ class FullState extends Phaser.State
   create: ->
     @physics.startSystem Phaser.Physics.P2JS
     @game.physics.p2.restitution = 0.99999
+    @game.physics.p2.setPostBroadphaseCallback @doesCollide
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
     @tableFloor.anchor.setTo 0.5, 0.5
@@ -113,6 +114,10 @@ class FullState extends Phaser.State
       you: you
       enemy: enemy
 
+  # By default, everything collides.
+  doesCollide: =>
+    true
+
 class Hole
   constructor: (@key, @sprite) ->
 
@@ -152,7 +157,8 @@ class PlayState extends FullState
       @shotBmd.cls()
       shot = @shotLine
       @shotLine = null
-      @shot.dispatch shot.start, shot.end
+      # Dispatch shot in terms of abstract board coordinates, not pixels.
+      @shot.dispatch @g8bGame.translatePositionBack(shot.start), @g8bGame.translatePositionBack(shot.end), 'you'
 
   pointerMove: (pointer, x, y, down) =>
     if @shotLine
@@ -168,8 +174,15 @@ class global8ball.PlayForBegin extends PlayState
 
   create: ->
     super()
+    @yourCue = @createCue 'you'
+    @enemyCue = @createCue 'enemy'
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
+
+  createCue: (player) ->
+    sprite = @add.sprite 'whiteBall'
+    cue = new Cue sprite, player
+    return cue
 
   update: ->
     super()
@@ -178,7 +191,14 @@ class global8ball.PlayForBegin extends PlayState
     if @eventSource.enemyShot() and not @enemyShot
       @enemyShot = true
 
-  shoot: (start, end) =>
+  # Attempt to shoot. If shooting is allowed, teleport the shooting player's
+  # cue to an appropriate position and accelerate it accordingly.
+  #
+  # @param {Point} start
+  # @param {Point} end
+  # @param {string} player
+  shoot: (start, end, player) =>
+    return
     rs = @g8bGame.translatePositionBack start
     re = @g8bGame.translatePositionBack end
     dx = re.x - rs.x
@@ -188,6 +208,9 @@ class global8ball.PlayForBegin extends PlayState
     dx *= FORCE_FACTOR / f
     dy *= FORCE_FACTOR / f
     @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) -> ball.sprite.body.applyImpulse [-dx, -dy]
+
+class Cue
+  constructor: (@sprite, @player) ->
 
 class global8ball.EventSource
   youShot: () ->
