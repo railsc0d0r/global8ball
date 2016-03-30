@@ -37,6 +37,7 @@ class global8ball.Preload extends Phaser.State
     background: 'background.png'
     blackBall:  'black_ball.png'
     crosshair:  'crosshair.png'
+    cue:        'white_ball.png'
     hole:       'hole.png'
     redBall:    'red_ball.png'
     table:      'table_pool_without_background.png'
@@ -128,6 +129,7 @@ class Hole
 
 class Ball
   constructor: (@data, @sprite) ->
+    @sprite.ball = @
 
 class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
@@ -177,6 +179,20 @@ class PlayState extends FullState
   canShoot: ->
     no
 
+  # @inheritdoc
+  doesCollide: (bodies...) =>
+    b1 = bodies[0]
+    b2 = bodies[1]
+    if b1.sprite.key isnt 'cue' and b2.sprite.key isnt 'cue'
+      # If neither body is the cue, collide.
+      true
+    else
+      # If one body is a cue, check if the other body is the white ball
+      # belonging to the same player.
+      cue = if b1.sprite.key is 'cue' then b1 else b2
+      other = if cue is b1 then b2 else b1
+      other.sprite.key is 'whiteBall' and cue.cue.player is other.sprite.ball.data.id
+
 class global8ball.PlayForBegin extends PlayState
   constructor: (g8bGame, @eventSource) ->
     super g8bGame
@@ -191,7 +207,7 @@ class global8ball.PlayForBegin extends PlayState
 
   # @return {Cue}
   createCue: (player) ->
-    sprite = @add.sprite 'whiteBall'
+    sprite = @add.sprite 'cue'
     sprite.visible = no
     sprite.position.setTo -500, -500
     cue = new Cue sprite, player
@@ -229,6 +245,7 @@ class global8ball.PlayForBegin extends PlayState
 
 class Cue
   constructor: (@sprite, @player) ->
+    @sprite.cue = @
 
 class global8ball.EventSource
   youShot: () ->
