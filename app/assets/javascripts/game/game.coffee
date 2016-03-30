@@ -55,6 +55,7 @@ class FullState extends Phaser.State
     @physics.startSystem Phaser.Physics.P2JS
     @game.physics.p2.restitution = 0.99999
     @game.physics.p2.setPostBroadphaseCallback @doesCollide
+    @game.physics.p2.setImpactEvents on
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
     @tableFloor.anchor.setTo 0.5, 0.5
