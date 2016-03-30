@@ -8,7 +8,7 @@ class Game
   # @data is the current state of the game, i.e. which ball is where, has anybody won, etc.
   constructor: (@config, @data)->
     @overload = new Game.Overload
-    @renderer = if @config.server then Phaser.HEADLESS else Phaser.AUTO
+    @renderer = if @config.server then Phaser.HEADLESS else Phaser.CANVAS
     @I18n = root.I18n
     @createPositionTranslation()
 
