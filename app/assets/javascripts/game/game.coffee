@@ -5,8 +5,8 @@
 root = @
 root.global8ball ?= {}
 
-FORCE_FACTOR = 0.1
-MAX_FORCE = 100
+FORCE_FACTOR = 10
+MAX_FORCE = 1000
 
 class global8ball.Boot extends Phaser.State
   constructor: (@g8bGame)->
@@ -36,6 +36,7 @@ class global8ball.Preload extends Phaser.State
   @IMAGES:
     background: 'background.png'
     blackBall:  'black_ball.png'
+    border:     'border.png'
     crosshair:  'crosshair.png'
     cue:        'white_ball.png'
     hole:       'hole.png'
@@ -53,17 +54,64 @@ class FullState extends Phaser.State
 
   create: ->
     @physics.startSystem Phaser.Physics.P2JS
-    @game.physics.p2.restitution = 0.99999
-    @game.physics.p2.setPostBroadphaseCallback @doesCollide
-    @game.physics.p2.setImpactEvents on
+    @physics.p2.restitution = 0.99999
+    @physics.p2.setImpactEvents on
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
+    @borderCollisionGroup = @physics.p2.createCollisionGroup()
+    @ballCollisionGroup = @physics.p2.createCollisionGroup()
     @createHoles()
     @createBalls()
     @createPlayerInfos()
+    @borders = @createBorders()
+
+  createBorders: ->
+    borders = @add.group()
+    borders.enableBody = true
+    borders.physicsBodyType = Phaser.Physics.P2JS
+    bordersData = @borderData()
+    for borderKey of bordersData
+      borderData = bordersData[borderKey]
+      border = borders.create borderData.pos.x, borderData.pos.y, 'border'
+      border.width = borderData.size.width
+      border.height = borderData.size.height
+      border.visible = no
+      border.body.setRectangleFromSprite border
+      border.body.static = yes # Borders are immobile
+      border.body.setCollisionGroup @borderCollisionGroup
+      border.body.collides @ballCollisionGroup
+    borders
+
+  # There a six borders, they are located between the holes.
+  borderData: ->
+    center = new Phaser.Point @game.width / 2, @game.height / 2
+    horizontalSize = width: 440, height: 5
+    verticalSize = width: 5, height: 440
+    hXDiff = 240
+    hYDiff = 235
+    vXDiff = 480
+    vYDiff = 0
+    bottomLeft:
+      size: horizontalSize
+      pos: center.clone().add -hXDiff, hYDiff
+    bottomRight:
+      size: horizontalSize
+      pos: center.clone().add hXDiff, hYDiff
+    left:
+      size: verticalSize
+      pos: center.clone().add -vXDiff, vYDiff
+    right:
+      size: verticalSize
+      pos: center.clone().add vXDiff, vYDiff
+    topLeft:
+      size: horizontalSize
+      pos: center.clone().add -hXDiff, -hYDiff
+    topRight:
+      size: horizontalSize
+      pos: center.clone().add hXDiff, -hYDiff
 
   createHoles: ->
     holesData = @holesData()
@@ -100,11 +148,12 @@ class FullState extends Phaser.State
   # @return {Ball}
   createBall: (ballData) ->
     pos = @g8bGame.translatePosition ballData.pos
-    sprite = @game.add.sprite pos.x, pos.y, ballData.color + 'Ball'
-    sprite.anchor.setTo 0.5, 0.5
+    sprite = @add.sprite pos.x, pos.y, ballData.color + 'Ball'
     ball = new Ball ballData, sprite
-    @game.physics.enable sprite, Phaser.Physics.P2
-    @game.physics.p2.enable sprite
+    @physics.p2.enable sprite
+    sprite.body.setCircle 16
+    sprite.body.setCollisionGroup @ballCollisionGroup
+    sprite.body.collides [@borderCollisionGroup, @ballCollisionGroup]
     ball
 
   createPlayerInfos: () ->
@@ -117,13 +166,6 @@ class FullState extends Phaser.State
     @players =
       you: you
       enemy: enemy
-
-  # By default, everything collides.
-  #
-  # @param {Phaser.Physics.P2.Body[]} Two P2 physics bodies.
-  # @return {Boolean}
-  doesCollide: (bodies...)=>
-    true
 
 class Hole
   constructor: (@key, @sprite) ->
@@ -180,20 +222,6 @@ class PlayState extends FullState
   canShoot: ->
     no
 
-  # @inheritdoc
-  doesCollide: (bodies...) =>
-    b1 = bodies[0]
-    b2 = bodies[1]
-    if b1.sprite.key isnt 'cue' and b2.sprite.key isnt 'cue'
-      # If neither body is the cue, collide.
-      true
-    else
-      # If one body is a cue, check if the other body is the white ball
-      # belonging to the same player.
-      cue = if b1.sprite.key is 'cue' then b1 else b2
-      other = if cue is b1 then b2 else b1
-      other.sprite.key is 'whiteBall' and cue.cue.player is other.sprite.ball.data.id
-
 class global8ball.PlayForBegin extends PlayState
   constructor: (g8bGame, @eventSource) ->
     super g8bGame
@@ -201,18 +229,28 @@ class global8ball.PlayForBegin extends PlayState
 
   create: ->
     super()
-    @yourCue = @createCue 'you'
-    @enemyCue = @createCue 'enemy'
+    for type in ['cue1', 'cue2', 'white1', 'white2']
+      @[type + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
+    @yourCue = @createCue 'you', @cue1CollisionGroup
+    @enemyCue = @createCue 'enemy', @cue2CollisionGroup
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
+    @addWhiteBallPhysics 'you', @white1CollisionGroup, @cue1CollisionGroup
+    @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @cue2CollisionGroup
 
   # @return {Cue}
-  createCue: (player) ->
-    sprite = @add.sprite 'cue'
+  createCue: (player, collisionGroup) ->
+    sprite = @add.sprite 10, 10, 'cue'
+    @physics.enable sprite, Phaser.Physics.P2JS
+    @physics.p2.enable sprite
+    sprite.body.setCollisionGroup collisionGroup
     sprite.visible = no
-    sprite.position.setTo -500, -500
     cue = new Cue sprite, player
     return cue
+
+  addWhiteBallPhysics: (ballId, ballCollisionGroup) ->
+    @balls.filter((ball) -> ball.data.id is ballId).forEach (ball) =>
+      ball.sprite.body.collides @borderCollisionGroup
 
   update: ->
     super()
@@ -229,7 +267,7 @@ class global8ball.PlayForBegin extends PlayState
   # @param {Point} end
   # @param {string} player
   shoot: (start, end, player) =>
-    return
+    # return
     rs = @g8bGame.translatePositionBack start
     re = @g8bGame.translatePositionBack end
     dx = re.x - rs.x
@@ -238,7 +276,9 @@ class global8ball.PlayForBegin extends PlayState
     f = if abs > MAX_FORCE then MAX_FORCE / abs else 1
     dx *= FORCE_FACTOR / f
     dy *= FORCE_FACTOR / f
-    @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) -> ball.sprite.body.applyImpulse [-dx, -dy]
+    @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) ->
+      ball.sprite.body.velocity.x = dx
+      ball.sprite.body.velocity.y = dy
 
   # @inheritdoc
   canShoot: ->
