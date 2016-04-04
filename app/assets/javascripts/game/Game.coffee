@@ -35,7 +35,15 @@ class Game
     @I18n.t.apply @I18n, args
 
   start: ->
-    @phaserGame = new Phaser.Game @config.size.width, @config.size.height, @renderer, @config.parent
+    @phaserGame = new Phaser.Game( @config.size.width,
+                                   @config.size.height,
+                                   @renderer,
+                                   @config.parent,
+                                   null,
+                                   false,
+                                   true,
+                                   @config.physicsConfig)
+
     @phaserGame.state.add 'Boot', new global8ball.Boot(@), true
     @phaserGame.state.add 'Preload', new global8ball.Preload @
     @phaserGame.state.add 'PlayForBegin', new global8ball.PlayForBegin @, new global8ball.EventSource
