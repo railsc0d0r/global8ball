@@ -75,6 +75,7 @@ class FullState extends Phaser.State
     for borderKey of bordersData
       borderData = bordersData[borderKey]
       border = borders.create borderData.pos.x, borderData.pos.y, 'border'
+      border.borderKey = borderKey
       border.width = borderData.size.width
       border.height = borderData.size.height
       border.visible = no
