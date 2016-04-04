@@ -87,10 +87,10 @@ class FullState extends Phaser.State
   # There a six borders, they are located between the holes.
   borderData: ->
     center = new Phaser.Point @game.width / 2, @game.height / 2
-    horizontalSize = width: 440, height: 5
-    verticalSize = width: 5, height: 440
+    horizontalSize = width: 460, height: 5
+    verticalSize = width: 5, height: 460
     hXDiff = 240
-    hYDiff = 235
+    hYDiff = 240
     vXDiff = 480
     vYDiff = 0
     bottomLeft:
@@ -101,16 +101,16 @@ class FullState extends Phaser.State
       pos: center.clone().add hXDiff, hYDiff
     left:
       size: verticalSize
-      pos: center.clone().add -vXDiff, vYDiff
+      pos: center.clone().add -vXDiff - 5, vYDiff
     right:
       size: verticalSize
       pos: center.clone().add vXDiff, vYDiff
     topLeft:
       size: horizontalSize
-      pos: center.clone().add -hXDiff, -hYDiff
+      pos: center.clone().add -hXDiff, -hYDiff - 7
     topRight:
       size: horizontalSize
-      pos: center.clone().add hXDiff, -hYDiff
+      pos: center.clone().add hXDiff, -hYDiff - 7
 
   createHoles: ->
     holesData = @holesData()
