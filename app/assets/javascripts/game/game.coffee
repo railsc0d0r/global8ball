@@ -62,7 +62,6 @@ class FullState extends Phaser.State
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
     @borderCollisionGroup = @physics.p2.createCollisionGroup()
-    @ballCollisionGroup = @physics.p2.createCollisionGroup()
     @createHoles()
     @createBalls()
     @createPlayerInfos()
@@ -82,7 +81,6 @@ class FullState extends Phaser.State
       border.body.setRectangleFromSprite border
       border.body.static = yes # Borders are immobile
       border.body.setCollisionGroup @borderCollisionGroup
-      border.body.collides @ballCollisionGroup
     borders
 
   # There a six borders, they are located between the holes.
@@ -152,8 +150,6 @@ class FullState extends Phaser.State
     ball = new Ball ballData, sprite
     @physics.p2.enable sprite
     sprite.body.setCircle 16
-    sprite.body.setCollisionGroup @ballCollisionGroup
-    sprite.body.collides [@borderCollisionGroup, @ballCollisionGroup]
     ball
 
   createPlayerInfos: () ->
@@ -235,8 +231,8 @@ class global8ball.PlayForBegin extends PlayState
     @enemyCue = @createCue 'enemy', @cue2CollisionGroup
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
-    @addWhiteBallPhysics 'you', @white1CollisionGroup, @cue1CollisionGroup
-    @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @cue2CollisionGroup
+    @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
+    @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
 
   # @return {Cue}
   createCue: (player, collisionGroup) ->
@@ -248,9 +244,14 @@ class global8ball.PlayForBegin extends PlayState
     cue = new Cue sprite, player
     return cue
 
-  addWhiteBallPhysics: (ballId, ballCollisionGroup) ->
+  addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.data.id is ballId).forEach (ball) =>
+      ball.sprite.body.setCollisionGroup myBallCollisionGroup
       ball.sprite.body.collides @borderCollisionGroup
+      ball.sprite.body.collides cueCollisionGroup
+      ball.sprite.body.collides otherBallCollisionGroup
+      @borders.forEach (border) =>
+        border.body.collides myBallCollisionGroup
 
   update: ->
     super()
