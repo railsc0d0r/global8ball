@@ -226,14 +226,17 @@ class global8ball.PlayForBegin extends PlayState
 
   create: ->
     super()
-    for type in ['cue1', 'cue2', 'white1', 'white2']
-      @[type + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
+    @addCollisionGroups ['cue1', 'cue2', 'white1', 'white2']
     @yourCue = @createCue 'you', @cue1CollisionGroup
     @enemyCue = @createCue 'enemy', @cue2CollisionGroup
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
     @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
+
+  addCollisionGroups: (baseNames) ->
+    baseNames.forEach (baseName) =>
+      @[baseName + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
 
   # @return {Cue}
   createCue: (player, collisionGroup) ->
