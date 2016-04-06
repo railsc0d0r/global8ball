@@ -67,6 +67,10 @@ class FullState extends Phaser.State
     @createPlayerInfos()
     @borders = @createBorders()
 
+  addCollisionGroups: (baseNames) ->
+    baseNames.forEach (baseName) =>
+      @[baseName + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
+
   createBorders: ->
     borders = @add.group()
     borders.enableBody = true
@@ -233,10 +237,6 @@ class global8ball.PlayForBegin extends PlayState
     @enemyShot = @g8bGame.data.players.enemy.shot
     @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
-
-  addCollisionGroups: (baseNames) ->
-    baseNames.forEach (baseName) =>
-      @[baseName + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
 
   # @return {Cue}
   createCue: (player, collisionGroup) ->
