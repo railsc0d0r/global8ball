@@ -318,6 +318,7 @@ class global8ball.PlayForVictory extends PlayState
     super();
 
   create: ->
+    @addCollisionGroups ['white', 'cue1', 'cue2', 'playBalls']
     super()
 
   update: ->
