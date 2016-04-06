@@ -314,6 +314,14 @@ class AimLine
     @end = x: point.x, y: point.y
 
 class global8ball.PlayForVictory extends PlayState
+  constructor: (global8Game) ->
+    super();
+
+  create: ->
+    super()
+
+  update: ->
+    super()
 
 class global8ball.ShowResult extends FullState
   create: ->
