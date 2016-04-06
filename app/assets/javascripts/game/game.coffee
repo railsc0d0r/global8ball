@@ -61,7 +61,7 @@ class FullState extends Phaser.State
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
-    @borderCollisionGroup = @physics.p2.createCollisionGroup()
+    @addCollisionGroups ['border']
     @createHoles()
     @createBalls()
     @createPlayerInfos()
