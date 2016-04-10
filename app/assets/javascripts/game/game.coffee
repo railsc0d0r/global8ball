@@ -254,7 +254,6 @@ class global8ball.PlayForBegin extends PlayState
   # @param {Point} end
   # @param {string} player
   shoot: (start, end, player) =>
-    # return
     rs = @g8bGame.translatePositionBack start
     re = @g8bGame.translatePositionBack end
     dx = re.x - rs.x
