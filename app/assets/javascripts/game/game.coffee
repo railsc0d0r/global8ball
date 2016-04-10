@@ -8,6 +8,26 @@ root.global8ball ?= {}
 FORCE_FACTOR = 10
 MAX_FORCE = 1000
 
+class Ball
+  constructor: (@data, @sprite) ->
+    @sprite.ball = @
+
+class Cue
+  constructor: (@sprite, @player) ->
+    @sprite.cue = @
+    @power = 0
+    @angle = 0
+
+class global8ball.EventSource
+  youShot: () ->
+    false
+
+  enemyShot: () ->
+    false
+
+class Hole
+  constructor: (@key, @sprite) ->
+
 class global8ball.Boot extends Phaser.State
   constructor: (@g8bGame)->
 
@@ -168,13 +188,6 @@ class FullState extends Phaser.State
       you: you
       enemy: enemy
 
-class Hole
-  constructor: (@key, @sprite) ->
-
-class Ball
-  constructor: (@data, @sprite) ->
-    @sprite.ball = @
-
 class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
@@ -269,19 +282,6 @@ class global8ball.PlayForBegin extends PlayState
   # @inheritdoc
   canShoot: ->
     not @youShot
-
-class Cue
-  constructor: (@sprite, @player) ->
-    @sprite.cue = @
-    @power = 0
-    @angle = 0
-
-class global8ball.EventSource
-  youShot: () ->
-    false
-
-  enemyShot: () ->
-    false
 
 class global8ball.PlayForVictory extends PlayState
   constructor: (global8Game) ->
