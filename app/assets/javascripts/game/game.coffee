@@ -10,6 +10,7 @@ MAX_FORCE = 1000
 
 class Ball
   constructor: (@data, @sprite) ->
+    @id = @data.id
     @sprite.ball = @
 
 class Cue
@@ -242,7 +243,7 @@ class global8ball.PlayForBegin extends PlayState
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
-    @balls.filter((ball) -> ball.data.id is ballId).forEach (ball) =>
+    @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
       ball.sprite.body.setCollisionGroup myBallCollisionGroup
       ball.sprite.body.collides @borderCollisionGroup, @whiteBallCollidesWithBorder
       ball.sprite.body.collides cueCollisionGroup
@@ -275,7 +276,7 @@ class global8ball.PlayForBegin extends PlayState
     f = if abs > MAX_FORCE then MAX_FORCE / abs else 1
     dx *= FORCE_FACTOR / f
     dy *= FORCE_FACTOR / f
-    @balls.filter((ball) -> ball.data.id is 'you').forEach (ball) ->
+    @balls.filter((ball) -> ball.id is 'you').forEach (ball) ->
       ball.sprite.body.velocity.x = dx
       ball.sprite.body.velocity.y = dy
 
