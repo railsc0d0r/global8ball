@@ -259,6 +259,8 @@ class PlayState extends FullState
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
       true # Do nothing
 
+  pointerMove: () ->
+
   # @return {Boolean}
   canShoot: ->
     no
