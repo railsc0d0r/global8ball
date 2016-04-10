@@ -178,7 +178,6 @@ class Ball
 class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
-    @aimLine = null
     @shot = new Phaser.Signal
 
   create: ->
@@ -205,32 +204,12 @@ class PlayState extends FullState
 
   update: ->
     super()
-    if @aimLine
-      @aimLine.draw @shotBmd
 
   pointerDown: (event, rawEvent) =>
-    if @canAim()
-      @aimLine = new AimLine x: event.x, y: event.y
 
   pointerUp: (event, rawEvent) =>
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
-      @releaseShot()
-
-  releaseShot: ->
-    if @aimLine
-      @shotBmd.cls()
-      shot = @aimLine
-      @aimLine = null
-      # Dispatch shot in terms of abstract board coordinates, not pixels.
-      @shot.dispatch @g8bGame.translatePositionBack(shot.start), @g8bGame.translatePositionBack(shot.end), 'you'
-
-  pointerMove: (pointer, x, y, down) =>
-    if @aimLine
-      @aimLine.setEnd x: x, y: y
-
-  # @return {Boolean}
-  canAim: ->
-    @aimLine is null and @canShoot()
+      true # Do nothing
 
   # @return {Boolean}
   canShoot: ->
@@ -304,17 +283,6 @@ class global8ball.EventSource
 
   enemyShot: () ->
     false
-
-class AimLine
-  constructor: (@start) ->
-    @end = x: @start.x, y: @start.y
-
-  draw: (bitmapData) ->
-    bitmapData.cls()
-    bitmapData.line @start.x, @start.y, @end.x, @end.y, '#ff0000', 5
-
-  setEnd: (point) ->
-    @end = x: point.x, y: point.y
 
 class global8ball.PlayForVictory extends PlayState
   constructor: (global8Game) ->
