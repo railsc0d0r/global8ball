@@ -295,6 +295,8 @@ class global8ball.PlayForBegin extends PlayState
 class Cue
   constructor: (@sprite, @player) ->
     @sprite.cue = @
+    @power = 0
+    @angle = 0
 
 class global8ball.EventSource
   youShot: () ->
