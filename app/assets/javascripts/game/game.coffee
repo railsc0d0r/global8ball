@@ -55,16 +55,20 @@ class global8ball.Preload extends Phaser.State
       loader.image key, url
 
   @IMAGES:
-    background: 'background.png'
-    blackBall:  'black_ball.png'
-    border:     'border.png'
-    crosshair:  'crosshair.png'
-    cue:        'white_ball.png'
-    hole:       'hole.png'
-    redBall:    'red_ball.png'
-    table:      'table_pool_without_background.png'
-    whiteBall:  'white_ball.png'
-    yellowBall: 'yellow_ball.png'
+    background:      'background.png'
+    blackBall:       'black_ball.png'
+    border:          'border.png'
+    crosshair:       'crosshair.png'
+    cue:             'white_ball.png'
+    forceStrength:   'force_strength.png'
+    hole:            'hole.png'
+    lessenForce:     'lessen_force.png'
+    redBall:         'red_ball.png'
+    shootButton:     'shoot_button.png'
+    strengthenForce: 'strengthen_force.png'
+    table:           'table_pool_without_background.png'
+    whiteBall:       'white_ball.png'
+    yellowBall:      'yellow_ball.png'
 
   create: ->
     @game.state.start @g8bGame.currentState()
