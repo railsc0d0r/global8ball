@@ -183,12 +183,25 @@ class PlayState extends FullState
 
   create: ->
     super()
+    @addCollisionGroups ['cue1', 'cue2']
+    @yourCue = @createCue 'you', @cue1CollisionGroup
+    @enemyCue = @createCue 'enemy', @cue2CollisionGroup
     if @hasUi
       @game.input.onDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
       @shotBmd = @game.make.bitmapData @game.width, @game.height
       @shotBmd.addToWorld()
+
+  # @return {Cue}
+  createCue: (player, collisionGroup) ->
+    sprite = @add.sprite 10, 10, 'cue'
+    @physics.enable sprite, Phaser.Physics.P2JS
+    @physics.p2.enable sprite
+    sprite.body.setCollisionGroup collisionGroup
+    sprite.visible = no
+    cue = new Cue sprite, player
+    return cue
 
   update: ->
     super()
@@ -230,23 +243,11 @@ class global8ball.PlayForBegin extends PlayState
 
   create: ->
     super()
-    @addCollisionGroups ['cue1', 'cue2', 'white1', 'white2']
-    @yourCue = @createCue 'you', @cue1CollisionGroup
-    @enemyCue = @createCue 'enemy', @cue2CollisionGroup
+    @addCollisionGroups ['white1', 'white2']
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
     @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
-
-  # @return {Cue}
-  createCue: (player, collisionGroup) ->
-    sprite = @add.sprite 10, 10, 'cue'
-    @physics.enable sprite, Phaser.Physics.P2JS
-    @physics.p2.enable sprite
-    sprite.body.setCollisionGroup collisionGroup
-    sprite.visible = no
-    cue = new Cue sprite, player
-    return cue
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.data.id is ballId).forEach (ball) =>
