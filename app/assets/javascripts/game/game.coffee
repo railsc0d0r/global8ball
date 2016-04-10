@@ -19,6 +19,12 @@ class Cue
     @power = 0
     @angle = 0
 
+  hide: ->
+    @sprite.visible = no
+
+  show: ->
+    @sprite.visible = yes
+
 class global8ball.EventSource
   youShot: () ->
     false
