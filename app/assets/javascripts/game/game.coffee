@@ -277,6 +277,8 @@ class global8ball.PlayForBegin extends PlayState
     @enemyShot = @g8bGame.data.players.enemy.shot
     @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
+    @yourBall = (@balls.filter((ball) -> ball.id is 'you'))[0]
+    @enemyBall = (@balls.filter((ball) -> ball.id is 'enemy'))[0]
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
