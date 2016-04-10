@@ -208,8 +208,6 @@ class PlayState extends FullState
       @game.input.onDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
-      @shotBmd = @game.make.bitmapData @game.width, @game.height
-      @shotBmd.addToWorld()
 
   # @return {Cue}
   createCue: (player, collisionGroup) ->
