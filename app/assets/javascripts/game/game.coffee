@@ -66,7 +66,7 @@ class global8ball.Preload extends Phaser.State
     blackBall:       'black_ball.png'
     border:          'border.png'
     crosshair:       'crosshair.png'
-    cue:             'white_ball.png'
+    cue:             'cue.png'
     forceStrength:   'force_strength.png'
     hole:            'hole.png'
     lessenForce:     'lessen_force.png'
