@@ -204,6 +204,7 @@ class PlayState extends FullState
     @yourCue = @createCue 'you', @cue1CollisionGroup
     @enemyCue = @createCue 'enemy', @cue2CollisionGroup
     if @hasUi
+      @addCueControlGui()
       @game.input.onDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
@@ -219,6 +220,37 @@ class PlayState extends FullState
     sprite.visible = no
     cue = new Cue sprite, player
     return cue
+
+  addCueControlGui: ->
+    @cueControlGui = {}
+    hCenter = @game.width / 2
+    y = @game.height - 70
+    elements =
+      forceStrength:
+        x: hCenter
+        y: y
+        w: 200
+        h: 40
+      lessenForce:
+        x: hCenter - 120
+        y: y
+        w: 40
+        h: 40
+      strengthenForce:
+        x: hCenter + 120
+        y: y
+        w: 40
+        h: 40
+      shootButton:
+        x: hCenter + 160
+        y: y
+        w: 40
+        h: 40
+    for id of elements
+      @cueControlGui[id] = @game.add.sprite elements[id].x, elements[id].y, id
+      @cueControlGui[id].anchor.setTo 0.5, 0.5
+      @cueControlGui[id].width = elements[id].w
+      @cueControlGui[id].height = elements[id].h
 
   update: ->
     super()
