@@ -91,11 +91,11 @@ class FullState extends Phaser.State
   # There a six borders, they are located between the holes.
   borderData: ->
     center = new Phaser.Point @game.width / 2, @game.height / 2
-    horizontalSize = width: 460, height: 5
-    verticalSize = width: 5, height: 460
+    horizontalSize = width: 460, height: 15
+    verticalSize = width: 15, height: 460
     hXDiff = 240
-    hYDiff = 240
-    vXDiff = 480
+    hYDiff = 245
+    vXDiff = 485
     vYDiff = 0
     bottomLeft:
       size: horizontalSize
