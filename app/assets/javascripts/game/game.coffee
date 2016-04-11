@@ -15,6 +15,8 @@ class Ball
 
 class Cue
   LENGTH = 250
+  MATH_FACTOR = Math.PI/180
+
   constructor: (@sprite, @player) ->
     @targetBall = null
     @sprite.cue = @
@@ -35,8 +37,8 @@ class Cue
 
   updatePosition: ()->
     if @targetBall
-      @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(Math.PI/180 * @sprite.body.angle)
-      @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(Math.PI/180 * @sprite.body.angle)
+      @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(MATH_FACTOR * @sprite.body.angle)
+      @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(MATH_FACTOR * @sprite.body.angle)
 
 class global8ball.EventSource
   youShot: () ->
