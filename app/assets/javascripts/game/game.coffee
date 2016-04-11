@@ -19,7 +19,6 @@ class Cue
     @targetBall = null
     @sprite.cue = @
     @power = 0
-    @angle = 0
 
   hide: ->
     @sprite.visible = no
