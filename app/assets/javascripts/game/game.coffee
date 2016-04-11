@@ -27,8 +27,16 @@ class Cue
     @sprite.visible = yes
 
   setTargetBall: (@targetBall) ->
-    @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(Math.PI/180 * @sprite.body.angle)
-    @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(Math.PI/180 * @sprite.body.angle)
+    @updatePosition()
+
+  setAngle: (newAngle) ->
+    @sprite.body.angle = newAngle
+    @updatePosition()
+
+  updatePosition: ()->
+    if @targetBall
+      @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(Math.PI/180 * @sprite.body.angle)
+      @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(Math.PI/180 * @sprite.body.angle)
 
 class global8ball.EventSource
   youShot: () ->
