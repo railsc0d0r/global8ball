@@ -26,7 +26,9 @@ class Cue
     @sprite.visible = no
 
   show: ->
-    @sprite.visible = yes
+    if @targetBall
+      @updatePosition()
+      @sprite.visible = yes
 
   setTargetBall: (@targetBall) ->
     @updatePosition()
