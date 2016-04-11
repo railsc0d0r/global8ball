@@ -226,6 +226,7 @@ class PlayState extends FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
     @shot = new Phaser.Signal
+    @aiming = false
 
   create: ->
     super()
@@ -283,12 +284,19 @@ class PlayState extends FullState
     super()
 
   pointerDown: (event, rawEvent) =>
+    @aiming = true
+    @aimAt rawEvent.clientX, rawEvent.clientY
 
   pointerUp: (event, rawEvent) =>
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
-      true # Do nothing
+      @aiming = false
 
-  pointerMove: () ->
+  pointerMove: (event, x, y) =>
+    if @aiming
+      @aimAt x, y
+
+  aimAt: (x, y) ->
+    @yourCue.setAngleByAim x: x, y: y
 
   # @return {Boolean}
   canShoot: ->
