@@ -33,10 +33,12 @@ class Cue
   setTargetBall: (@targetBall) ->
     @updatePosition()
 
+  # @param {number} newAngle New angle in degrees (0-360)
   setAngle: (newAngle) ->
     @sprite.body.angle = newAngle
     @updatePosition()
 
+  # @param {Point} Position to aim at. The cue will point TO that position, not FROm it!
   setAngleByAim: (pos) ->
     if @targetBall
       @setAngle Math.atan2(@targetBall.sprite.body.y - pos.y, @targetBall.sprite.body.x - pos.x) / MATH_FACTOR
