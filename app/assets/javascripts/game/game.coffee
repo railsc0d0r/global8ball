@@ -14,6 +14,7 @@ class Ball
     @sprite.ball = @
 
 class Cue
+  LENGTH = 250
   constructor: (@sprite, @player) ->
     @targetBall = null
     @sprite.cue = @
@@ -27,6 +28,8 @@ class Cue
     @sprite.visible = yes
 
   setTargetBall: (@targetBall) ->
+    @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(Math.PI/180 * @sprite.body.angle)
+    @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(Math.PI/180 * @sprite.body.angle)
 
 class global8ball.EventSource
   youShot: () ->
@@ -289,6 +292,7 @@ class global8ball.PlayForBegin extends PlayState
     @yourBall = (@balls.filter((ball) -> ball.id is 'you'))[0]
     @enemyBall = (@balls.filter((ball) -> ball.id is 'enemy'))[0]
     @yourCue.setTargetBall @yourBall
+    @yourCue.show()
     @enemyCue.setTargetBall @enemyBall
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
