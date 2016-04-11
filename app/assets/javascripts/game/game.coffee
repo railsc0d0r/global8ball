@@ -37,6 +37,10 @@ class Cue
     @sprite.body.angle = newAngle
     @updatePosition()
 
+  setAngleByAim: (pos) ->
+    if @targetBall
+      @setAngle Math.atan2(@targetBall.sprite.body.y - pos.y, @targetBall.sprite.body.x - pos.x) / MATH_FACTOR
+
   updatePosition: ()->
     if @targetBall
       @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(MATH_FACTOR * @sprite.body.angle)
