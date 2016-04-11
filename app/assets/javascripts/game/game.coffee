@@ -26,6 +26,8 @@ class Cue
   show: ->
     @sprite.visible = yes
 
+  setTargetBall: (@targetBall) ->
+
 class global8ball.EventSource
   youShot: () ->
     false
@@ -286,8 +288,8 @@ class global8ball.PlayForBegin extends PlayState
     @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
     @yourBall = (@balls.filter((ball) -> ball.id is 'you'))[0]
     @enemyBall = (@balls.filter((ball) -> ball.id is 'enemy'))[0]
-    @yourCue.targetBall = @yourBall
-    @enemyCue.targetBall = @enemyBall
+    @yourCue.setTargetBall @yourBall
+    @enemyCue.setTargetBall @enemyBall
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
