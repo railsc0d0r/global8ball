@@ -130,3 +130,7 @@ gem 'request_store'
 
 # We are using figaro to configure our app the easy way
 gem 'figaro'
+
+# Some stuff to run javascript server-side
+gem 'therubyracer'
+# gem 'commonjs'
