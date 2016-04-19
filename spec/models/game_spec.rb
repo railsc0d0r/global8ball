@@ -10,7 +10,7 @@ RSpec.describe Game, :type => :model do
       game = Game.new
       game.player_one = player1
 
-      expect(game.player_two = player1).to raise_error
+      expect {game.player_two = player1}.to raise_error(RuntimeError, "Player one and player two can't be the same")
     end
   end
 end
