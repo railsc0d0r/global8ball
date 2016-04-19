@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :player do
-    association :user, strategy: :build
+    association :user, strategy: :build, role_name: "Player"
     association :person, strategy: :build
     card_number '123456789'
     id_type 'Passport'
