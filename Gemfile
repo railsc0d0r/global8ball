@@ -70,6 +70,7 @@ group :development, :test do
   # For live-reload of ember-app
   gem 'guard'
   gem 'guard-livereload'
+  gem 'guard-rspec'
 
   # We want to check certain things before commit to repo
   gem 'pre-commit'
@@ -99,6 +100,7 @@ group :test do
 
   # include rspec for unit- and functional tests
   gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-nc'
 end
 
 # For running tests parallel

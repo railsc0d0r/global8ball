@@ -183,6 +183,10 @@ GEM
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
+    guard-rspec (4.6.5)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
     haml (4.0.7)
       tilt
     headless (2.2.2)
@@ -318,6 +322,10 @@ GEM
     request_store (1.3.0)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
+    rspec (3.1.0)
+      rspec-core (~> 3.1.0)
+      rspec-expectations (~> 3.1.0)
+      rspec-mocks (~> 3.1.0)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -325,6 +333,9 @@ GEM
       rspec-support (~> 3.1.0)
     rspec-mocks (3.1.3)
       rspec-support (~> 3.1.0)
+    rspec-nc (0.3.0)
+      rspec (>= 3)
+      terminal-notifier (>= 1.4)
     rspec-rails (3.1.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -374,6 +385,7 @@ GEM
       net-ssh (>= 2.8.0)
     stal (0.1.0)
       redic
+    terminal-notifier (1.6.3)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -433,6 +445,7 @@ DEPENDENCIES
   figaro
   guard
   guard-livereload
+  guard-rspec
   headless
   highline
   i18n-js (>= 3.0.0.rc11)
@@ -451,6 +464,7 @@ DEPENDENCIES
   railroady
   rails (= 5.0.0.beta3)
   request_store
+  rspec-nc
   rspec-rails (~> 3.0)
   rvm1-capistrano3
   sdoc (~> 0.4.0)
