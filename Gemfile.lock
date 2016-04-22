@@ -26,6 +26,13 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: ssh://git@p2501.twilightparadox.com:33333/home/git/git_repos/p2_physics_wrapper.git
+  revision: 72145df51df841bfec0a5db6a87f6558d7e59252
+  specs:
+    p2_physics_wrapper (0.1.0)
+      therubyracer
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -453,6 +460,7 @@ DEPENDENCIES
   mysql2
   ohm
   ohm-contrib
+  p2_physics_wrapper!
   paper_trail (~> 4.0.0)
   paperclip (~> 4.3)
   parallel_tests
