@@ -6,7 +6,7 @@ class global8ball.FullState extends Phaser.State
     @spriteGroups = {}
     @collisionGroups = {}
 
-  addGroup: (collisionGroupName, spriteGroupName, spriteClassType = Phaser.Sprite) ->
+  addGroup: (collisionGroupName, spriteGroupName = collisionGroupName, spriteClassType = Phaser.Sprite) ->
     @collisionGroups[collisionGroupName] ?= @physics.p2.createCollisionGroup()
     if not @spriteGroups[spriteGroupName]
       @spriteGroups[spriteGroupName] = @add.group()
@@ -18,13 +18,13 @@ class global8ball.FullState extends Phaser.State
       @spriteGroups[groupName].classType = classType
 
   create: ->
-    @addSpriteGroup 'table'
-    @addSpriteGroup 'borders'
-    @addSpriteGroup 'holes', global8ball.Hole
-    @addSpriteGroup 'balls', global8ball.Ball
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
+    @addGroup 'table'
+    @addSpriteGroup 'borders'
+    @addSpriteGroup 'holes', global8ball.Hole
+    @addSpriteGroup 'balls', global8ball.Ball
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background', `/*frame=*/ undefined`, @spriteGroups.table
     @tableFloor.anchor.setTo 0.5, 0.5
@@ -35,6 +35,7 @@ class global8ball.FullState extends Phaser.State
     @createBalls()
     @createPlayerInfos()
     @borders = @createBorders()
+    @world.sendToBack @spriteGroups.table
 
   addCollisionGroups: (baseNames) ->
     baseNames.forEach (baseName) =>

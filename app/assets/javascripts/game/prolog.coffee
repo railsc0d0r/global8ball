@@ -1,4 +1,4 @@
-#= require game/phaser.min
+#= require game/phaser
 
 # window for Browser
 # exports for Node
