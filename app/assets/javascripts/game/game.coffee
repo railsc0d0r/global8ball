@@ -17,25 +17,23 @@ class Cue extends Phaser.Sprite
   LENGTH = 250
   MATH_FACTOR = Math.PI/180
 
-  constructor: (@sprite, @player) ->
-    @targetBall = null
-    @sprite.cue = @
-    @power = 0
+  power: 0
+  targetBall: null
 
   hide: ->
-    @sprite.visible = no
+    @visible = no
 
   show: ->
     if @targetBall
       @updatePosition()
-      @sprite.visible = yes
+      @visible = yes
 
   setTargetBall: (@targetBall) ->
     @updatePosition()
 
   # @param {number} newAngle New angle in degrees (0-360)
   setAngle: (newAngle) ->
-    @sprite.body.angle = newAngle
+    @body.angle = newAngle
     @updatePosition()
 
   # @param {Point} Position to aim at. The cue will point TO that position, not FROm it!
@@ -45,8 +43,8 @@ class Cue extends Phaser.Sprite
 
   updatePosition: ()->
     if @targetBall
-      @sprite.body.x = @targetBall.sprite.x + LENGTH * Math.cos(MATH_FACTOR * @sprite.body.angle)
-      @sprite.body.y = @targetBall.sprite.y + LENGTH * Math.sin(MATH_FACTOR * @sprite.body.angle)
+      @body.x = @targetBall.sprite.x + LENGTH * Math.cos(MATH_FACTOR * @body.angle)
+      @body.y = @targetBall.sprite.y + LENGTH * Math.sin(MATH_FACTOR * @body.angle)
 
 class global8ball.EventSource
   youShot: () ->
@@ -236,6 +234,7 @@ class PlayState extends FullState
 
   create: ->
     super()
+    @addSpriteGroup 'cues', Cue
     @addCollisionGroups ['cue1', 'cue2']
     @yourCue = @createCue 'you', @cue1CollisionGroup
     @enemyCue = @createCue 'enemy', @cue2CollisionGroup
@@ -247,12 +246,11 @@ class PlayState extends FullState
 
   # @return {Cue}
   createCue: (player, collisionGroup) ->
-    sprite = @add.sprite 10, 10, 'cue'
-    @physics.enable sprite, Phaser.Physics.P2JS
-    @physics.p2.enable sprite
-    sprite.body.setCollisionGroup collisionGroup
-    sprite.visible = no
-    cue = new Cue sprite, player
+    cue = @spriteGroups.cues.create 10, 10, 'cue'
+    @physics.enable cue, Phaser.Physics.P2JS
+    @physics.p2.enable cue
+    cue.body.setCollisionGroup collisionGroup
+    cue.visible = no
     return cue
 
   addCueControlGui: ->
