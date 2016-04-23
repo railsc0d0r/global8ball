@@ -21,7 +21,7 @@ class global8ball.PlayForBegin extends global8ball.PlayState
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
       ball.body.setCollisionGroup otherBallCollisionGroup
-      ball.body.collides @collisionGroups.border, @whiteBallCollidesWithBorder
+      ball.body.collides @collisionGroups.borders, @whiteBallCollidesWithBorder
       ball.body.collides cueCollisionGroup
       ball.body.collides otherBallCollisionGroup
       @borders.forEach (border) =>

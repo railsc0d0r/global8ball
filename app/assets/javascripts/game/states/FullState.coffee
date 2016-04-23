@@ -22,7 +22,7 @@ class global8ball.FullState extends Phaser.State
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
     @addGroup 'table'
-    @addSpriteGroup 'borders'
+    @addGroup 'borders'
     @addSpriteGroup 'holes', global8ball.Hole
     @addSpriteGroup 'balls', global8ball.Ball
     @game.input.maxPointers = 1 # No multi-touch
@@ -30,7 +30,7 @@ class global8ball.FullState extends Phaser.State
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
-    @addCollisionGroups ['border', 'hole']
+    @addCollisionGroups ['hole']
     @createHoles()
     @createBalls()
     @createPlayerInfos()
@@ -54,7 +54,7 @@ class global8ball.FullState extends Phaser.State
       border.visible = no
       border.body.setRectangleFromSprite border
       border.body.static = yes # Borders are immobile
-      border.body.setCollisionGroup @collisionGroups.border
+      border.body.setCollisionGroup @collisionGroups.borders
     @spriteGroups.borders
 
   # There a six borders, they are located between the holes.
