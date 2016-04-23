@@ -18,11 +18,29 @@ class global8ball.PlayForBegin extends global8ball.PlayState
     @yourCue.show()
     @enemyCue.setTargetBall @enemyBall
     @getPhysicsGroupSpecs().forEach (spec) =>
-      @physicsGroups[spec.id] = new global8ball.PhysicsGroup spec.spriteKey, @spriteGroups[spec.spriteGroupId] @collisionGroups[spec.collisionGroupId]
+      @physicsGroups[spec.id] = new global8ball.PhysicsGroup spec.spriteKey, @spriteGroups[spec.spriteGroupId], @collisionGroups[spec.collisionGroupId]
       (spec.collides or []).forEach (collision) =>
-        @physicsGroups[spec.id].collides @collisionGroups[collision.groupId], @[collision.callback], @
+        if collision.callback
+          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId], @[collision.callback], @
+        else
+          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId]
 
-  getPhysicsGroupSpecs: () -> []
+  getPhysicsGroupSpecs: () -> [
+    {
+      id: 'borders'
+      spriteKey: 'border'
+      spriteGroupId: 'borders'
+      collisionGroupId: 'borders'
+      collides: [
+        {
+          groupId: 'white1'
+        }
+        {
+          groupId: 'white2'
+        }
+      ]
+    }
+  ]
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
