@@ -6,6 +6,12 @@ class global8ball.FullState extends Phaser.State
     @spriteGroups = {}
     @collisionGroups = {}
 
+  addGroup: (collisionGroupName, spriteGroupName, spriteClassType = Phaser.Sprite) ->
+    @collisionGroups[collisionGroupName] ?= @physics.p2.createCollisionGroup()
+    if not @spriteGroups[spriteGroupName]
+      @spriteGroups[spriteGroupName] = @add.group()
+      @spriteGroups[spriteGroupName].classType = spriteClassType
+
   addSpriteGroup: (groupName, classType) ->
     @spriteGroups[groupName] = @add.group()
     if classType
