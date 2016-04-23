@@ -8,12 +8,12 @@ root.global8ball ?= {}
 FORCE_FACTOR = 10
 MAX_FORCE = 1000
 
-class Ball
+class Ball extends Phaser.Sprite
   constructor: (@data, @sprite) ->
     @id = @data.id
     @sprite.ball = @
 
-class Cue
+class Cue extends Phaser.Sprite
   LENGTH = 250
   MATH_FACTOR = Math.PI/180
 
@@ -55,8 +55,7 @@ class global8ball.EventSource
   enemyShot: () ->
     false
 
-class Hole
-  constructor: (@key, @sprite) ->
+class Hole extends Phaser.Sprite
 
 class global8ball.Boot extends Phaser.State
   constructor: (@g8bGame)->
@@ -105,8 +104,14 @@ class global8ball.Preload extends Phaser.State
 # Base class for all full Phaser states (i.e. with all images etc.)
 class FullState extends Phaser.State
   constructor: (@g8bGame) ->
+    @spriteGroups = {}
+
+  addSpriteGroup: (groupName, classType) ->
+    @spriteGroups[groupName] = @add.group()
+    @spriteGroups[groupName].classType = classType
 
   create: ->
+    @addSpriteGroup 'holes', Hole
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
@@ -176,9 +181,10 @@ class FullState extends Phaser.State
 
   # @return {Hole}
   createHole: (key, holeData) ->
-    sprite = @game.add.sprite holeData.pos.x, holeData.pos.y, 'hole'
+    sprite = @spriteGroups.holes.create holeData.pos.x, holeData.pos.y, 'hole'
     sprite.anchor.setTo 0.5, 0.5
-    new Hole key, sprite
+    sprite.holeKey = key
+    sprite
 
   holesData: () ->
     center = new Phaser.Point @game.width / 2, @game.height / 2
