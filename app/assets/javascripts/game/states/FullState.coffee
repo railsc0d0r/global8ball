@@ -5,6 +5,7 @@ class global8ball.FullState extends Phaser.State
   constructor: (@g8bGame) ->
     @spriteGroups = {}
     @collisionGroups = {}
+    @physicsGroups = {}
 
   addGroup: (collisionGroupName, spriteGroupName = collisionGroupName, spriteClassType = Phaser.Sprite) ->
     @collisionGroups[collisionGroupName] ?= @physics.p2.createCollisionGroup()
@@ -137,3 +138,6 @@ class global8ball.FullState extends Phaser.State
     @players =
       you: you
       enemy: enemy
+
+  createSprite: (physicsId, x, y, config = {}) ->
+    @physicsGroups[physicsId].create x, y, config
