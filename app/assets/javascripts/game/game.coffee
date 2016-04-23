@@ -9,9 +9,8 @@ FORCE_FACTOR = 10
 MAX_FORCE = 1000
 
 class Ball extends Phaser.Sprite
-  constructor: (@data, @sprite) ->
+  setData: (@data) ->
     @id = @data.id
-    @sprite.ball = @
 
 class Cue extends Phaser.Sprite
   LENGTH = 250
@@ -39,12 +38,12 @@ class Cue extends Phaser.Sprite
   # @param {Point} Position to aim at. The cue will point TO that position, not FROm it!
   setAngleByAim: (pos) ->
     if @targetBall
-      @setAngle Math.atan2(@targetBall.sprite.body.y - pos.y, @targetBall.sprite.body.x - pos.x) / MATH_FACTOR
+      @setAngle Math.atan2(@targetBall.body.y - pos.y, @targetBall.body.x - pos.x) / MATH_FACTOR
 
   updatePosition: ()->
     if @targetBall
-      @body.x = @targetBall.sprite.x + LENGTH * Math.cos(MATH_FACTOR * @body.angle)
-      @body.y = @targetBall.sprite.y + LENGTH * Math.sin(MATH_FACTOR * @body.angle)
+      @body.x = @targetBall.x + LENGTH * Math.cos(MATH_FACTOR * @body.angle)
+      @body.y = @targetBall.y + LENGTH * Math.sin(MATH_FACTOR * @body.angle)
 
 class global8ball.EventSource
   youShot: () ->
@@ -110,6 +109,7 @@ class FullState extends Phaser.State
 
   create: ->
     @addSpriteGroup 'holes', Hole
+    @addSpriteGroup 'balls', Ball
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
@@ -209,10 +209,10 @@ class FullState extends Phaser.State
   # @return {Ball}
   createBall: (ballData) ->
     pos = @g8bGame.translatePosition ballData.pos
-    sprite = @add.sprite pos.x, pos.y, ballData.color + 'Ball'
-    ball = new Ball ballData, sprite
-    @physics.p2.enable sprite
-    sprite.body.setCircle 16
+    ball = @spriteGroups.balls.create pos.x, pos.y, ballData.color + 'Ball'
+    ball.setData ballData
+    @physics.p2.enable ball
+    ball.body.setCircle 16
     ball
 
   createPlayerInfos: () ->
@@ -326,10 +326,10 @@ class global8ball.PlayForBegin extends PlayState
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
-      ball.sprite.body.setCollisionGroup myBallCollisionGroup
-      ball.sprite.body.collides @borderCollisionGroup, @whiteBallCollidesWithBorder
-      ball.sprite.body.collides cueCollisionGroup
-      ball.sprite.body.collides otherBallCollisionGroup
+      ball.body.setCollisionGroup myBallCollisionGroup
+      ball.body.collides @borderCollisionGroup, @whiteBallCollidesWithBorder
+      ball.body.collides cueCollisionGroup
+      ball.body.collides otherBallCollisionGroup
       @borders.forEach (border) =>
         border.body.collides myBallCollisionGroup
 
@@ -359,8 +359,8 @@ class global8ball.PlayForBegin extends PlayState
     dx *= FORCE_FACTOR / f
     dy *= FORCE_FACTOR / f
     @balls.filter((ball) -> ball.id is 'you').forEach (ball) ->
-      ball.sprite.body.velocity.x = dx
-      ball.sprite.body.velocity.y = dy
+      ball.body.velocity.x = dx
+      ball.body.velocity.y = dy
 
   # @inheritdoc
   canShoot: ->
