@@ -22,8 +22,10 @@ class global8ball.FullState extends Phaser.State
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
+    @createSpriteGroups()
+    @createCollisionGroups()
+    @createPhysicsGroups()
     @addGroup 'table'
-    @addGroup 'borders'
     @addSpriteGroup 'holes', global8ball.Hole
     @addSpriteGroup 'balls', global8ball.Ball
     @game.input.maxPointers = 1 # No multi-touch
@@ -37,6 +39,29 @@ class global8ball.FullState extends Phaser.State
     @createPlayerInfos()
     @borders = @createBorders()
     @world.sendToBack @spriteGroups.table
+
+  createSpriteGroups: () ->
+    @getPhysicsGroupSpecs().forEach (spec) =>
+      if not @spriteGroups[spec.spriteGroupId] # Create sprite group only if it does not exist yet!
+        @spriteGroups[spec.spriteGroupId] = @add.group()
+        @spriteGroups[spec.spriteGroupId].classType = @spriteClasses()[spec.spriteGroupId] or Phaser.Sprite
+
+  getPhysicsGroupSpecs: () -> []
+
+  spriteClasses: () -> {}
+
+  createCollisionGroups: () ->
+    @getPhysicsGroupSpecs().forEach (spec) =>
+      @collisionGroups[spec.id] ?= @physics.p2.createCollisionGroup()
+
+  createPhysicsGroups: () ->
+    @getPhysicsGroupSpecs().forEach (spec) =>
+      @physicsGroups[spec.id] = new global8ball.PhysicsGroup spec.spriteKey, @spriteGroups[spec.spriteGroupId], @collisionGroups[spec.collisionGroupId]
+      (spec.collides or []).forEach (collision) =>
+        if collision.callback
+          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId], @[collision.callback], @
+        else
+          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId]
 
   addCollisionGroups: (baseNames) ->
     baseNames.forEach (baseName) =>
