@@ -1,3 +1,6 @@
+#= require game/game
+#= require game/phaser_states
+
 # window for Browser
 # exports for Node
 root = @
