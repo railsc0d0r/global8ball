@@ -1,10 +1,9 @@
 #= require game/game
-#= require game/phaser_states
-
-# window for Browser
-# exports for Node
-root = @
-root.global8ball ?= {}
+#= require game/states/Boot
+#= require game/states/Preload
+#= require game/states/PlayForBegin
+#= require game/states/PlayForVictory
+#= require game/states/ShowResult
 
 class Game
   # @config is the game config
@@ -12,7 +11,7 @@ class Game
   constructor: (@config, @data)->
     @overload = new Game.Overload
     @renderer = if @config.server then Phaser.HEADLESS else Phaser.CANVAS
-    @I18n = root.I18n
+    @I18n = I18n
     @createPositionTranslation()
 
   createPositionTranslation: ->
@@ -112,4 +111,4 @@ class Game.PositionTranslation
     x: @first.left + (point.x - @second.left)  * @fromFactor.horizontal
     y: @first.top + (point.y - @second.top) * @fromFactor.vertical
 
-root.global8ball.Game = Game
+global8ball.Game = Game

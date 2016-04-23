@@ -1,9 +1,4 @@
-#= require game/phaser.min
-
-# window for Browser
-# exports for Node
-root = @
-root.global8ball ?= {}
+#= require game/prolog
 
 FORCE_FACTOR = 10
 MAX_FORCE = 1000
