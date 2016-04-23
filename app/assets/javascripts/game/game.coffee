@@ -105,16 +105,18 @@ class FullState extends Phaser.State
 
   addSpriteGroup: (groupName, classType) ->
     @spriteGroups[groupName] = @add.group()
-    @spriteGroups[groupName].classType = classType
+    if classType
+      @spriteGroups[groupName].classType = classType
 
   create: ->
+    @addSpriteGroup 'table'
     @addSpriteGroup 'holes', Hole
     @addSpriteGroup 'balls', Ball
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
     @game.input.maxPointers = 1 # No multi-touch
-    @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background'
+    @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background', `/*frame=*/ undefined`, @spriteGroups.table
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
