@@ -41,27 +41,27 @@ class global8ball.FullState extends Phaser.State
     @world.sendToBack @spriteGroups.table
 
   createSpriteGroups: () ->
-    @getPhysicsGroupSpecs().forEach (spec) =>
+    for specId, spec of @getPhysicsGroupSpecs()
       if not @spriteGroups[spec.spriteGroupId] # Create sprite group only if it does not exist yet!
         @spriteGroups[spec.spriteGroupId] = @add.group()
         @spriteGroups[spec.spriteGroupId].classType = @spriteClasses()[spec.spriteGroupId] or Phaser.Sprite
 
-  getPhysicsGroupSpecs: () -> []
+  getPhysicsGroupSpecs: () -> {}
 
   spriteClasses: () -> {}
 
   createCollisionGroups: () ->
-    @getPhysicsGroupSpecs().forEach (spec) =>
-      @collisionGroups[spec.id] ?= @physics.p2.createCollisionGroup()
+    for specId of @getPhysicsGroupSpecs()
+      @collisionGroups[specId] ?= @physics.p2.createCollisionGroup()
 
   createPhysicsGroups: () ->
-    @getPhysicsGroupSpecs().forEach (spec) =>
-      @physicsGroups[spec.id] = new global8ball.PhysicsGroup spec.spriteKey, @spriteGroups[spec.spriteGroupId], @collisionGroups[spec.collisionGroupId]
+    for specId, spec of @getPhysicsGroupSpecs()
+      @physicsGroups[specId] = new global8ball.PhysicsGroup spec.spriteKey, @spriteGroups[spec.spriteGroupId], @collisionGroups[spec.collisionGroupId]
       (spec.collides or []).forEach (collision) =>
         if collision.callback
-          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId], @[collision.callback], @
+          @physicsGroups[specId].collides @collisionGroups[collision.groupId], @[collision.callback], @
         else
-          @physicsGroups[spec.id].collides @collisionGroups[collision.groupId]
+          @physicsGroups[specId].collides @collisionGroups[collision.groupId]
 
   addCollisionGroups: (baseNames) ->
     baseNames.forEach (baseName) =>

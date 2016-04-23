@@ -18,9 +18,8 @@ class global8ball.PlayForBegin extends global8ball.PlayState
     @yourCue.show()
     @enemyCue.setTargetBall @enemyBall
 
-  getPhysicsGroupSpecs: () -> [
-    {
-      id: 'borders'
+  getPhysicsGroupSpecs: () ->
+    borders:
       spriteKey: 'border'
       spriteGroupId: 'borders'
       collisionGroupId: 'borders'
@@ -32,8 +31,6 @@ class global8ball.PlayForBegin extends global8ball.PlayState
           groupId: 'white2'
         }
       ]
-    }
-  ]
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
