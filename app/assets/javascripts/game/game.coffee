@@ -102,6 +102,7 @@ class global8ball.Preload extends Phaser.State
 class FullState extends Phaser.State
   constructor: (@g8bGame) ->
     @spriteGroups = {}
+    @collisionGroups = {}
 
   addSpriteGroup: (groupName, classType) ->
     @spriteGroups[groupName] = @add.group()
@@ -129,7 +130,7 @@ class FullState extends Phaser.State
 
   addCollisionGroups: (baseNames) ->
     baseNames.forEach (baseName) =>
-      @[baseName + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
+      @collisionGroups[baseName] = @physics.p2.createCollisionGroup()
 
   createBorders: ->
     @spriteGroups.borders.enableBody = true
@@ -144,7 +145,7 @@ class FullState extends Phaser.State
       border.visible = no
       border.body.setRectangleFromSprite border
       border.body.static = yes # Borders are immobile
-      border.body.setCollisionGroup @borderCollisionGroup
+      border.body.setCollisionGroup @collisionGroups.border
     @spriteGroups.borders
 
   # There a six borders, they are located between the holes.
@@ -238,8 +239,8 @@ class PlayState extends FullState
     super()
     @addSpriteGroup 'cues', Cue
     @addCollisionGroups ['cue1', 'cue2']
-    @yourCue = @createCue 'you', @cue1CollisionGroup
-    @enemyCue = @createCue 'enemy', @cue2CollisionGroup
+    @yourCue = @createCue 'you', @collisionGroups.cue1
+    @enemyCue = @createCue 'enemy', @collisionGroups.cue2
     if @hasUi
       @addCueControlGui()
       @game.input.onDown.add @pointerDown
@@ -318,8 +319,8 @@ class global8ball.PlayForBegin extends PlayState
     @addCollisionGroups ['white1', 'white2']
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
-    @addWhiteBallPhysics 'you', @white1CollisionGroup, @white2CollisionGroup, @cue1CollisionGroup
-    @addWhiteBallPhysics 'enemy', @white2CollisionGroup, @white1CollisionGroup, @cue2CollisionGroup
+    @addWhiteBallPhysics 'you', @collisionGroups.white1, @collisionGroups.white2, @collisionGroups.cue1
+    @addWhiteBallPhysics 'enemy', @collisionGroups.white2, @collisionGroups.white1, @collisionGroups.cue2
     @yourBall = (@balls.filter((ball) -> ball.id is 'you'))[0]
     @enemyBall = (@balls.filter((ball) -> ball.id is 'enemy'))[0]
     @yourCue.setTargetBall @yourBall
@@ -328,8 +329,8 @@ class global8ball.PlayForBegin extends PlayState
 
   addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
     @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
-      ball.body.setCollisionGroup myBallCollisionGroup
-      ball.body.collides @borderCollisionGroup, @whiteBallCollidesWithBorder
+      ball.body.setCollisionGroup otherBallCollisionGroup
+      ball.body.collides @collisionGroups.border, @whiteBallCollidesWithBorder
       ball.body.collides cueCollisionGroup
       ball.body.collides otherBallCollisionGroup
       @borders.forEach (border) =>
