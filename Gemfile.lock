@@ -28,7 +28,7 @@ GIT
 
 GIT
   remote: ssh://git@p2501.twilightparadox.com:33333/home/git/git_repos/p2_physics_wrapper.git
-  revision: c0812d869e35c2a854702c2cb5c45e42060a55aa
+  revision: 2bbb2c60bbcb94465ea3520c82c2ba743d79111d
   specs:
     p2_physics_wrapper (0.1.0)
       therubyracer
