@@ -8,8 +8,8 @@ class global8ball.PlayState extends global8ball.FullState
 
   create: ->
     super()
-    @addSpriteGroup 'cues', global8ball.Cue
-    @addCollisionGroups ['cue1', 'cue2']
+    @addGroup 'cue1', 'cues', global8ball.Cue
+    @addGroup 'cue2', 'cues', global8ball.Cue
     @yourCue = @createCue 'you', @collisionGroups.cue1
     @enemyCue = @createCue 'enemy', @collisionGroups.cue2
     if @hasUi
