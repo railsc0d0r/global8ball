@@ -45,14 +45,14 @@ class Cue extends Phaser.Sprite
       @body.x = @targetBall.x + LENGTH * Math.cos(MATH_FACTOR * @body.angle)
       @body.y = @targetBall.y + LENGTH * Math.sin(MATH_FACTOR * @body.angle)
 
+class Hole extends Phaser.Sprite
+
 class global8ball.EventSource
   youShot: () ->
     false
 
   enemyShot: () ->
     false
-
-class Hole extends Phaser.Sprite
 
 class global8ball.Boot extends Phaser.State
   constructor: (@g8bGame)->
