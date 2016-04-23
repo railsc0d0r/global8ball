@@ -48,3 +48,23 @@ class global8ball.EventSource
 
   enemyShot: () ->
     false
+
+class global8ball.PhysicsGroup
+  constructor: (@spriteKey, @spriteGroup, @collisionGroup) ->
+    @collisionSpecs = []
+
+  collides: (collisionGroup, callback, callbackContext) ->
+    @collisionSpecs.push group: collisionGroup, callback: callback, context: callbackContext
+
+  create: (x, y, config) ->
+    sprite = @spriteGroup.create x, y, @spriteKey
+    for prop of config
+      sprite[prop] = config[prop]
+    if @arePhysicsEnabled()
+      sprite.body.setCollisionGroup @collisionGroup
+      @collisionSpecs.forEach (collision) ->
+        sprite.body.collides collision.group, collision.callback, collision.context
+    sprite
+
+  arePhysicsEnabled: () ->
+    @spriteGroup.enableBody
