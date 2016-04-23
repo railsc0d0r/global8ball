@@ -110,6 +110,7 @@ class FullState extends Phaser.State
 
   create: ->
     @addSpriteGroup 'table'
+    @addSpriteGroup 'borders'
     @addSpriteGroup 'holes', Hole
     @addSpriteGroup 'balls', Ball
     @physics.startSystem Phaser.Physics.P2JS
@@ -131,13 +132,12 @@ class FullState extends Phaser.State
       @[baseName + 'CollisionGroup'] = @physics.p2.createCollisionGroup()
 
   createBorders: ->
-    borders = @add.group()
-    borders.enableBody = true
-    borders.physicsBodyType = Phaser.Physics.P2JS
+    @spriteGroups.borders.enableBody = true
+    @spriteGroups.borders.physicsBodyType = Phaser.Physics.P2JS
     bordersData = @borderData()
     for borderKey of bordersData
       borderData = bordersData[borderKey]
-      border = borders.create borderData.pos.x, borderData.pos.y, 'border'
+      border = @spriteGroups.borders.create borderData.pos.x, borderData.pos.y, 'border'
       border.borderKey = borderKey
       border.width = borderData.size.width
       border.height = borderData.size.height
@@ -145,7 +145,7 @@ class FullState extends Phaser.State
       border.body.setRectangleFromSprite border
       border.body.static = yes # Borders are immobile
       border.body.setCollisionGroup @borderCollisionGroup
-    borders
+    @spriteGroups.borders
 
   # There a six borders, they are located between the holes.
   borderData: ->
