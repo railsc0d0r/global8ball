@@ -77,9 +77,9 @@ class global8ball.PhysicsGroup
   #
   # @param {number} x X coordinate of the new sprite.
   # @param {number} y Y coordinate of the new sprite.
-  # @param {object} config Additional configuration, directly applied to the sprite.
+  # @param {object} config Additional configuration, directly applied to the sprite. Optional.
   # @return {Phaser.Sprite|object}
-  create: (x, y, config) ->
+  create: (x, y, config = {}) ->
     sprite = @spriteGroup.create x, y, @spriteKey
     for prop of config
       sprite[prop] = config[prop]
