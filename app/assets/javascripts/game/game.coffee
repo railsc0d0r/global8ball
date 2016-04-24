@@ -68,8 +68,10 @@ class global8ball.PhysicsGroup
   # @param {Phaser.Physics.CollisionGroup|Phaser.Physics.CollisionGroup[]} collisionGroup
   # @param {function} callback Optional callback when a collision happens.
   # @param {object} callbackContext Used as context for the callback. Optional.
+  # @return {global8ball.PhysicsGroup} This (for chaining).
   collides: (collisionGroup, callback, callbackContext) ->
     @collisionSpecs.push group: collisionGroup, callback: callback, context: callbackContext
+    @
 
   # Creates a sprite.
   #
