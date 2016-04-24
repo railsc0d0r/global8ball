@@ -13,11 +13,6 @@ class global8ball.FullState extends Phaser.State
       @spriteGroups[spriteGroupName] = @add.group()
       @spriteGroups[spriteGroupName].classType = spriteClassType
 
-  addSpriteGroup: (groupName, classType) ->
-    @spriteGroups[groupName] = @add.group()
-    if classType
-      @spriteGroups[groupName].classType = classType
-
   create: ->
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
