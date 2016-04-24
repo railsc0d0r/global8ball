@@ -71,7 +71,7 @@ class global8ball.PhysicsGroup
   # @return {global8ball.PhysicsGroup} This (for chaining).
   collides: (collisionGroup, callback, callbackContext) ->
     @collisionSpecs.push group: collisionGroup, callback: callback, context: callbackContext
-    @
+    return @
 
   # Creates a sprite.
   #
@@ -86,4 +86,4 @@ class global8ball.PhysicsGroup
     sprite.body.setCollisionGroup @collisionGroup
     @collisionSpecs.forEach (collision) ->
       sprite.body.collides collision.group, collision.callback, collision.context
-    sprite
+    return sprite
