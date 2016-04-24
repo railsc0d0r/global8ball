@@ -7,7 +7,6 @@ class global8ball.PlayForBegin extends global8ball.PlayState
 
   create: ->
     super()
-    @addCollisionGroups ['white1', 'white2']
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
     @addWhiteBallPhysics 'you', @collisionGroups.white1, @collisionGroups.white2, @collisionGroups.cue1
@@ -20,6 +19,15 @@ class global8ball.PlayForBegin extends global8ball.PlayState
 
   getPhysicsGroupSpecs: () ->
     specs = super()
+    specs.white1 =
+      spriteKey: 'white'
+      spriteGroupId: 'white'
+      collisionGroupId: 'white1'
+    specs.white2 =
+      spriteKey: 'white'
+      spriteGroupId: 'white'
+      collisionGroupId: 'white2'
+
     specs.borders.collides = [
       {
         groupId: 'white1'
