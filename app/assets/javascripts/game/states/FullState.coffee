@@ -26,7 +26,6 @@ class global8ball.FullState extends Phaser.State
     @createCollisionGroups()
     @createPhysicsGroups()
     @addGroup 'table'
-    @addSpriteGroup 'balls', global8ball.Ball
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background', `/*frame=*/ undefined`, @spriteGroups.table
     @tableFloor.anchor.setTo 0.5, 0.5
