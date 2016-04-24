@@ -83,14 +83,7 @@ class global8ball.PhysicsGroup
     sprite = @spriteGroup.create x, y, @spriteKey
     for prop of config
       sprite[prop] = config[prop]
-    if @arePhysicsEnabled()
-      sprite.body.setCollisionGroup @collisionGroup
-      @collisionSpecs.forEach (collision) ->
-        sprite.body.collides collision.group, collision.callback, collision.context
+    sprite.body.setCollisionGroup @collisionGroup
+    @collisionSpecs.forEach (collision) ->
+      sprite.body.collides collision.group, collision.callback, collision.context
     sprite
-
-  # Checks wether physics are enabled or not.
-  #
-  # @return {boolean}
-  arePhysicsEnabled: () ->
-    @spriteGroup.enableBody
