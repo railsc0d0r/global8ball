@@ -33,7 +33,6 @@ class global8ball.FullState extends Phaser.State
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
     @createHoles()
-    @createBalls()
     @createPlayerInfos()
     @borders = @createBorders()
     @world.sendToBack @spriteGroups.table
@@ -148,18 +147,6 @@ class global8ball.FullState extends Phaser.State
       pos: center.clone().add 0, yDiff + yCenterDiff - 1
     rightBottom:
       pos: center.clone().add xDiff + 1, yDiff - 4
-
-  createBalls: () ->
-    @balls = @g8bGame.balls().map (ballData) => @createBall ballData
-
-  # @return {Ball}
-  createBall: (ballData) ->
-    pos = @g8bGame.translatePosition ballData.pos
-    ball = @spriteGroups.balls.create pos.x, pos.y, ballData.color + 'Ball'
-    ball.setData ballData
-    @physics.p2.enable ball
-    ball.body.setCircle 16
-    ball
 
   createPlayerInfos: () ->
     you = @game.add.text 20, 30, {message: 'game.player_info.you', context: { name: @g8bGame.you().name } }

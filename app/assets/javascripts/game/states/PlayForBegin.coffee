@@ -9,10 +9,7 @@ class global8ball.PlayForBegin extends global8ball.PlayState
     super()
     @youShot = @g8bGame.data.players.you.shot
     @enemyShot = @g8bGame.data.players.enemy.shot
-    @addWhiteBallPhysics 'you', @collisionGroups.white1, @collisionGroups.white2, @collisionGroups.cue1
-    @addWhiteBallPhysics 'enemy', @collisionGroups.white2, @collisionGroups.white1, @collisionGroups.cue2
-    @yourBall = (@balls.filter((ball) -> ball.id is 'you'))[0]
-    @enemyBall = (@balls.filter((ball) -> ball.id is 'enemy'))[0]
+    @createWhiteBalls()
     @yourCue.setTargetBall @yourBall
     @yourCue.show()
     @enemyCue.setTargetBall @enemyBall
@@ -20,13 +17,31 @@ class global8ball.PlayForBegin extends global8ball.PlayState
   getPhysicsGroupSpecs: () ->
     specs = super()
     specs.white1 =
-      spriteKey: 'white'
+      spriteKey: 'whiteBall'
       spriteGroupId: 'white'
       collisionGroupId: 'white1'
+      collides: [
+        {
+          groupId: 'cue1'
+        }
+        {
+          groupId: 'borders'
+          callback: 'whiteBallCollidesWithBorder'
+        }
+      ]
     specs.white2 =
-      spriteKey: 'white'
+      spriteKey: 'whiteBall'
       spriteGroupId: 'white'
       collisionGroupId: 'white2'
+      collides: [
+        {
+          groupId: 'cue2'
+        }
+        {
+          groupId: 'borders'
+          callback: 'whiteBallCollidesWithBorder'
+        }
+      ]
 
     specs.borders.collides = [
       {
@@ -38,14 +53,21 @@ class global8ball.PlayForBegin extends global8ball.PlayState
     ]
     specs
 
-  addWhiteBallPhysics: (ballId, myBallCollisionGroup, otherBallCollisionGroup, cueCollisionGroup) ->
-    @balls.filter((ball) -> ball.id is ballId).forEach (ball) =>
-      ball.body.setCollisionGroup otherBallCollisionGroup
-      ball.body.collides @collisionGroups.borders, @whiteBallCollidesWithBorder
-      ball.body.collides cueCollisionGroup
-      ball.body.collides otherBallCollisionGroup
-      @borders.forEach (border) =>
-        border.body.collides myBallCollisionGroup
+  spriteClasses: () ->
+    classes = super()
+    classes.white1 = global8ball.Ball
+    classes.white2 = global8ball.Ball
+    return classes
+
+  createWhiteBalls: () ->
+    @g8bGame.
+      balls().
+      filter((ballData) -> ballData.id is 'you' or ballData.id is 'enemy').
+      forEach (ballData) =>
+        physicsGroupId = if ballData.id is 'you' then 'white1' else 'white2'
+        ballProperty = if ballData.id is 'you' then 'yourBall' else 'enemyBall'
+        pos = @g8bGame.translatePosition ballData.pos
+        @[ballProperty] = @createSprite physicsGroupId, pos.x, pos.y, data: ballData, id: ballData.id
 
   whiteBallCollidesWithBorder: (ballBody, borderBody) =>
 
