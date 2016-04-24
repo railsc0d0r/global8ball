@@ -26,14 +26,12 @@ class global8ball.FullState extends Phaser.State
     @createCollisionGroups()
     @createPhysicsGroups()
     @addGroup 'table'
-    @addSpriteGroup 'holes', global8ball.Hole
     @addSpriteGroup 'balls', global8ball.Ball
     @game.input.maxPointers = 1 # No multi-touch
     @tableFloor = @game.add.image @game.width / 2, @game.height / 2, 'background', `/*frame=*/ undefined`, @spriteGroups.table
     @tableFloor.anchor.setTo 0.5, 0.5
     @table = @game.add.image @game.width / 2, @game.height / 2, 'table'
     @table.anchor.setTo 0.5, 0.5
-    @addCollisionGroups ['hole']
     @createHoles()
     @createBalls()
     @createPlayerInfos()
@@ -55,8 +53,13 @@ class global8ball.FullState extends Phaser.State
       spriteKey: 'border'
       spriteGroupId: 'borders'
       collisionGroupId: 'borders'
+    holes:
+      spriteKey: 'hole'
+      spriteGroupId: 'holes'
+      collisionGroupId: 'holes'
 
-  spriteClasses: () -> {}
+  spriteClasses: () ->
+    holes: global8ball.Hole
 
   createCollisionGroups: () ->
     for specId of @getPhysicsGroupSpecs()
@@ -123,10 +126,9 @@ class global8ball.FullState extends Phaser.State
 
   # @return {Hole}
   createHole: (key, holeData) ->
-    sprite = @spriteGroups.holes.create holeData.pos.x, holeData.pos.y, 'hole'
+    sprite = @physicsGroups.holes.create holeData.pos.x, holeData.pos.y, holeKey: key
     sprite.anchor.setTo 0.5, 0.5
-    sprite.holeKey = key
-    sprite
+    return sprite
 
   holesData: () ->
     center = new Phaser.Point @game.width / 2, @game.height / 2
