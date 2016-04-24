@@ -44,7 +44,7 @@ class global8ball.FullState extends Phaser.State
     for specId, spec of @getPhysicsGroupSpecs()
       if not @spriteGroups[spec.spriteGroupId] # Create sprite group only if it does not exist yet!
         group = @add.group()
-        group = @spriteClasses()[spec.spriteGroupId] or Phaser.Sprite
+        group.classType = @spriteClasses()[spec.spriteGroupId] or Phaser.Sprite
         # Enable physics for *all* sprite groups.
         group.enableBody = true
         group.physicsBodyType = Phaser.Physics.P2JS
