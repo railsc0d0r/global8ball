@@ -88,7 +88,7 @@ class global8ball.FullState extends Phaser.State
         static: yes
         width: borderData.size.width
         visible: no
-      border = @physicsGroups.borders.create borderData.pos.x, borderData.pos.y, config
+      border = @createSprite 'borders', borderData.pos.x, borderData.pos.y, config
       border.body.setRectangleFromSprite border
     @spriteGroups.borders
 
@@ -126,7 +126,7 @@ class global8ball.FullState extends Phaser.State
 
   # @return {Hole}
   createHole: (key, holeData) ->
-    sprite = @physicsGroups.holes.create holeData.pos.x, holeData.pos.y, holeKey: key
+    sprite = @createSprite 'holes', holeData.pos.x, holeData.pos.y, holeKey: key
     sprite.anchor.setTo 0.5, 0.5
     return sprite
 

@@ -8,8 +8,8 @@ class global8ball.PlayState extends global8ball.FullState
 
   create: ->
     super()
-    @yourCue = @physicsGroups.cue1.create 10, 10, visible: no
-    @enemyCue = @physicsGroups.cue1.create 10, 10, visible: no
+    @yourCue = @createSprite 'cue1', 10, 10, visible: no
+    @enemyCue = @createSprite 'cue2', 10, 10, visible: no
     if @hasUi
       @addCueControlGui()
       @game.input.onDown.add @pointerDown
