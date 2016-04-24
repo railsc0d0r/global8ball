@@ -76,19 +76,17 @@ class global8ball.FullState extends Phaser.State
       @collisionGroups[baseName] = @physics.p2.createCollisionGroup()
 
   createBorders: ->
-    @spriteGroups.borders.enableBody = true
-    @spriteGroups.borders.physicsBodyType = Phaser.Physics.P2JS
     bordersData = @borderData()
     for borderKey of bordersData
       borderData = bordersData[borderKey]
-      border = @spriteGroups.borders.create borderData.pos.x, borderData.pos.y, 'border'
-      border.borderKey = borderKey
-      border.width = borderData.size.width
-      border.height = borderData.size.height
-      border.visible = no
+      config =
+        borderKey: borderKey
+        height: borderData.size.height
+        static: yes
+        width: borderData.size.width
+        visible: no
+      border = @physicsGroups.borders.create borderData.pos.x, borderData.pos.y, config
       border.body.setRectangleFromSprite border
-      border.body.static = yes # Borders are immobile
-      border.body.setCollisionGroup @collisionGroups.borders
     @spriteGroups.borders
 
   # There a six borders, they are located between the holes.
