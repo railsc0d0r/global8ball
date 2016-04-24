@@ -49,6 +49,10 @@ class global8ball.EventSource
   enemyShot: () ->
     false
 
+###
+Factory class for creating sprites. Combines both a sprite group and a
+collision group, and automatically adds assigned collision callbacks.
+###
 class global8ball.PhysicsGroup
   constructor: (@spriteKey, @spriteGroup, @collisionGroup) ->
     @collisionSpecs = []
