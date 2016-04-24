@@ -51,14 +51,6 @@ class global8ball.FullState extends Phaser.State
       spriteKey: 'border'
       spriteGroupId: 'borders'
       collisionGroupId: 'borders'
-      collides: [
-        {
-          groupId: 'white1'
-        }
-        {
-          groupId: 'white2'
-        }
-      ]
 
   spriteClasses: () -> {}
 
