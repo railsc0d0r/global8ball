@@ -11,8 +11,9 @@ class global8ball.PlayForBegin extends global8ball.PlayState
     @enemyShot = @g8bGame.data.players.enemy.shot
     @createWhiteBalls()
     @yourCue.setTargetBall @yourBall
-    @yourCue.show()
     @enemyCue.setTargetBall @enemyBall
+    @world.bringToTop @spriteGroups.cues
+    @yourCue.show()
 
   getPhysicsGroupSpecs: () ->
     specs = super()
