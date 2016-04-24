@@ -67,10 +67,6 @@ class global8ball.FullState extends Phaser.State
         else
           @physicsGroups[specId].collides @collisionGroups[collision.groupId]
 
-  addCollisionGroups: (baseNames) ->
-    baseNames.forEach (baseName) =>
-      @collisionGroups[baseName] = @physics.p2.createCollisionGroup()
-
   createBorders: ->
     bordersData = @borderData()
     for borderKey of bordersData
