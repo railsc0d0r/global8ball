@@ -8,24 +8,30 @@ class global8ball.PlayState extends global8ball.FullState
 
   create: ->
     super()
-    @addGroup 'cue1', 'cues', global8ball.Cue
-    @addGroup 'cue2', 'cues', global8ball.Cue
-    @yourCue = @createCue 'you', @collisionGroups.cue1
-    @enemyCue = @createCue 'enemy', @collisionGroups.cue2
+    @yourCue = @physicsGroups.cue1.create 10, 10, visible: no
+    @enemyCue = @physicsGroups.cue1.create 10, 10, visible: no
     if @hasUi
       @addCueControlGui()
       @game.input.onDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
 
-  # @return {Cue}
-  createCue: (player, collisionGroup) ->
-    cue = @spriteGroups.cues.create 10, 10, 'cue'
-    @physics.enable cue, Phaser.Physics.P2JS
-    @physics.p2.enable cue
-    cue.body.setCollisionGroup collisionGroup
-    cue.visible = no
-    return cue
+  getPhysicsGroupSpecs: () ->
+    specs = super()
+    specs.cue1 =
+      spriteKey: 'cue'
+      spriteGroupId: 'cues'
+      collisionGroupId: 'cue1'
+    specs.cue2 =
+      spriteKey: 'cue'
+      spriteGroupId: 'cues'
+      collisionGroupId: 'cue2'
+    return specs
+
+  spriteClasses: () ->
+    classes = super()
+    classes.cues = global8ball.Cue
+    return classes
 
   addCueControlGui: ->
     @cueControlGui = {}
