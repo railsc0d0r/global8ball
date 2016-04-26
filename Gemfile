@@ -80,7 +80,7 @@ group :development, :test do
 
   # Test your javascript
   #gem 'konacha'
-  gem "teaspoon-jasmine", github: "modeset/teaspoon", branch: "rails_5"
+  gem "teaspoon-jasmine", github: "modeset/teaspoon"
 end
 
 # Cucumber for BDD
