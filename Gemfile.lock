@@ -6,15 +6,6 @@ GIT
       capistrano (~> 3.1)
 
 GIT
-  remote: git://github.com/modeset/teaspoon.git
-  revision: 77572a2f446354bedabd6182a8c6284fa263f688
-  specs:
-    teaspoon (1.1.5)
-      railties (>= 3.2.5, < 6)
-    teaspoon-jasmine (2.4.1)
-      teaspoon (>= 1.0.0)
-
-GIT
   remote: https://github.com/plataformatec/devise.git
   revision: 342304375946ca11608516eae80f78dbaae059d5
   specs:
@@ -479,7 +470,6 @@ DEPENDENCIES
   simplecov
   spring
   sqlite3
-  teaspoon-jasmine!
   tinymce-rails
   uglifier (>= 1.3.0)
   unicorn

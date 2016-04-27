@@ -79,8 +79,8 @@ group :development, :test do
   gem 'mailcatcher'
 
   # Test your javascript
-  #gem 'konacha'
-  gem "teaspoon-jasmine", github: "modeset/teaspoon"
+  # gem 'konacha'
+  # gem "teaspoon-jasmine", github: "modeset/teaspoon"
 end
 
 # Cucumber for BDD
