@@ -43,6 +43,18 @@ class global8ball.PlayForBegin extends global8ball.PlayState
           callback: 'whiteBallCollidesWithBorder'
         }
       ]
+    specs.cue1.collides = [
+      {
+        groupId: 'white1'
+        callback: 'cueCollidesWithWhiteBall'
+      }
+    ]
+    specs.cue2.collides = [
+      {
+        groupId: 'white2'
+        callback: 'cueCollidesWithWhiteBall'
+      }
+    ]
 
     specs.borders.collides = [
       {

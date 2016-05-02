@@ -85,3 +85,5 @@ class global8ball.PlayState extends global8ball.FullState
   # @return {Boolean}
   canShoot: ->
     no
+
+  cueCollidesWithWhiteBall: (cue, ball) ->
