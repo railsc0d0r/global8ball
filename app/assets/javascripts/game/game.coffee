@@ -87,3 +87,6 @@ class global8ball.PhysicsGroup
     @collisionSpecs.forEach (collision) ->
       sprite.body.collides collision.group, collision.callback, collision.context
     return sprite
+
+class global8ball.Player
+  constructor: (@id) ->
