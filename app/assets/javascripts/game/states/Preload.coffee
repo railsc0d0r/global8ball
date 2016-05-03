@@ -10,6 +10,10 @@ class global8ball.Preload extends Phaser.State
     for key of Preload.IMAGES
       url = 'game/' + Preload.IMAGES[key]
       loader.image key, url
+    for key of Preload.SPRITESHEETS
+      spritesheet = Preload.SPRITESHEETS[key]
+      url = 'game/' + spritesheet.url
+      loader.spritesheet key, url, spritesheet.width, spritesheet.height
 
   @IMAGES:
     background:      'background.png'
@@ -19,13 +23,24 @@ class global8ball.Preload extends Phaser.State
     cue:             'cue.png'
     forceStrength:   'force_strength.png'
     hole:            'hole.png'
-    lessenForce:     'lessen_force.png'
     redBall:         'red_ball.png'
-    shootButton:     'shoot_button.png'
-    strengthenForce: 'strengthen_force.png'
     table:           'table_pool_without_background.png'
     whiteBall:       'white_ball.png'
     yellowBall:      'yellow_ball.png'
+
+  @SPRITESHEETS:
+    lessenForce:
+      url: 'lessen_force.png'
+      width: 576
+      height: 440
+    shootButton:
+      url: 'shoot_button.png'
+      width: 280
+      height: 279
+    strengthenForce:
+      url: 'strengthen_force.png'
+      width: 576
+      height: 440
 
   create: ->
     @game.state.start @g8bGame.currentState()

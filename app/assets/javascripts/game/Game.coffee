@@ -75,6 +75,7 @@ class Game
     imageUrlMap = @config.imageUrlMap # For lexical binding
     @overload.overload @phaserGame.load, 'image', (oldLoadImage) -> (key, url, overwrite) -> oldLoadImage key, imageUrlMap[url], overwrite
     @overload.overload @phaserGame.load, 'images', (oldLoadImages) -> (key, urls) -> oldLoadImages keys, urls.map (url) -> imageUrlMap[url]
+    @overload.overload @phaserGame.load, 'spritesheet', (oldLoadSpritesheet) -> (key, url, frameWidth, frameHeight) -> oldLoadSpritesheet key, imageUrlMap[url], frameWidth, frameHeight
 
   # For easier use of translations, overload Phaser text method.
   makeTextsTranslatable: ->
