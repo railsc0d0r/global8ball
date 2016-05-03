@@ -8,37 +8,37 @@ class global8ball.Preload extends Phaser.State
     preloader.anchor.setTo 0.5, 0.5
     loader = @game.load
     for key of Preload.IMAGES
-      url = 'game/' + Preload.IMAGES[key]
+      url = 'game/' + Preload.IMAGES[key] + '.png'
       loader.image key, url
     for key of Preload.SPRITESHEETS
       spritesheet = Preload.SPRITESHEETS[key]
-      url = 'game/' + spritesheet.url
+      url = 'game/' + spritesheet.url + '.png'
       loader.spritesheet key, url, spritesheet.width, spritesheet.height
 
   @IMAGES:
-    background:      'background.png'
-    blackBall:       'black_ball.png'
-    border:          'border.png'
-    crosshair:       'crosshair.png'
-    cue:             'cue.png'
-    forceStrength:   'force_strength.png'
-    hole:            'hole.png'
-    redBall:         'red_ball.png'
-    table:           'table_pool_without_background.png'
-    whiteBall:       'white_ball.png'
-    yellowBall:      'yellow_ball.png'
+    background:      'background'
+    blackBall:       'black_ball'
+    border:          'border'
+    crosshair:       'crosshair'
+    cue:             'cue'
+    forceStrength:   'force_strength'
+    hole:            'hole'
+    redBall:         'red_ball'
+    table:           'table_pool_without_background'
+    whiteBall:       'white_ball'
+    yellowBall:      'yellow_ball'
 
   @SPRITESHEETS:
     lessenForce:
-      url: 'lessen_force.png'
+      url: 'lessen_force'
       width: 576
       height: 440
     shootButton:
-      url: 'shoot_button.png'
+      url: 'shoot_button'
       width: 280
       height: 279
     strengthenForce:
-      url: 'strengthen_force.png'
+      url: 'strengthen_force'
       width: 576
       height: 440
 
