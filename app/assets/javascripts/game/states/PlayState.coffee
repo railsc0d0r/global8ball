@@ -63,6 +63,7 @@ class global8ball.PlayState extends global8ball.FullState
       @cueControlGui[id].anchor.setTo 0.5, 0.5
       @cueControlGui[id].width = elements[id].w
       @cueControlGui[id].height = elements[id].h
+      @cueControlGui[id].inputEnabled = true
 
   update: ->
     super()
