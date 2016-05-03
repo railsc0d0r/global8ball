@@ -59,7 +59,7 @@ class global8ball.PlayState extends global8ball.FullState
         w: 40
         h: 40
     for id of elements
-      @cueControlGui[id] = @game.add.sprite elements[id].x, elements[id].y, id
+      @cueControlGui[id] = @game.add.button elements[id].x, elements[id].y, id
       @cueControlGui[id].anchor.setTo 0.5, 0.5
       @cueControlGui[id].width = elements[id].w
       @cueControlGui[id].height = elements[id].h
