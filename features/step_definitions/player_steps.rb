@@ -11,6 +11,10 @@ Wenn(/^ich bestätige, das ich die Regeln des Games gelesen habe\.$/) do
   steps %{ Wenn ich die Checkbox "readRules" aktiviere. }
 end
 
+Wenn(/^ich bestätige, das ich auf mein Vertragswiderrufsrecht verzichte\.$/) do
+  steps %{ Wenn ich die Checkbox "waivedRightToRevokeContract" aktiviere. }
+end
+
 Dann(/^sollte dieser Spieler( nicht|) bestätigt sein\.$/) do |nicht|
   @player.reload
   if nicht.size == 0

@@ -30,6 +30,7 @@ Funktionalität: Spieler Registrierung
     Und ich die Terms of Use akzeptiere.
     Und ich bestätige, das ich die Datenschutzpolicy gelesen habe.
     Und ich bestätige, das ich die Regeln des Games gelesen habe.
+    Und ich bestätige, das ich auf mein Vertragswiderrufsrecht verzichte.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Player 'Meyer, Hans' successfully signed up. Please check your emails." sehen.
     Und möchte ich eine Email mit dem Betreff "Confirmation instructions" bekommen haben.
@@ -49,6 +50,7 @@ Funktionalität: Spieler Registrierung
     Und ich die Terms of Use akzeptiere.
     Und ich bestätige, das ich die Datenschutzpolicy gelesen habe.
     Und ich bestätige, das ich die Regeln des Games gelesen habe.
+    Und ich bestätige, das ich auf mein Vertragswiderrufsrecht verzichte.
     Und ich den "Save"-Button klicke.
     Dann möchte ich "Signing up player failed:" sehen.
     Und möchte ich "Email can't be blank" sehen.
