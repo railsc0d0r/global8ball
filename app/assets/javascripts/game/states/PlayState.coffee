@@ -68,9 +68,11 @@ class global8ball.PlayState extends global8ball.FullState
     @cueControlGui.lessenForce.events.onInputOver.add @hoverOverControlGui
     @cueControlGui.strengthenForce.events.onInputOver.add @hoverOverControlGui
     @cueControlGui.shootButton.events.onInputOver.add @hoverOverControlGui
+    @cueControlGui.forceStrength.events.onInputOver.add @hoverOverControlGui
     @cueControlGui.lessenForce.events.onInputOut.add @leaveControlGui
     @cueControlGui.strengthenForce.events.onInputOut.add @leaveControlGui
     @cueControlGui.shootButton.events.onInputOut.add @leaveControlGui
+    @cueControlGui.forceStrength.events.onInputOut.add @leaveControlGui
 
   hoverOverControlGui: (sprite, event) =>
     sprite.animations.frame = 1
