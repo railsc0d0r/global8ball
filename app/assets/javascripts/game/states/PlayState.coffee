@@ -129,7 +129,6 @@ class global8ball.PlayState extends global8ball.FullState
       @aiming = false
       @stopSettingForce()
       @stopChangingForce()
-      console.log @shotStrength
 
   pointerMove: (event, x, y) =>
     if @aiming
