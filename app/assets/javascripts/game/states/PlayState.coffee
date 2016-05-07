@@ -142,6 +142,11 @@ class global8ball.PlayState extends global8ball.FullState
   canShoot: ->
     no
 
-  cueCollidesWithWhiteBall: (cue, ball) ->
+  # A cue collides with a (white) ball. Immediately get the cue out of the way
+  # by teleporting it outside the game. Also, makes it invisible.
+  cueCollidesWithWhiteBall: (cue, ball) =>
+    cue.x = -1000
+    cue.y = -1000
+    cue.visible = no
 
   pressShootButton: (sprite, event) =>
