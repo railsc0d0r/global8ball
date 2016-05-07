@@ -3,6 +3,7 @@
 class global8ball.PlayState extends global8ball.FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
+    @shotStrength = 1
     @shot = new Phaser.Signal
     @aiming = false
 
@@ -67,6 +68,10 @@ class global8ball.PlayState extends global8ball.FullState
       @cueControlGui[id].inputEnabled = true
       @cueControlGui[id].events.onInputOver.add @hoverOverControlGui
       @cueControlGui[id].events.onInputOut.add @leaveControlGui
+    @shotStrengthMask = @game.add.graphics 0, 0
+    @cueControlGui.forceStrength.mask = @shotStrengthMask
+    @shotStrengthMask.beginFill '#ffffff'
+    @updateShotStrengthMask()
 
   hoverOverControlGui: (sprite, event) =>
     sprite.animations.frame = 1
@@ -76,6 +81,12 @@ class global8ball.PlayState extends global8ball.FullState
 
   update: ->
     super()
+
+  updateShotStrengthMask: ->
+    @shotStrengthMask.clear()
+    x = (@game.width - @cueControlGui.forceStrength.width) / 2
+    width = @cueControlGui.forceStrength.width * @shotStrength
+    @shotStrengthMask.drawRect x, 0, width, @game.height
 
   pointerDown: (event, rawEvent) =>
     @aiming = true
