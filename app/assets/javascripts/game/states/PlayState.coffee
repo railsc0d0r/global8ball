@@ -12,7 +12,8 @@ class global8ball.PlayState extends global8ball.FullState
     @enemyCue = @createSprite 'cue2', 10, 10, visible: no
     if @hasUi
       @addCueControlGui()
-      @game.input.onDown.add @pointerDown
+      @table.inputEnabled = true
+      @table.events.onInputDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
 
