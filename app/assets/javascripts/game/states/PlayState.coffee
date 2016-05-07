@@ -4,6 +4,8 @@ class global8ball.PlayState extends global8ball.FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
     @shotStrength = 1
+    @shotStrengthChange = 0
+    @currentlySettingForce = false
     @shot = new Phaser.Signal
     @aiming = false
 
@@ -17,6 +19,7 @@ class global8ball.PlayState extends global8ball.FullState
       @table.events.onInputDown.add @pointerDown
       @game.input.onUp.add @pointerUp
       @game.input.addMoveCallback @pointerMove
+      @game.input.addMoveCallback @settingForce
 
   getPhysicsGroupSpecs: () ->
     specs = super()
@@ -68,10 +71,36 @@ class global8ball.PlayState extends global8ball.FullState
       @cueControlGui[id].inputEnabled = true
       @cueControlGui[id].events.onInputOver.add @hoverOverControlGui
       @cueControlGui[id].events.onInputOut.add @leaveControlGui
+    @cueControlGui.lessenForce.events.onInputDown.add @startLesseningForce
+    @cueControlGui.strengthenForce.events.onInputDown.add @startStrengtheningForce
+    @cueControlGui.forceStrength.events.onInputDown.add @startSettingForce
     @shotStrengthMask = @game.add.graphics 0, 0
     @cueControlGui.forceStrength.mask = @shotStrengthMask
     @shotStrengthMask.beginFill '#ffffff'
     @updateShotStrengthMask()
+
+  startLesseningForce: (sprite, event) =>
+    @shotStrengthChange = -@forceChangeSpeed
+
+  startStrengtheningForce: (sprite, event) =>
+    @shotStrengthChange = @forceChangeSpeed
+
+  forceChangeSpeed: 0.001
+
+  startSettingForce: (sprite, event) =>
+    @stopChangingForce()
+    @currentlySettingForce = true
+
+  stopSettingForce: (sprite, event) =>
+    @currentlySettingForce = false
+
+  settingForce: (event, x, y) =>
+    if @currentlySettingForce
+      @shotStrength = Math.min 1, Math.max 0, (x + (@cueControlGui.forceStrength.width - @game.width) / 2) / @cueControlGui.forceStrength.width
+      @updateShotStrengthMask()
+
+  stopChangingForce: () =>
+    @shotStrengthChange = 0
 
   hoverOverControlGui: (sprite, event) =>
     sprite.animations.frame = 1
@@ -81,6 +110,9 @@ class global8ball.PlayState extends global8ball.FullState
 
   update: ->
     super()
+    if @shotStrengthChange isnt 0
+      @shotStrength = Math.min 1, Math.max 0, @shotStrength + @shotStrengthChange
+      @updateShotStrengthMask()
 
   updateShotStrengthMask: ->
     @shotStrengthMask.clear()
@@ -95,6 +127,9 @@ class global8ball.PlayState extends global8ball.FullState
   pointerUp: (event, rawEvent) =>
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
       @aiming = false
+      @stopSettingForce()
+      @stopChangingForce()
+      console.log @shotStrength
 
   pointerMove: (event, x, y) =>
     if @aiming
