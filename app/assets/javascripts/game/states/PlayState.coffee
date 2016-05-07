@@ -74,6 +74,7 @@ class global8ball.PlayState extends global8ball.FullState
     @cueControlGui.lessenForce.events.onInputDown.add @startLesseningForce
     @cueControlGui.strengthenForce.events.onInputDown.add @startStrengtheningForce
     @cueControlGui.forceStrength.events.onInputDown.add @startSettingForce
+    @cueControlGui.shootButton.events.onInputDown.add @pressShootButton
     @shotStrengthMask = @game.add.graphics 0, 0
     @cueControlGui.forceStrength.mask = @shotStrengthMask
     @shotStrengthMask.beginFill '#ffffff'
@@ -142,3 +143,5 @@ class global8ball.PlayState extends global8ball.FullState
     no
 
   cueCollidesWithWhiteBall: (cue, ball) ->
+
+  pressShootButton: (sprite, event) =>
