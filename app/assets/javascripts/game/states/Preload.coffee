@@ -21,7 +21,6 @@ class global8ball.Preload extends Phaser.State
     border:          'border'
     crosshair:       'crosshair'
     cue:             'cue'
-    forceStrength:   'force_strength'
     hole:            'hole'
     redBall:         'red_ball'
     table:           'table_pool_without_background'
@@ -29,6 +28,10 @@ class global8ball.Preload extends Phaser.State
     yellowBall:      'yellow_ball'
 
   @SPRITESHEETS:
+    forceStrength:
+      url: 'force_strength'
+      width: 3660
+      height: 444
     lessenForce:
       url: 'lessen_force'
       width: 576
