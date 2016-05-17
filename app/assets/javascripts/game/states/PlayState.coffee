@@ -8,6 +8,7 @@ class global8ball.PlayState extends global8ball.FullState
     @currentlySettingForce = false
     @shot = new Phaser.Signal
     @aiming = false
+    @shooting = false
 
   create: ->
     super()
@@ -150,3 +151,4 @@ class global8ball.PlayState extends global8ball.FullState
     cue.visible = no
 
   pressShootButton: (sprite, event) =>
+    @shot.dispatch()
