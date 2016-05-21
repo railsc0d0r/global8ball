@@ -12,9 +12,13 @@ class global8ball.FullState extends Phaser.State
       @spriteGroups[spriteGroupName].classType = spriteClassType
 
   init: ->
+    @stateEvents.dispatch @, 'init'
     @spriteGroups = {}
     @collisionGroups = {}
     @physicsGroups = {}
+
+  preload: ->
+    @stateEvents.dispatch @, 'preload'
 
   create: ->
     @stateEvents.dispatch @, 'create'
