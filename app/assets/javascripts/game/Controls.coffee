@@ -40,6 +40,8 @@ class global8ball.Controls
 # @member {Phaser.Graphics} shotStrengthMask Mask used together with the strengthmether
 #   to actually show the current shot strength.
 # @member {object} cueControlGui Holds control GUI sprites.
+# @member {boolean} inputDownHandledBySprite Wether a pointer down event was
+#   handled by a sprite, so geneeric down handlers should not be processed.
 class StateControls
 
   # Creates new state controls and adds them to the state.
@@ -55,6 +57,7 @@ class StateControls
     @shotStrength = 0.5
     @shotStrengthChange = 0
     @currentlySettingForce = false
+    @inputDownHandledBySprite = false
 
   # Attaches itself to the state if not already done.
   attach: () ->
@@ -102,7 +105,7 @@ class StateControls
   consumeAimingFromLastFrame: () ->
     if @aimingNextFrame
       # Check if cue control GUI already handled the event.
-      if @shotStrengthChange is 0 and not @currentlySettingForce
+      if not @inputDownHandledBySprite
         @state.aimAt @aimingNextFrame.x, @aimingNextFrame.y
         # If pointer is still down, start to aim the cue. Check is necessary,
         # because the player could click so fast that the pointer is down for
@@ -110,6 +113,7 @@ class StateControls
         if @aimPointer.isDown
           @aiming = true
       @aimingNextFrame = null
+      @inputDownHandledBySprite = false
 
   # Adds the whole GUI to control the cue, i.e. set the strength. Also includes
   # a shoot button.
@@ -151,6 +155,7 @@ class StateControls
       @cueControlGui[id].events.onInputOver.add @hoverOverControlGui
       @cueControlGui[id].events.onInputOut.add @leaveControlGui
       @cueControlGui[id].events.onInputDown.add @[elements[id].action], @
+      @cueControlGui[id].events.onInputDown.add @spriteHandlesInputDown, @
     @shotStrengthMask = @state.game.add.graphics 0, 0
     @cueControlGui.forceStrength.mask = @shotStrengthMask
     @shotStrengthMask.beginFill '#ffffff'
@@ -245,3 +250,6 @@ class StateControls
     x = (@state.game.width - @cueControlGui.forceStrength.width) / 2
     width = @cueControlGui.forceStrength.width * @shotStrength
     @shotStrengthMask.drawRect x, 0, width, @state.game.height
+
+  spriteHandlesInputDown: ->
+    @inputDownHandledBySprite = true
