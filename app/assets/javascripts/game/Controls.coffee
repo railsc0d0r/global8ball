@@ -251,5 +251,6 @@ class StateControls
     width = @cueControlGui.forceStrength.width * @shotStrength
     @shotStrengthMask.drawRect x, 0, width, @state.game.height
 
+  # Listener called when a sprite is clicked.
   spriteHandlesInputDown: ->
     @inputDownHandledBySprite = true
