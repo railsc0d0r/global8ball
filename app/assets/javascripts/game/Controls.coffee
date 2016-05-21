@@ -82,9 +82,11 @@ class StateControls
   # Called when the state shutdowns. Sprites do not need to be cleaned up (they
   # are automatically deleted by Phaser), but event bindings have to be
   # disconnected.
+  # Cleanup is only needed for custom event handling (e.g. a self-defined
+  # Phaser.Signal). Listeners added to the various Phaser.Input signals are
+  # automatically removed when switching to another state.
   shutdown: () ->
     @stateEventBinding.detach()
-    @state.game.input.deleteMoveCallback @pointerMove
 
   # Called on every update of the state. Handles changes regarding shot strength.
   update: () ->
