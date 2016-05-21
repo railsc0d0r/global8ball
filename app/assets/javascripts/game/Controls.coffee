@@ -28,6 +28,18 @@ class global8ball.Controls
 
 # When entering a play state, an instance of this class is created and used
 # to add controls and connect events.
+#
+# @member {object} aimingNextFrame When the player clicks, this will be set to
+#   the coordinates of the click. Is consumed immediately on the next update() call.
+# @member {boolean} aiming Wether the player is currently aiming with the cue.
+# @member {number} shotStrength Current shot strength.
+# @member {number} shotStrengthChange Used when the player presses one of the
+#   buttons for decreasing/increasing the shot strength.
+# @member {boolean} currentlySettingForce Wether the play is currently setting
+#   the shot strength via the strengthmeter.
+# @member {Phaser.Graphics} shotStrengthMask Mask used together with the strengthmether
+#   to actually show the current shot strength.
+# @member {object} cueControlGui Holds control GUI sprites.
 class StateControls
 
   # Creates new state controls and adds them to the state.
@@ -44,6 +56,7 @@ class StateControls
     @shotStrengthChange = 0
     @currentlySettingForce = false
 
+  # Attaches itself to the state if not already done.
   attach: () ->
     if @attached # If already attached to the state, do not attach again.
       return @
@@ -81,6 +94,8 @@ class StateControls
         @state.aimAt @aimingNextFrame.x, @aimingNextFrame.y
       @aimingNextFrame = null
 
+  # Adds the whole GUI to control the cue, i.e. set the strength. Also includes
+  # a shoot button.
   addCueControlGui: () ->
     @cueControlGui = {}
     hCenter = @state.game.width / 2
@@ -123,52 +138,89 @@ class StateControls
     @shotStrengthMask.beginFill '#ffffff'
     @updateShotStrengthMask()
 
-  pointerDown: (event, rawEvent) =>
-    @aimingNextFrame = x: event.x, y: event.y
+  # Generic listener for mousedown events.
+  #
+  # @param {Phaser.Pointer} pointer
+  # @param {MouseEvent} rawEvent
+  pointerDown: (pointer, rawEvent) =>
+    @aimingNextFrame = x: pointer.x, y: pointer.y
 
-  pointerUp: (event, rawEvent) =>
+  # Generic listener for mouseup events.
+  #
+  # @param {Phaser.Pointer} pointer (Unused)
+  # @param {MouseEvent} rawEvent
+  pointerUp: (pointer, rawEvent) =>
     if rawEvent.type is "mouseup" # onUp seems to catch other events as well, even from outside canvas!
       @aiming = false
       @stopSettingForce()
       @stopChangingForce()
 
-  pointerMove: (event, x, y) =>
-    @settingForce event, x, y
+  # Generic listener for mousemove events.
+  #
+  # @param {Phaser.Pointer} pointer
+  # @param {number} x
+  # @param {number} y
+  pointerMove: (pointer, x, y) =>
+    @settingForce pointer, x, y
     if @aiming
       @state.aimAt x, y
 
-  startLesseningForce: (sprite, event) =>
+  # Called when player starts lowering the shot strength via the corresponding button.
+  #
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  startLesseningForce: (sprite, pointer) =>
     @shotStrengthChange = -@forceChangeSpeed
 
-  startStrengtheningForce: (sprite, event) =>
+  # Called when player starts increasing the shot strength via the corresponding button.
+  #
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  startStrengtheningForce: (sprite, pointer) =>
     @shotStrengthChange = @forceChangeSpeed
 
+  # Speed with which the shot strength is changed per call to update().
   forceChangeSpeed: 0.001
 
-  startSettingForce: (sprite, event) =>
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  startSettingForce: (sprite, pointer) =>
     @stopChangingForce()
     @currentlySettingForce = true
 
-  stopSettingForce: (sprite, event) =>
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  stopSettingForce: (sprite, pointer) =>
     @currentlySettingForce = false
 
-  settingForce: (event, x, y) ->
+  # @param {Phaser.Pointer} pointer
+  # @param {number} x
+  # @param {number} y
+  settingForce: (pointer, x, y) ->
     if @currentlySettingForce
       @shotStrength = Math.min 1, Math.max 0, (x + (@cueControlGui.forceStrength.width - @state.game.width) / 2) / @cueControlGui.forceStrength.width
       @updateShotStrengthMask()
 
+  # Stop shot strength changing (increase/decrease buttons)
   stopChangingForce: () =>
     @shotStrengthChange = 0
 
-  hoverOverControlGui: (sprite, event) =>
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  hoverOverControlGui: (sprite, pointer) =>
     sprite.animations.frame = 1
 
-  leaveControlGui: (sprite, event) =>
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  leaveControlGui: (sprite, pointer) =>
     sprite.animations.frame = 0
 
-  pressShootButton: (sprite, event) =>
+  # @param {Phaser.Sprite} sprite
+  # @param {Phaser.Pointer} pointer
+  pressShootButton: (sprite, pointer) =>
     @shot.dispatch()
 
+  # Updates the shot strength mask used to show the current strength.
   updateShotStrengthMask: ->
     @shotStrengthMask.clear()
     x = (@state.game.width - @cueControlGui.forceStrength.width) / 2
