@@ -4,15 +4,17 @@
 class global8ball.FullState extends Phaser.State
   constructor: (@g8bGame) ->
     @stateEvents = new Phaser.Signal
-    @spriteGroups = {}
-    @collisionGroups = {}
-    @physicsGroups = {}
 
   addGroup: (collisionGroupName, spriteGroupName = collisionGroupName, spriteClassType = Phaser.Sprite) ->
     @collisionGroups[collisionGroupName] ?= @physics.p2.createCollisionGroup()
     if not @spriteGroups[spriteGroupName]
       @spriteGroups[spriteGroupName] = @add.group()
       @spriteGroups[spriteGroupName].classType = spriteClassType
+
+  init: ->
+    @spriteGroups = {}
+    @collisionGroups = {}
+    @physicsGroups = {}
 
   create: ->
     @stateEvents.dispatch @, 'create'
