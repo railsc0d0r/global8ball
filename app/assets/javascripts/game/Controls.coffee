@@ -64,8 +64,8 @@ class StateControls
 
     @stateEventBinding = @state.stateEvents.add @stateEventHappened, @
     @addCueControlGui @state
-    @state.input.onDown.add @pointerDown, @, 0
-    @state.input.onUp.add @pointerUp, @, 0
+    @state.input.onDown.add @pointerDown, @
+    @state.input.onUp.add @pointerUp, @
     @state.input.addMoveCallback @pointerMove
 
   # Callback for state events.
@@ -146,10 +146,10 @@ class StateControls
       @cueControlGui[id].inputEnabled = true
       @cueControlGui[id].events.onInputOver.add @hoverOverControlGui
       @cueControlGui[id].events.onInputOut.add @leaveControlGui
-    @cueControlGui.lessenForce.events.onInputDown.add @startLesseningForce, @, 1000
-    @cueControlGui.strengthenForce.events.onInputDown.add @startStrengtheningForce, @, 1000
-    @cueControlGui.forceStrength.events.onInputDown.add @startSettingForce, @, 1000
-    @cueControlGui.shootButton.events.onInputDown.add @pressShootButton, @, 1000
+    @cueControlGui.lessenForce.events.onInputDown.add @startLesseningForce, @
+    @cueControlGui.strengthenForce.events.onInputDown.add @startStrengtheningForce, @
+    @cueControlGui.forceStrength.events.onInputDown.add @startSettingForce, @
+    @cueControlGui.shootButton.events.onInputDown.add @pressShootButton, @
     @shotStrengthMask = @state.game.add.graphics 0, 0
     @cueControlGui.forceStrength.mask = @shotStrengthMask
     @shotStrengthMask.beginFill '#ffffff'
