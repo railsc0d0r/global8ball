@@ -123,21 +123,25 @@ class StateControls
         y: y
         w: 200
         h: 40
+        action: "startSettingForce"
       lessenForce:
         x: hCenter - 120
         y: y
         w: 40
         h: 40
+        action: "startLesseningForce"
       strengthenForce:
         x: hCenter + 120
         y: y
         w: 40
         h: 40
+        action: "startStrengtheningForce"
       shootButton:
         x: hCenter + 160
         y: y
         w: 40
         h: 40
+        action: "pressShootButton"
     for id of elements
       @cueControlGui[id] = @state.game.add.sprite elements[id].x, elements[id].y, id
       @cueControlGui[id].anchor.setTo 0.5, 0.5
@@ -146,10 +150,7 @@ class StateControls
       @cueControlGui[id].inputEnabled = true
       @cueControlGui[id].events.onInputOver.add @hoverOverControlGui
       @cueControlGui[id].events.onInputOut.add @leaveControlGui
-    @cueControlGui.lessenForce.events.onInputDown.add @startLesseningForce, @
-    @cueControlGui.strengthenForce.events.onInputDown.add @startStrengtheningForce, @
-    @cueControlGui.forceStrength.events.onInputDown.add @startSettingForce, @
-    @cueControlGui.shootButton.events.onInputDown.add @pressShootButton, @
+      @cueControlGui[id].events.onInputDown.add @[elements[id].action], @
     @shotStrengthMask = @state.game.add.graphics 0, 0
     @cueControlGui.forceStrength.mask = @shotStrengthMask
     @shotStrengthMask.beginFill '#ffffff'
