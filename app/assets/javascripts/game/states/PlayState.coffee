@@ -3,8 +3,6 @@
 class global8ball.PlayState extends global8ball.FullState
   constructor: (g8bGame, @hasUi = true) ->
     super(g8bGame)
-    @shot = new Phaser.Signal
-    @shooting = false
 
   create: ->
     super()

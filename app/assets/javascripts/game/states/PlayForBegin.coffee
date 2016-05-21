@@ -3,7 +3,6 @@
 class global8ball.PlayForBegin extends global8ball.PlayState
   constructor: (g8bGame, @eventSource) ->
     super g8bGame
-    # @shot.add @shoot
 
   create: ->
     super()
