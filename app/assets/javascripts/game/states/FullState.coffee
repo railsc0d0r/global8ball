@@ -3,6 +3,7 @@
 # Base class for all full Phaser states (i.e. with all images etc.)
 class global8ball.FullState extends Phaser.State
   constructor: (@g8bGame) ->
+    @stateEvents = new Phaser.Signal
     @spriteGroups = {}
     @collisionGroups = {}
     @physicsGroups = {}
@@ -14,6 +15,7 @@ class global8ball.FullState extends Phaser.State
       @spriteGroups[spriteGroupName].classType = spriteClassType
 
   create: ->
+    @stateEvents.dispatch @, 'create'
     @physics.startSystem Phaser.Physics.P2JS
     @physics.p2.restitution = 0.99999
     @physics.p2.setImpactEvents on
@@ -30,6 +32,12 @@ class global8ball.FullState extends Phaser.State
     @createPlayerInfos()
     @borders = @createBorders()
     @world.sendToBack @spriteGroups.table
+
+  shutdown: ->
+    @stateEvents.dispatch @, 'shutdown'
+
+  update: ->
+    @stateEvents.dispatch @, 'update'
 
   createSpriteGroups: () ->
     for specId, spec of @getPhysicsGroupSpecs()
