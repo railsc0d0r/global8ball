@@ -85,12 +85,28 @@ class StateControls
 
   # Called on every update of the state. Handles changes regarding shot strength.
   update: () ->
+    @updateShotStrength()
+    @consumeAimingFromLastFrame()
+
+  # Checks for changes regarding the shot strength and updates it accordingly.
+  updateShotStrength: () ->
     if @shotStrengthChange isnt 0
       @shotStrength = Math.min 1, Math.max 0, @shotStrength + @shotStrengthChange
       @updateShotStrengthMask()
+
+  # When there was a click in the last frame, check if the cue should be aimed.
+  # Why not do it directly? Generic input listeners are called before sprite-specific
+  # ones, ignoring priority. Because the state event handlers (like create) can
+  # only be called at the beginning (in a sane way), it's impossible to attach
+  # listeners to sprites created by the state.
+  consumeAimingFromLastFrame: () ->
     if @aimingNextFrame
+      # Check if cue control GUI already handled the event.
       if @shotStrengthChange is 0 and not @currentlySettingForce
         @state.aimAt @aimingNextFrame.x, @aimingNextFrame.y
+        # If pointer is still down, start to aim the cue. Check is necessary,
+        # because the player could click so fast that the pointer is down for
+        # only one frame.
         if @aimPointer.isDown
           @aiming = true
       @aimingNextFrame = null
