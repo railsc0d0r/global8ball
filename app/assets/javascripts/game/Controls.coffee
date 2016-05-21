@@ -124,7 +124,6 @@ class StateControls
     @updateShotStrengthMask()
 
   pointerDown: (event, rawEvent) =>
-    # @aimingNextFrame = x: rawEvent.x, y: rawEvent.y
     @aimingNextFrame = x: event.x, y: event.y
 
   pointerUp: (event, rawEvent) =>
