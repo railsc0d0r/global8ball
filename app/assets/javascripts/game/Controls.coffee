@@ -90,8 +90,9 @@ class StateControls
       @updateShotStrengthMask()
     if @aimingNextFrame
       if @shotStrengthChange is 0 and not @currentlySettingForce
-        @aiming = true
         @state.aimAt @aimingNextFrame.x, @aimingNextFrame.y
+        if @aimPointer.isDown
+          @aiming = true
       @aimingNextFrame = null
 
   # Adds the whole GUI to control the cue, i.e. set the strength. Also includes
@@ -144,6 +145,7 @@ class StateControls
   # @param {MouseEvent} rawEvent
   pointerDown: (pointer, rawEvent) =>
     @aimingNextFrame = x: pointer.x, y: pointer.y
+    @aimPointer = pointer
 
   # Generic listener for mouseup events.
   #
