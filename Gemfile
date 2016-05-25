@@ -135,3 +135,6 @@ gem 'figaro'
 
 # Loads external gem-wrapper for physics-engine
 gem "p2_physics_wrapper", :git => "ssh://git@p2501.twilightparadox.com:33333/home/git/git_repos/p2_physics_wrapper.git"
+
+# Load the game as an egine
+gem "global8ball_game", :git => "ssh://git@p2501.twilightparadox.com:33333/home/tueti/job/git_repos/global8ball_game.git"
