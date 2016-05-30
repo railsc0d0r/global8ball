@@ -17,6 +17,13 @@ class ApplicationController < ActionController::Base
     render layout: false
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.html { redirect_to root_url, notice: exception.message }
+      format.json { render json: t(:access_denied), status: :forbidden }
+    end
+  end
+
   private
 
   def store_request_details
