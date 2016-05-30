@@ -94,6 +94,14 @@ class User < ActiveRecord::Base
     self.role.name == 'Administrator'
   end
 
+  def is_editor?
+    self.role.name == 'Editor'
+  end
+
+  def is_player?
+    self.role.name == 'Player'
+  end
+
   # new function to return whether a password has been set
   def has_no_password?
     self.encrypted_password.blank?
