@@ -67,3 +67,13 @@ Wenn(/^ich "(.*?)" in den Editor eingebe\.$/) do |content|
   page.has_css?('.mce-tinymce', visible: true)
   page.execute_script("$(tinymce.editors[0].setContent('#{content}'));")
 end
+
+Wenn(/^ich versuche, diesen Abschnitt zu bearbeiten\.$/) do
+  path = path_for("Abschnitt bearbeiten")
+  path.gsub!(":id","#{@section.id}")
+
+  visit(path)
+  step "ich den \"Save\"-Button klicke."
+
+  sleep 2
+end
