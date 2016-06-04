@@ -1,6 +1,6 @@
 # encoding: utf-8
 # Method to map keywords to different paths of our app
-def path_for pathname
+def path_for pathname, args = {}
   case pathname
   when 'Start'
     "/"
@@ -25,7 +25,8 @@ def path_for pathname
   when 'Spielerbestätigung'
     "/confirmation"
   when 'Abschnitt bearbeiten'
-    "/sections/:id/edit"
+    raise "no id given for section to edit" unless args[:id]
+    "/sections/#{args[:id]}/edit"
   else
     raise "No path defined for page named '#{pathname}'."
   end
