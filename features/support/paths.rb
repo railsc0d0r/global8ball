@@ -24,6 +24,8 @@ def path_for pathname
     "/privacy"
   when 'Spielerbestätigung'
     "/confirmation"
+  when 'Abschnitt bearbeiten'
+    "/sections/:id/edit"
   else
     raise "No path defined for page named '#{pathname}'."
   end
