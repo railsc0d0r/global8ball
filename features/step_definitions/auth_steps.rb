@@ -55,6 +55,21 @@ Angenommen(/^eine Anmeldung als Editor\.$/) do
   }
 end
 
+Angenommen(/^eine Anmeldung als Spieler\.$/) do
+  firstname = "Hans"
+  lastname = "Meier"
+  email = "hans.meier@example.com"
+  password = "secret987654321"
+
+  step "ein bestätigter Spieler mit folgenden Eigenschaften:", table(%{
+    | firstname | #{firstname} |
+    | lastname  | #{lastname}  |
+    | email     | #{email}     |
+    | password  | #{password}  |
+  })
+  step "ich mich mit der Email-Adresse \"#{email}\" und dem Passwort \"#{password}\" anmelde."
+end
+
 Angenommen(/^ich melde mich mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)" an\.$/) do |username, password|
   steps %{
     Wenn ich zur Anmeldeseite gehe.
