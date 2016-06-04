@@ -172,6 +172,10 @@ Dann(/^screenshot\.$/) do
   screenshot_and_open_image
 end
 
+Wenn(/^die aktuelle URL\.$/) do
+  puts current_path
+end
+
 Dann(/^möchte ich das "([^"]+)"( nicht|) sehen\.$/) do |selector_name, nicht|
   selector = selector_for(selector_name)
   if nicht.size == 0
