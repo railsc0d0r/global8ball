@@ -17,5 +17,5 @@ Funktionalität: LockDown Zugang zum Backend
   @wip
   Szenario: Spieler versucht, Inhalte zu ändern
     Angenommen eine Anmeldung als Spieler.
-    Wenn ich versuche, den Inhalt auf der Startseite zu bearbeiten.
+    Wenn ich versuche, diesen Abschnitt zu bearbeiten.
     Dann möchte ich "Permission denied." sehen.
