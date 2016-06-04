@@ -68,7 +68,7 @@ end
 
 Dann(/^sollte ich auf der "(.*?)"\-Seite sein\.$/) do |page|
   expected_path = path_for(page)
-  expect(expected_path).to eq(current_path)
+  expect(current_path).to eq(expected_path)
 end
 
 Dann(/^wird die "(.*?)"\-Seite aufgerufen\.$/) do |page|
