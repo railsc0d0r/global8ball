@@ -69,11 +69,11 @@ Wenn(/^ich "(.*?)" in den Editor eingebe\.$/) do |content|
 end
 
 Wenn(/^ich versuche, diesen Abschnitt zu bearbeiten\.$/) do
-  path = path_for("Abschnitt bearbeiten")
-  path.gsub!(":id","#{@section.id}")
+  path = path_for("Abschnitt bearbeiten", id: @section.id)
 
   visit(path)
-  step "ich den \"Save\"-Button klicke."
+  sleep 2
 
+  step "ich den \"Save\"-Button klicke."
   sleep 2
 end
