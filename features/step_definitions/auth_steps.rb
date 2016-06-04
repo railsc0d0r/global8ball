@@ -11,15 +11,15 @@ Angenommen(/^ein Benutzer mit der email "(.*?)" und dem Passwort "(.*?)"\.$/) do
   @user.save!
 end
 
-Angenommen(/^ein Administrator mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |email, password|
-  steps %{ Angenommen ein Benutzer mit dem Benutzernamen "MyUser" und dem Passwort "secret987654321". }
+Angenommen(/^ein Administrator mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |username, password|
+  steps %{ Angenommen ein Benutzer mit dem Benutzernamen "#{username}" und dem Passwort "secret987654321". }
   role = Role.find_by_name('Administrator')
   @user.role = role
   @user.save
 end
 
-Angenommen(/^ein Editor mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |email, password|
-  steps %{ Angenommen ein Benutzer mit dem Benutzernamen "MyUser" und dem Passwort "secret987654321". }
+Angenommen(/^ein Editor mit dem Benutzernamen "(.*?)" und dem Passwort "(.*?)"\.$/) do |username, password|
+  steps %{ Angenommen ein Benutzer mit dem Benutzernamen "#{username}" und dem Passwort "secret987654321". }
   role = Role.find_by_name('Editor')
   @user.role = role
   @user.save
