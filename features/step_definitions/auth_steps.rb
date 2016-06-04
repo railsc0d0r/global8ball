@@ -36,7 +36,7 @@ Angenommen(/^eine Anmeldung als Benutzer\.$/) do
 end
 
 Angenommen(/^eine Anmeldung als Administrator\.$/) do
-  username = "MyUser"
+  username = "MyAdmin"
   password = "secret987654321"
 
   steps %{
@@ -46,7 +46,7 @@ Angenommen(/^eine Anmeldung als Administrator\.$/) do
 end
 
 Angenommen(/^eine Anmeldung als Editor\.$/) do
-  username = "MyUser"
+  username = "MyEditor"
   password = "secret987654321"
 
   steps %{
