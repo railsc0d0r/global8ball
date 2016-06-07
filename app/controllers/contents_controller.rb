@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  load_and_authorize_resource param_method: :content_params
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   # GET /contents

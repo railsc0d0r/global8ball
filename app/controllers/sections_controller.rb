@@ -1,6 +1,7 @@
 class SectionsController < ApplicationController
   include DataUrlConcern
 
+  load_and_authorize_resource param_method: :section_params
   before_action :set_section, only: [:show, :edit, :update, :destroy]
 
   # GET /sections
