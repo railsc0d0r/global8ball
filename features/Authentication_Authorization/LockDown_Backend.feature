@@ -18,4 +18,4 @@ Funktionalität: LockDown Zugang zum Backend
   Szenario: Spieler versucht, Inhalte zu ändern
     Angenommen eine Anmeldung als Spieler.
     Wenn ich versuche, diesen Abschnitt zu bearbeiten.
-    Dann möchte ich "Permission denied." sehen.
+    Dann möchte ich "Access denied." sehen.
