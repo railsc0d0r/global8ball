@@ -18,9 +18,12 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
+    error_object = { errors: [
+                      {title: t(:access_denied)}
+                    ] }
     respond_to do |format|
       format.html { redirect_to root_url, notice: exception.message }
-      format.json { render json: t(:access_denied), status: :forbidden }
+      format.json { render json: error_object, status: :forbidden }
     end
   end
 
