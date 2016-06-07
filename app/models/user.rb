@@ -91,15 +91,15 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    self.role.name == 'Administrator'
+    self.role_name == 'Administrator'
   end
 
   def is_editor?
-    self.role.name == 'Editor'
+    self.role_name == 'Editor'
   end
 
   def is_player?
-    self.role.name == 'Player'
+    self.role_name == 'Player'
   end
 
   # new function to return whether a password has been set
