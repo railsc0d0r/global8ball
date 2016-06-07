@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     error_object = { errors: [
-                      {title: t(:access_denied)}
+                      {title: t('login.access_denied')}
                     ] }
     respond_to do |format|
       format.html { redirect_to root_url, notice: exception.message }
