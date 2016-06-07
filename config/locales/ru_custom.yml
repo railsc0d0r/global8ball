@@ -16,6 +16,7 @@ ru:
   login:
     failed: 'Ошибка входа'
     confirmation_failed: 'подтверждение не удалось'
+    access_denied: 'Access denied.'
   signup:
     passport: заграничный пасспорт
     id-card: идентификационная карта

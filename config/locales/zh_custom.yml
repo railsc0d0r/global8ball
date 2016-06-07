@@ -16,6 +16,7 @@ zh:
   login:
     failed: '登录失败'
     confirmation_failed: '确认失败'
+    access_denied: 'Access denied.'
   signup:
     passport: 护照
     id-card: 识别卡

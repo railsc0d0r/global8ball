@@ -16,6 +16,7 @@ es:
   login:
     failed: 'Error de inicio de sesion'
     confirmation_failed: 'Confirmación falló'
+    access_denied: 'Access denied.'
   signup:
     passport: pasaporte
     id-card: tarjeta de identificación

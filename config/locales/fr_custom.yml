@@ -16,6 +16,7 @@ fr:
   login:
     failed: 'échec de la connexion'
     confirmation_failed: 'confirmation a échoué'
+    access_denied: 'Access denied.'
   signup:
     passport: passeport
     id-card: carte d'identité

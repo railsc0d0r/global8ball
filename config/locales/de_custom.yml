@@ -16,6 +16,7 @@ de:
   login:
     failed: 'Login fehlgeschlagen'
     confirmation_failed: 'Bestätigung fehlgeschlagen'
+    access_denied: 'Zugriff verweigert.'
   signup:
     passport: Pass
     id-card: Ausweis

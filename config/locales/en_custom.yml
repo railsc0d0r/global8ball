@@ -37,6 +37,7 @@ en:
   login:
     failed: 'Login failed'
     confirmation_failed: 'Confirmation failed'
+    access_denied: 'Access denied.'
   signup:
     passport: Passport
     id-card: ID-Card

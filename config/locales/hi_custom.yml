@@ -16,6 +16,7 @@ hi:
   login:
     failed: 'लॉगिन विफल'
     confirmation_failed: 'पुष्टि विफल रहा है'
+    access_denied: 'Access denied.'
   signup:
     passport: पासपोर्ट
     id-card: आईडी कार्ड
