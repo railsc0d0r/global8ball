@@ -27,6 +27,9 @@ def path_for pathname, args = {}
   when 'Abschnitt bearbeiten'
     raise "no id given for section to edit" unless args[:id]
     "/sections/#{args[:id]}/edit"
+  when 'Mitarbeiter bearbeiten'
+    raise "no id given for employee to edit" unless args[:id]
+    "/employees/#{args[:id]}/edit"
   else
     raise "No path defined for page named '#{pathname}'."
   end
