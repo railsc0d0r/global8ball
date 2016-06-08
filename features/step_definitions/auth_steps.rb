@@ -58,7 +58,7 @@ end
 Angenommen(/^eine Anmeldung als Spieler\.$/) do
   firstname = "Hans"
   lastname = "Meier"
-  email = "hans.meier@example.com"
+  email = "my_player@example.com"
   password = "secret987654321"
 
   step "ein bestätigter Spieler mit folgenden Eigenschaften:", table(%{
