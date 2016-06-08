@@ -2,6 +2,7 @@ class PlayersController < ApplicationController
   include UserAttributesConcern
   include PersonAttributesConcern
 
+  load_and_authorize_resource param_method: :player_params
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
