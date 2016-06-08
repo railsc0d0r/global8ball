@@ -77,3 +77,13 @@ Wenn(/^ich versuche, diesen Abschnitt zu bearbeiten\.$/) do
   step "ich den \"Save\"-Button klicke."
   sleep 2
 end
+
+Wenn(/^ich versuche, diesen Mitarbeiter zu bearbeiten\.$/) do
+  path = path_for("Mitarbeiter bearbeiten", id: @employee.id)
+
+  visit(path)
+  sleep 2
+
+  step "ich den \"Save\"-Button klicke."
+  sleep 2
+end
