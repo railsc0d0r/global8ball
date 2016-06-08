@@ -14,6 +14,7 @@ Funktionalität: LockDown Zugang zum Backend
     Und ein Abschnitt auf der Startseite mit Inhalten für "en".
     Und die App ist im Browser geladen.
 
+  @wip
   Szenario: Spieler versucht, Inhalte zu ändern
     Angenommen eine Anmeldung als Spieler.
     Wenn ich versuche, diesen Abschnitt zu bearbeiten.
