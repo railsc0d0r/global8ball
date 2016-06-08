@@ -2,6 +2,7 @@ class EmployeesController < ApplicationController
   include UserAttributesConcern
   include PersonAttributesConcern
 
+  load_and_authorize_resource param_method: :employee_params
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /employees
