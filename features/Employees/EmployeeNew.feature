@@ -1,5 +1,5 @@
 # language: de
-@javascript @wip
+@javascript
 Funktionalität: Mitarbeiter anlegen
   Als Administrator möchte ich
   Mitarbeiter anlegen können
@@ -9,14 +9,14 @@ Funktionalität: Mitarbeiter anlegen
     Angenommen folgende Rollen:
       | Name          |
       | Administrator |
-      | Employee      |
+      | Editor        |
     Und die App ist im Browser geladen.
 
   Szenario: Einen Mitarbeiter anlegen
     Angenommen eine Anmeldung als Administrator.
     Wenn ich aus dem Admin-Menü "Employees" auswähle.
     Und ich den "Add"-Link klicke.
-    Und ich "Employee" als Rolle auswähle.
+    Und ich "Editor" als Rolle auswähle.
     Und ich "Meyer" als Nachname eingebe.
     Und ich "Hans" als Vorname eingebe.
     Und ich "hans_meyer@example.com" als Email eingebe.
@@ -29,7 +29,7 @@ Funktionalität: Mitarbeiter anlegen
     Dann möchte ich "Employee 'Meyer, Hans' successfully created." sehen.
     Und möchte ich "Meyer" sehen.
     Und möchte ich "Hans" sehen.
-    Und möchte ich "Employee" sehen.
+    Und möchte ich "Editor" sehen.
     Und möchte ich "hans_meyer@example.com" sehen.
     Und möchte ich "Musterstrasse 3" sehen.
     Und möchte ich "Auf dem Hinterhof" sehen.
