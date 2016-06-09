@@ -13,7 +13,6 @@ Funktionalität: Spieler Registrierung
       | Player        |
     Und die App ist im Browser geladen.
 
-  @wip
   Szenario: Registrieren eines Spielers
     Wenn ich den "SIGNUP"-Link klicke.
     Und ich "Meyer" als Nachname eingebe.
