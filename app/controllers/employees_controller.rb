@@ -2,7 +2,9 @@ class EmployeesController < ApplicationController
   include UserAttributesConcern
   include PersonAttributesConcern
 
-  load_and_authorize_resource param_method: :employee_params
+  # TODO: investigate further, why resource-loading doesn't work as expected w/ cancancan on create
+  load_resource except: :create
+  authorize_resource
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
 
   # GET /employees
