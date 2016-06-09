@@ -2,7 +2,9 @@ class PlayersController < ApplicationController
   include UserAttributesConcern
   include PersonAttributesConcern
 
-  load_and_authorize_resource param_method: :player_params
+  # TODO: investigate further, why resource-loading doesn't work as expected w/ cancancan on create
+  load_resource except: :create
+  authorize_resource
   before_action :set_player, only: [:show, :edit, :update, :destroy]
 
   # GET /players
