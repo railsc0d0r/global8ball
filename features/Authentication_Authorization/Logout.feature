@@ -8,7 +8,6 @@ Funktionalität: Benutzer abmelden
   Grundlage:
     Angenommen die App ist im Browser geladen.
 
-  @wip
   Szenario: Einen Benutzer abmelden
     Angenommen eine Anmeldung als Benutzer.
     Wenn ich den "LOGOUT"-Link klicke.
