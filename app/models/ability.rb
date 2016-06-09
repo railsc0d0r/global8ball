@@ -34,9 +34,9 @@ class Ability
     end
 
     if user.is_editor?
+      can :read, :all
       can :manage, Section
       can :manage, Content
-      can :read, :all
     end
 
     if user.is_player?
@@ -50,6 +50,7 @@ class Ability
 
     can :read, Section
     can :read, Content
+    can :read, Role
     can :read, User, id: user.id
     can :create, Player
   end
