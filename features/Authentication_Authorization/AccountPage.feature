@@ -8,9 +8,8 @@ Funktionalität: Account-Page
   Grundlage:
     Angenommen die App ist im Browser geladen.
 
-  @wip
   Szenario: Accountpage für Mitarbeiter
-    Angenommen die Rolle "Employee".
+    Angenommen die Rolle "Editor".
     Angenommen ein bestätigter Mitarbeiter mit folgenden Eigenschaften:
       | firstname | Hans                   |
       | lastname  | Meier                  |

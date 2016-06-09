@@ -50,7 +50,7 @@ end
 
 Angenommen(/^ein bestätigter Mitarbeiter mit folgenden Eigenschaften:$/) do |table|
   attributes = table.rows_hash
-  attributes["role_name"] = "Employee" unless attributes.key?("role_name")
+  attributes["role_name"] = "Editor" unless attributes.key?("role_name")
 
   params = {
     user_attributes: {
