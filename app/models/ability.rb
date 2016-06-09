@@ -50,6 +50,7 @@ class Ability
 
     can :read, Section
     can :read, Content
+    can :read, User, id: user.id
     can :create, Player
   end
 end
