@@ -67,9 +67,9 @@ set :branch, "master"
 # app side by side. Also provides quick sanity checks when looking
 # at filepaths
 set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
-set :server_name, "vhost104.global8ball.com"
+set :server_name, "global8ball.mooo.com"
 
-server 'vhost104.global8ball.com', user: 'cap', roles: %w{web app db}, primary: true
+server 'global8ball.mooo.com', user: 'cap', roles: %w{web app db}, primary: true
 
 set :deploy_to, "/home/#{fetch(:deploy_user)}/#{fetch(:full_app_name)}"
 
