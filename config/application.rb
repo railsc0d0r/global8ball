@@ -68,9 +68,6 @@ module Global8ball
     config.middleware.use I18n::JS::Middleware
     I18n.available_locales = [ :de, :en, :es, :fr, :hi, :ru, :zh ]
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
-
     # Tells rails to generate factories instead of fixtures for tests
     config.generators do |g|
       g.fixture_replacement :factory_girl
